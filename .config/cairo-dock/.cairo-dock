@@ -1,0 +1,9 @@
+[Launch]
+last version=3.2.1
+default backend=opengl
+last year=2013
+
+ping server=true
+
+[Gui]
+mode=1
