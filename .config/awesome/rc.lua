@@ -20,7 +20,7 @@ if awesome.startup_errors
     naughty.notify({
       preset = naughty.config.presets.critical,
       title = "Oops, there were errors during startup!",
-      text = awesome.startup_errors 
+      text = awesome.startup_errors
     })
   end
 
@@ -330,7 +330,13 @@ awful.key({ modkey,           }, "c",     function () client.focus:lower() end),
 
 clientkeys = awful.util.table.join(
     awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
-    awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
+    awful.key({ modkey, "Shift"   }, "c", function (c)
+      if c.class ~= 'conky'
+        then
+
+        c:kill()
+      end
+    end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
     awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
@@ -399,21 +405,63 @@ root.keys(globalkeys)
 -- {{{ Rules
 awful.rules.rules = {
     -- All clients will match this rule.
-    { rule = { },
-      properties = { border_width = beautiful.border_width,
-                     border_color = beautiful.border_normal,
-                     --focus = awful.client.focus.filter,
-                     keys = clientkeys,
-                     size_hints_honor = false,
-                     buttons = clientbuttons } },
-    { rule = { class = "cairo-dock" },
-      properties = { focusable = false } },
+    {
+      rule = { },
+      properties = {
+        border_width = beautiful.border_width,
+        border_color = beautiful.border_normal,
+        --focus = awful.client.focus.filter,
+        keys = clientkeys,
+        size_hints_honor = false,
+        buttons = clientbuttons
+      }
+    },
+    {
+      rule = {class = "cairo-dock" },
+      properties = {
+        border_width = 0,
+        border_color = 0,
+        size_hints_honor = false,
+        floating = true,
+        focusable = false,
+        modal = true,
+        below =  true
+      }
+    },
+    {
+      rule = { class = "conky" },
+      properties = {
+        border_width = 0,
+        border_color = 0,
+        size_hints_honor = false,
+        floating = true,
+        focusable = false,
+        modal = true,
+        width = 303,
+        height = 450,
+        below =  true
+      },
+      callback = function(c)
+
+        local scr_area = screen[c.screen].workarea
+        local cl_strut = c:struts()
+        local geometry = nil
+
+        c:geometry({
+          x = (scr_area.width - 285),
+          y = 10,
+          width = 305,
+          height = 450,
+        })
+
+       end
+    },
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
     { rule = { class = "pinentry" },
       properties = { floating = true } },
     { rule = { class = "Gitk" },
-      properties = { tag = tags[1][3], loating = true, maximized_vertical = true, maximized_horizontal = true } },
+      properties = { tag = tags[1][3], floating = true, maximized_vertical = true, maximized_horizontal = true } },
     { rule = { class = "spacefm" },
       properties = { floating = true, tag = tags[1][4], maximized_vertical = true, maximized_horizontal = true } },
     { rule = { class = "gimp" },
@@ -470,14 +518,20 @@ awful.rules.rules = {
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c, startup)
-  client.focus = c
-  client.focus:raise()
 
-  if c.name == 'cairo-dock' then
-     c.below = true
-     c.focusable = false
-  elseif c.name == 'conky' then
-     c.below = true
+  if c.class == 'cairo-dock' then
+    return
+  elseif c.class == 'conky' then
+    return
+    --c.below = true
+    --c.focusable = false
+    --c.focus = false
+    --c.floating = true
+    --c:lower()
+     --c.unmanage(c)
+  else
+    client.focus = c
+    client.focus:raise()
   end
     -- Enable sloppy focus
    --c:connect_signal("focus", function(c)
@@ -513,55 +567,68 @@ client.connect_signal("manage", function (c, startup)
     end
 
     local titlebars_enabled = false
-    if c.class ~= 'Chromium' and c.class ~= 'Cairo-dock' and c.class ~= 'URxvt' and c.class ~= 'Firefox' and titlebars_enabled   then
-            -- Widgets that are aligned to the left
-        local left_layout = wibox.layout.fixed.horizontal()
-        left_layout:add(awful.titlebar.widget.iconwidget(c))
-
-        -- Widgets that are aligned to the right
-        local right_layout = wibox.layout.fixed.horizontal()
-        right_layout:add(awful.titlebar.widget.floatingbutton(c))
-        right_layout:add(awful.titlebar.widget.maximizedbutton(c))
-        right_layout:add(awful.titlebar.widget.stickybutton(c))
-        right_layout:add(awful.titlebar.widget.ontopbutton(c))
-        right_layout:add(awful.titlebar.widget.closebutton(c))
-
-        -- The title goes in the middle
-        local title = awful.titlebar.widget.titlewidget(c)
-        title:buttons(awful.util.table.join(
-                awful.button({ }, 1, function()
-                    client.focus = c
-                    c:raise()
-                    awful.mouse.client.move(c)
-                end),
-                awful.button({ }, 3, function()
-                    client.focus = c
-                    c:raise()
-                    awful.mouse.client.resize(c)
-                end)
-                ))
-
-        -- Now bring it all together
-        local layout = wibox.layout.align.horizontal()
-        layout:set_left(left_layout)
-        layout:set_right(right_layout)
-        layout:set_middle(title)
-c.border_width = 1
-        awful.titlebar(c):set_widget(layout)
-    end
+--    if c and c.class ~= 'Chromium' and c.class ~= 'Cairo-dock' and c.class ~= 'URxvt' and c.class ~= 'Firefox' and titlebars_enabled   then
+--            -- Widgets that are aligned to the left
+--        local left_layout = wibox.layout.fixed.horizontal()
+--        left_layout:add(awful.titlebar.widget.iconwidget(c))
+--
+--        -- Widgets that are aligned to the right
+--        local right_layout = wibox.layout.fixed.horizontal()
+--        right_layout:add(awful.titlebar.widget.floatingbutton(c))
+--        right_layout:add(awful.titlebar.widget.maximizedbutton(c))
+--        right_layout:add(awful.titlebar.widget.stickybutton(c))
+--        right_layout:add(awful.titlebar.widget.ontopbutton(c))
+--        right_layout:add(awful.titlebar.widget.closebutton(c))
+--
+--        -- The title goes in the middle
+--        local title = awful.titlebar.widget.titlewidget(c)
+--        title:buttons(awful.util.table.join(
+--                awful.button({ }, 1, function()
+--                    client.focus = c
+--                    c:raise()
+--                    awful.mouse.client.move(c)
+--                end),
+--                awful.button({ }, 3, function()
+--                    client.focus = c
+--                    c:raise()
+--                    awful.mouse.client.resize(c)
+--                end)
+--                ))
+--
+--        -- Now bring it all together
+--        local layout = wibox.layout.align.horizontal()
+--        layout:set_left(left_layout)
+--        layout:set_right(right_layout)
+--        layout:set_middle(title)
+--c.border_width = 1
+--        awful.titlebar(c):set_widget(layout)
+--    end
 end)
 
 client.connect_signal("focus", function(c)
+  if c.class == 'conky'
+    then
+  --naughty.notify({naughty.config.presets.critical, title = 'conky focus signal', text = c.screen })
+    if c.screen and awful.client.history then
+      c = get_proper_client_for_focus(c)
+      if c then
+        awful.client.focus = c
+      end
+    end
+    return
+  end
+  if c.class == 'cairo-dock' or c.class == 'Cairo-dock' then
+  --naughty.notify({naughty.config.presets.critical, title = 'this is focus signal', text = c.screen })
+    if c.screen and awful.client.history then
+      c = get_proper_client_for_focus(c)
+      if c then
+        awful.client.focus = c
+      end
+    end
+    return
+  end
   c.border_color = beautiful.border_focus
-  if c.class == 'cairo-dock' then
-    c.border_color='FFFFFF'
-  end
-  if c.name == 'cairo-dock' then
-  c.focusable = false
-    c:lower()
---naughty.notify({naughty.config.presets.critical, title = 'this is cairo dock', text = dump(client) })
-  end
---naughty.notify({naughty.config.presets.critical, title = 'this is focus signal', text = c.name })
+  --naughty.notify({naughty.config.presets.critical, title = 'this is focus signal', text = c.class })
 end)
 --client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}

@@ -122,3 +122,6 @@ au BufEnter * call AutoNetrwLocate()
 " set log
 "set verbosefile=~/.vimlog
 ""set verbose=2000
+
+autocmd FileType php setlocal makeprg=zca\ %<.php
+autocmd FileType php setlocal errorformat=%f(line\ %l):\ %m

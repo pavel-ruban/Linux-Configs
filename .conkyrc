@@ -18,10 +18,11 @@ double_buffer yes
 no_buffers yes
 text_buffer_size 2048
 
-gap_x -730
-gap_y 25
-minimum_size 1000
-maximum_width 2000
+gap_x 0
+gap_y 0
+minimum_size 305 450
+maximum_width 303
+
 own_window yes
 own_window_type normal
 own_window_title conky
@@ -62,7 +63,7 @@ TEXT
 ${goto 95}${voffset 105}${font DexterC:size=20}${time %H}:${time %M}
 
 ${voffset 10}${color 7ca7c6}${font caviar dreams:size=16}${time %A}${font}
-${color FFFFFF}${voffset 10}${color FFFFFF}${font caviar dreams:size=18}${time %b}${font}${voffset -3} ${color FFFFFF}${font caviar dreams:size=20}${time %Y}${font}
+${color FFFFFF}${voffset 10}${color FFFFFF}${font caviar dreams:size=18}${time %b}${font}${voffset -3} ${color FFFFFF}${font caviar dreams:size=20}${time %Y}${font} ${time %d}/${time %m}${font}
 
 #${color FFFFFF}${goto 25}${voffset 35}${cpu cpu0}%
 #${color 7ca7c6}${goto 25}CPU
@@ -76,6 +77,6 @@ ${color FFFFFF}${voffset 10}${color FFFFFF}${font caviar dreams:size=18}${time %
 
 
 
-${goto 95 500}${voffset 750}${color FFFFFF}${font caviar dreams:size=8}Uptime: ${uptime_short}
-${color FFFFFF}${font caviar dreams:size=8}Processes: ${processes}
-${color FFFFFF}${font caviar dreams:size=8}Running: ${running_processes}
+${goto 145}${voffset 20}${color FFFFFF}${font caviar dreams:size=8}Uptime: ${uptime_short}
+${goto 145}${voffset 2}${color FFFFFF}${font caviar dreams:size=8}procs: ${processes}
+${goto 145}${voffset 2}${color FFFFFF}${font caviar dreams:size=8}running: ${running_processes}
