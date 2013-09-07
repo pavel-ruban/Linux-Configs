@@ -74,7 +74,7 @@ skm=/http/skimium/sites/all/modules/
 skt=/http/skimium/sites/all/themes/
 
 alias m="mplayer -shuffle -playlist /home/noname/Downloads/pl"
-alias f="feh -. -B black"
+alias fe="feh -. -B black"
 alias pyfa="python2.7 ~/pyfa/pyfa.py"
 alias j="journalctl -r -u"
 alias f="FBReader"
