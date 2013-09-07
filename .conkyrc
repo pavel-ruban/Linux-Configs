@@ -1,0 +1,81 @@
+#==============================================================================
+#                                 conkyrc_car
+#
+#  author  : SLK
+#  version : v2011011001
+#  license : Distributed under the terms of GNU GPL version 2 or later
+#
+#==============================================================================
+
+background no
+update_interval 1
+
+cpu_avg_samples 2
+net_avg_samples 2
+temperature_unit celsius
+
+double_buffer yes
+no_buffers yes
+text_buffer_size 2048
+
+gap_x -730
+gap_y 25
+minimum_size 1000
+maximum_width 2000
+own_window yes
+own_window_type normal
+own_window_title conky
+own_window_class conky
+own_window_transparent yes
+own_window_argb_visual yes
+own_window_hints undecorate,sticky,skip_taskbar,skip_pager,below
+border_inner_margin 0
+border_outer_margin 0
+alignment tr
+
+draw_shades yes
+draw_outline no
+draw_borders no
+draw_graph_borders no
+#default_shade_color #292721
+
+override_utf8_locale yes
+use_xft yes
+xftfont caviar dreams:size=8
+xftalpha 0.5
+uppercase no
+
+default_color FFFFFF
+color1 DDDDDD
+color2 AAAAAA
+color3 888888
+
+lua_load ~/conky/conky.lua
+lua_load ~/conky/clock_rings.lua
+lua_draw_hook_post main
+#lua_load ~/conky/equalizer.lua
+lua_draw_hook_pre widgets
+lua_draw_hook_pre clock_rings
+
+#${rss https://planet.archlinux.org/rss20.xml 1 item_titles 10 }
+TEXT
+${goto 95}${voffset 105}${font DexterC:size=20}${time %H}:${time %M}
+
+${voffset 10}${color 7ca7c6}${font caviar dreams:size=16}${time %A}${font}
+${color FFFFFF}${voffset 10}${color FFFFFF}${font caviar dreams:size=18}${time %b}${font}${voffset -3} ${color FFFFFF}${font caviar dreams:size=20}${time %Y}${font}
+
+#${color FFFFFF}${goto 25}${voffset 35}${cpu cpu0}%
+#${color 7ca7c6}${goto 25}CPU
+#${color FFFFFF}${goto 50}${voffset 23}${memperc}%
+#${color 7ca7c6}${goto 50}RAM
+#${color FFFFFF}${goto 100}${voffset 23}${fs_used_perc /}%
+#${color 7ca7c6}${goto 100}Disk
+#${color FFFFFF}${goto 125}${voffset 25}${downspeed wlan0}
+#${color FFFFFF}${goto 125}${upspeed wlan0}
+#${color 7ca7c6}${goto 125}Net
+
+
+
+${goto 95 500}${voffset 750}${color FFFFFF}${font caviar dreams:size=8}Uptime: ${uptime_short}
+${color FFFFFF}${font caviar dreams:size=8}Processes: ${processes}
+${color FFFFFF}${font caviar dreams:size=8}Running: ${running_processes}

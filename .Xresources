@@ -1,0 +1,9 @@
+URxvt.perl-ext-common:  default,matcher
+!URxvt.tabbed.tabbar-fg: 3
+!URxvt.tabbed.tab-fg:    3
+
+Xcursor.size:  16
+URxvt.url-launcher:   /usr/bin/google-as-noname.sh
+URxvt.matcher.button: 3
+URxvt.colorUL: #3ACDFF
+!URxvt.iso14755: false

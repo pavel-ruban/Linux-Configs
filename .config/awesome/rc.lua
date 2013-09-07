@@ -222,8 +222,9 @@ end
     --awful.util.spawn_with_shell("compton -c -C   --vsync opengl --detect-rounded-corners  --refresh-rate 60 --vsync-aggressive -r 15 -l -22 -t -22 -m 1")
     awful.util.spawn_with_shell("feh --bg-fill ~/linux.jpg")
     awful.util.spawn_with_shell("netbookInit.sh")
-    awful.util.spawn_with_shell("compton -c -C --vsync drm --detect-rounded-corners -r 10 -l -15 -t -15 -m 1 -z")
-    awful.util.spawn_with_shell("compton -c -C --vsync opengl --detect-rounded-corners -r 10 -l -15 -t -15 -m 1 -z")
+    --awful.util.spawn_with_shell("compton -c -C --vsync drm --detect-rounded-corners -r 10 -l -15 -t -15 -m 1 -z")
+    --awful.util.spawn_with_shell("compton -c -C --vsync opengl --detect-rounded-corners -r 10 -l -15 -t -15 -m 1 -z")
+    awful.util.spawn_with_shell("compton --config ~/.compton.conf")
     awful.util.spawn_with_shell("sleep 100; chown -R noname:noname /home/noname &")
     awful.util.spawn_with_shell("xrdb -merge ~/.Xresources")
 
@@ -311,10 +312,10 @@ awful.key({ modkey,           }, "c",     function () client.focus:lower() end),
     awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
 
-    awful.key({ modkey, "Control" }, "n", awful.client.restore)
+    awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
     -- Prompt
-    --awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
+    awful.key({ modkey },            "]",     function () mypromptbox[mouse.screen]:run() end)
 
     --awful.key({ modkey }, "x",
       --        function ()
