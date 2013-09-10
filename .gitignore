@@ -6,3 +6,4 @@
 *.xcu
 *.lock
 .config/libreoffice
+*.swo
