@@ -429,6 +429,33 @@ awful.rules.rules = {
       }
     },
     {
+      rule = { class = "cube" },
+      properties = {
+        border_width = 0,
+        border_color = 0,
+        size_hints_honor = false,
+        floating = true,
+        focusable = false,
+        modal = true,
+        sticky = true,
+        below =  true
+      },
+      callback = function(c)
+
+        local scr_area = screen[c.screen].workarea
+        local cl_strut = c:struts()
+        local geometry = nil
+
+        c:geometry({
+          x = 100,
+          y = 100,
+          width = 640,
+          height = 640,
+        })
+
+       end
+    },
+    {
       rule = { class = "conky" },
       properties = {
         border_width = 0,
@@ -519,7 +546,7 @@ awful.rules.rules = {
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c, startup)
 
-  if c.class == 'cairo-dock' then
+  if c.class == 'cairo-dock' or c.class == 'cube' then
     return
   elseif c.class == 'conky' then
     return
@@ -606,7 +633,7 @@ client.connect_signal("manage", function (c, startup)
 end)
 
 client.connect_signal("focus", function(c)
-  if c.class == 'conky'
+  if c.class == 'conky' or c.class == 'cube'
     then
   --naughty.notify({naughty.config.presets.critical, title = 'conky focus signal', text = c.screen })
     if c.screen and awful.client.history then

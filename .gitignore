@@ -1,1 +1,8 @@
 *.swp
+*.odt
+*.rdb
+/.config/libreoffice/*/user/*
+*.tmp
+*.xcu
+*.lock
+.config/libreoffice

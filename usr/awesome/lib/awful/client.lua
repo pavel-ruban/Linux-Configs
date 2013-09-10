@@ -145,7 +145,7 @@ end
 --- Update client focus history.
 -- @param c The client that has been focused.
 function client.focus.history.add(c)
-    if c.class ~= 'Cairo-dock' and c.class ~= 'cairo-dock' and c.class ~= 'conky' then
+    if c.class ~= 'Cairo-dock' and c.class ~= 'cube' and c.class ~= 'cairo-dock' and c.class ~= 'conky' then
       -- Remove the client if its in stack
       client.focus.history.delete(c)
       -- Record the client has latest focused

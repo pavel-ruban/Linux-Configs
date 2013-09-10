@@ -5,7 +5,7 @@
 <userClassPath xsi:nil="true"/>
 <vmParameters xsi:nil="true"/>
 <jreLocations xsi:nil="true"/>
-<javaInfo xsi:nil="false" vendorUpdate="2012-07-12" autoSelect="true">
+<javaInfo xsi:nil="false" vendorUpdate="2013-05-02" autoSelect="true">
 <vendor>Oracle Corporation</vendor>
 <location>file:///opt/java/jre</location>
 <version>1.7.0_17</version>

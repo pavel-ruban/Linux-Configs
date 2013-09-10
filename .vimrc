@@ -17,7 +17,7 @@ set expandtab
 "set tags=/http/le360/public/tags
 "set tags=/http/tehnovosti/tags
 "set tags=~/php-tags/tags
-"set tags=~/prj/vseza100/tags
+set tags=/http/skimium/tags
 set shiftwidth=2
 set ai
 set ts=2
@@ -110,18 +110,25 @@ let g:grep_path_custom="/http/culturebox/public/sites/all"
 filetype plugin on
 set clipboard=unnamedplus,unnamed,autoselect
 au BufLeave * let b:winview = winsaveview()
-au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | exe "normal! zz" | endif
+au BufRead * if(exists('b:winview')) | call winrestview(b:winview) | exe "normal! zz" | endif
 
 "au WinEnter * let path = getcwd() | let netrwWinNum = bufwinnr('NetrwTreeListing') |
 "\ if (netrwWinNum != -1) | let curbufnum = bufnr('%') | exe netrwWinNum . ' wincmd w'
 "\ | let curwinnum = bufwinnr(curbufnum) | exe "e " . path | exe curwinnum . ' wincm w' | endif
 
-au BufEnter * call AutoNetrwLocate()
+"au BufRead * call AutoNetrwLocate()
 "au WinEnter * call AutoNetrwLocate()
+nmap <leader>a call AutoNetrwLocate()
 
 " set log
-"set verbosefile=~/.vimlog
-""set verbose=2000
+set verbosefile=~/.vimlog
+set verbose=2000
 
 autocmd FileType php setlocal makeprg=zca\ %<.php
 autocmd FileType php setlocal errorformat=%f(line\ %l):\ %m
+autocmd FileType inc setlocal makeprg=zca\ %<.php
+autocmd FileType inc setlocal makeprg=zca\ %<.php
+autocmd FileType module setlocal errorformat=%f(line\ %l):\ %m
+autocmd FileType module setlocal errorformat=%f(line\ %l):\ %m
+nmap <leader>a :call AutoNetrwLocate()<cr>
+let g:zcaprg = '/usr/bin/zca'

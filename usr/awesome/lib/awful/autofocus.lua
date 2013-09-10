@@ -21,7 +21,7 @@ local function check_focus(obj)
     if not client.focus or not client.focus:isvisible() then
         local c = get_proper_client_for_focus(obj)
 
-        if c  and c.class ~= 'Cairo-dock' and c.class ~= 'cairo-dock' and c.class ~= 'conky'
+        if c  and c.class ~= 'cube' and c.class ~= 'Cairo-dock' and c.class ~= 'cairo-dock' and c.class ~= 'conky'
           then
           --naughty.notify({naughty.config.presets.critical, title = 'data: ', text = c.class })
           client.focus = c
@@ -42,7 +42,7 @@ function get_proper_client_for_focus(obj)
   while not properClient and i < 3 do
     c = aclient.focus.history.get(obj.screen, i)
     --naughty.notify({naughty.config.presets.critical, title = 'iterator: ', text = i })
-    if c and c.class ~= 'Cairo-dock' and c.class ~= 'cairo-dock' and c.class ~= 'conky'
+    if c and c.class ~= 'cube' and c.class ~= 'Cairo-dock' and c.class ~= 'cairo-dock' and c.class ~= 'conky'
       then
       properClient = true
     end
@@ -50,7 +50,7 @@ function get_proper_client_for_focus(obj)
     i = i + 1
   end
 
-  if c  and not (c.class ~= 'Cairo-dock' and c.class ~= 'cairo-dock' and c.class ~= 'conky')
+  if c  and not (c.class ~= 'cube' and c.class ~= 'Cairo-dock' and c.class ~= 'cairo-dock' and c.class ~= 'conky')
     then
     c = nil
   end

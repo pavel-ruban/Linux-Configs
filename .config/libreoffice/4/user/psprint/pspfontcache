@@ -1,5 +1,5 @@
 LibreOffice PspFontCacheFile format 5
-FontCacheDirectory:1377686405:/usr/lib/libreoffice/share/fonts/truetype
+FontCacheDirectory:1378654876:/usr/lib/libreoffice/share/fonts/truetype
 File:opens___.ttf
 2;1
 OpenSymbol
@@ -21,15 +21,15 @@ File:arialbi.ttf
 Arial
 0;Arial-BoldItalicMT;2;8;5;2;65535;905;211;116;0;1715;1116;1715;1116;0;0;0;0;Bold Italic
 
-File:trebuc.ttf
-2;1
-Trebuchet MS
-0;TrebuchetMS;0;5;5;2;65535;938;222;160;0;1167;1160;1167;1160;0;0;0;8;Regular
-
 File:DroidNaskh-Regular.ttf
 2;1
 Droid Arabic Naskh
 0;DroidArabicNaskh;0;5;5;2;65535;1208;701;909;0;2205;1909;2205;1909;0;0;0;8;Regular
+
+File:trebuc.ttf
+2;1
+Trebuchet MS
+0;TrebuchetMS;0;5;5;2;65535;938;222;160;0;1167;1160;1167;1160;0;0;0;8;Regular
 
 File:DroidSansTamil-Bold.ttf
 2;1
@@ -121,11 +121,6 @@ File:LiberationSerif-Bold.ttf
 Liberation Serif
 0;LiberationSerif-Bold;0;8;5;2;65535;891;216;107;0;1887;1107;1887;1107;0;0;0;0;Bold
 
-File:Ubuntu-C.ttf
-2;1
-Ubuntu Condensed
-0;UbuntuCondensed-Regular;0;5;5;2;65535;932;189;121;0;1442;1121;1442;1121;0;0;0;0;Regular
-
 File:DroidSerif-Italic.ttf
 2;1
 Droid Serif
@@ -135,6 +130,11 @@ File:LiberationMono-BoldItalic.ttf
 2;1
 Liberation Mono
 0;LiberationMono-BoldItalic;2;8;5;1;65535;832;300;132;0;1272;1132;1272;1132;0;0;0;0;Bold Italic
+
+File:Ubuntu-C.ttf
+2;1
+Ubuntu Condensed
+0;UbuntuCondensed-Regular;0;5;5;2;65535;932;189;121;0;1442;1121;1442;1121;0;0;0;0;Regular
 
 File:DejaVuSerif-BoldItalic.ttf
 2;1
@@ -281,15 +281,15 @@ File:DroidSansJapanese.ttf
 Droid Sans Japanese
 0;DroidSansJapanese;0;5;5;2;65535;1042;265;307;0;996;1307;996;1307;0;0;0;8;Regular
 
-File:timesi.ttf
-2;1
-Times New Roman
-0;TimesNewRomanPS-ItalicMT;2;5;5;2;65535;891;216;107;0;1617;1107;1617;1107;0;0;0;0;Italic
-
 File:DejaVuSansMono-Oblique.ttf
 2;1
 DejaVu Sans Mono
 0;DejaVuSansMono-Oblique;1;5;5;1;65535;928;235;163;0;1148;1163;1148;1163;0;0;0;0;Oblique
+
+File:timesi.ttf
+2;1
+Times New Roman
+0;TimesNewRomanPS-ItalicMT;2;5;5;2;65535;891;216;107;0;1617;1107;1617;1107;0;0;0;0;Italic
 
 File:DroidNaskh-Regular-SystemUI.ttf
 2;1
@@ -391,125 +391,125 @@ File:webdings.ttf
 Webdings
 0;Webdings;0;5;5;1;10;799;200;-1;0;4001;999;4001;999;0;0;0;0;Regular
 
-File:Ubuntu-RI.ttf
-2;1
-Ubuntu
-0;Ubuntu-Italic;2;5;5;2;65535;932;189;121;0;3752;1121;3752;1121;0;0;0;0;Italic
-
 File:DejaVuSansCondensed.ttf
 2;1
 DejaVu Sans Condensed
 0;DejaVuSansCondensed;0;5;4;2;65535;928;235;163;0;2430;1163;2430;1163;0;0;0;0;Condensed
+
+File:Ubuntu-RI.ttf
+2;1
+Ubuntu
+0;Ubuntu-Italic;2;5;5;2;65535;932;189;121;0;3752;1121;3752;1121;0;0;0;0;Italic
 
 File:DroidSansHebrew-Bold.ttf
 2;1
 Droid Sans Hebrew
 0;DroidSansHebrew-Bold;0;7;5;2;65535;979;203;182;0;1086;1182;1086;1182;0;0;0;8;Bold
 
-File:Ubuntu-R.ttf
+File:georgiaz.ttf
 2;1
-Ubuntu
-0;Ubuntu;0;5;5;2;65535;932;189;121;0;3647;1121;3647;1121;0;0;0;0;Regular
-
-File:DejaVuSansMono-Bold.ttf
-2;1
-DejaVu Sans Mono
-0;DejaVuSansMono-Bold;0;8;5;1;65535;928;235;163;0;1176;1163;1176;1163;0;0;0;0;Bold
+Georgia
+0;Georgia-BoldItalic;2;8;5;2;65535;916;219;135;0;1596;1135;1596;1135;0;0;0;0;Bold Italic
 
 File:DroidSansDevanagari-Regular.ttf
 2;1
 Droid Sans Devanagari
 0;DroidSansDevanagari;0;5;5;2;65535;896;408;304;0;1893;1304;1893;1304;0;0;0;8;Regular
 
-File:georgiaz.ttf
+File:DejaVuSansMono-Bold.ttf
 2;1
-Georgia
-0;Georgia-BoldItalic;2;8;5;2;65535;916;219;135;0;1596;1135;1596;1135;0;0;0;0;Bold Italic
+DejaVu Sans Mono
+0;DejaVuSansMono-Bold;0;8;5;1;65535;928;235;163;0;1176;1163;1176;1163;0;0;0;0;Bold
 
-File:trebucit.ttf
+File:Ubuntu-R.ttf
 2;1
-Trebuchet MS
-0;TrebuchetMS-Italic;2;5;5;2;65535;938;222;160;0;1216;1160;1216;1160;0;0;0;8;Italic
+Ubuntu
+0;Ubuntu;0;5;5;2;65535;932;189;121;0;3647;1121;3647;1121;0;0;0;0;Regular
 
 File:DroidSansFallbackLegacy.ttf
 2;1
 Droid Sans Fallback
 0;DroidSansFallback;0;5;5;2;65535;1042;265;307;0;1210;1307;1210;1307;0;0;0;8;Regular
 
-File:DejaVuSerif-Italic.ttf
+File:trebucit.ttf
 2;1
-DejaVu Serif
-0;DejaVuSerif-Italic;2;5;5;2;65535;928;235;163;0;2483;1163;2483;1163;0;0;0;0;Italic
-
-File:andalemo.ttf
-2;1
-Andale Mono
-0;AndaleMono;0;5;5;1;65535;907;217;124;0;600;1124;600;1124;0;0;0;8;Regular
-
-File:DejaVuSans.ttf
-2;1
-DejaVu Sans
-0;DejaVuSans;0;5;5;2;65535;928;235;163;0;2700;1163;2700;1163;0;0;0;0;Book
+Trebuchet MS
+0;TrebuchetMS-Italic;2;5;5;2;65535;938;222;160;0;1216;1160;1216;1160;0;0;0;8;Italic
 
 File:DroidSansThai.ttf
 2;1
 Droid Sans Thai
 0;DroidSansThai;0;5;5;2;65535;1116;255;371;0;1443;1371;1443;1371;0;0;0;8;Regular
 
+File:DejaVuSans.ttf
+2;1
+DejaVu Sans
+0;DejaVuSans;0;5;5;2;65535;928;235;163;0;2700;1163;2700;1163;0;0;0;0;Book
+
+File:andalemo.ttf
+2;1
+Andale Mono
+0;AndaleMono;0;5;5;1;65535;907;217;124;0;600;1124;600;1124;0;0;0;8;Regular
+
+File:DejaVuSerif-Italic.ttf
+2;1
+DejaVu Serif
+0;DejaVuSerif-Italic;2;5;5;2;65535;928;235;163;0;2483;1163;2483;1163;0;0;0;0;Italic
+
 File:DejaVuSerif-Bold.ttf
 2;1
 DejaVu Serif
 0;DejaVuSerif-Bold;0;8;5;2;65535;938;235;173;0;2630;1173;2630;1173;0;0;0;0;Bold
-
-File:LiberationMono-Italic.ttf
-2;1
-Liberation Mono
-0;LiberationMono-Italic;2;5;5;1;65535;832;300;132;0;1304;1132;1304;1132;0;0;0;0;Italic
 
 File:LiberationSerif-BoldItalic.ttf
 2;1
 Liberation Serif
 0;LiberationSerif-BoldItalic;2;8;5;2;65535;891;216;107;0;1850;1107;1850;1107;0;0;0;0;Bold Italic
 
+File:LiberationMono-Italic.ttf
+2;1
+Liberation Mono
+0;LiberationMono-Italic;2;5;5;1;65535;832;300;132;0;1304;1132;1304;1132;0;0;0;0;Italic
+
 File:UbuntuMono-BI.ttf
 2;1
 Ubuntu Mono
 0;UbuntuMono-BoldItalic;2;8;5;1;65535;830;170;150;0;976;1000;976;1000;0;0;0;0;Bold Italic
-
-File:verdana.ttf
-2;1
-Verdana
-0;Verdana;0;5;5;2;65535;1005;209;214;0;1495;1214;1495;1214;0;0;0;0;Regular
-
-File:DroidSansEthiopic-Bold.ttf
-2;1
-Droid Sans Ethiopic
-0;DroidSansEthiopic-Bold;0;8;5;2;65535;963;240;203;0;1816;1203;1816;1203;0;0;0;8;Bold
-
-File:DroidSansMono.ttf
-2;1
-Droid Sans Mono
-0;DroidSansMono;0;5;5;1;65535;928;235;163;0;794;1163;794;1163;0;0;0;8;Regular
-
-File:cour.ttf
-2;1
-Courier New
-0;CourierNewPSMT;0;5;5;1;65535;832;300;132;0;658;1132;658;1132;0;0;0;0;Regular
 
 File:DroidKufi-Regular.ttf
 2;1
 Droid Arabic Kufi
 0;DroidArabicKufi;0;5;5;2;65535;1281;615;896;0;1752;1896;1752;1896;0;0;0;8;Regular
 
-File:LiberationSerif-Regular.ttf
+File:cour.ttf
 2;1
-Liberation Serif
-0;LiberationSerif;0;5;5;2;65535;891;216;107;0;1821;1107;1821;1107;0;0;0;0;Regular
+Courier New
+0;CourierNewPSMT;0;5;5;1;65535;832;300;132;0;658;1132;658;1132;0;0;0;0;Regular
+
+File:DroidSansMono.ttf
+2;1
+Droid Sans Mono
+0;DroidSansMono;0;5;5;1;65535;928;235;163;0;794;1163;794;1163;0;0;0;8;Regular
+
+File:DroidSansEthiopic-Bold.ttf
+2;1
+Droid Sans Ethiopic
+0;DroidSansEthiopic-Bold;0;8;5;2;65535;963;240;203;0;1816;1203;1816;1203;0;0;0;8;Bold
+
+File:verdana.ttf
+2;1
+Verdana
+0;Verdana;0;5;5;2;65535;1005;209;214;0;1495;1214;1495;1214;0;0;0;0;Regular
 
 File:LiberationSerif-Italic.ttf
 2;1
 Liberation Serif
 0;LiberationSerif-Italic;2;5;5;2;65535;891;216;107;0;1829;1107;1829;1107;0;0;0;0;Italic
+
+File:LiberationSerif-Regular.ttf
+2;1
+Liberation Serif
+0;LiberationSerif;0;5;5;2;65535;891;216;107;0;1821;1107;1821;1107;0;0;0;0;Regular
 
 File:DejaVuSans-BoldOblique.ttf
 2;1
@@ -853,14 +853,14 @@ File:texgyrebonum-regular.otf
 TeX Gyre Bonum
 0;TeXGyreBonum-Regular;0;5;5;2;65535;1069;268;337;0;2129;1337;2129;1337;0;0;0;65548;Regular
 
-File:texgyreheros-italic.otf
-2;1
-TeXGyreHeros
-0;TeXGyreHeros-Italic;2;5;5;2;65535;1126;284;410;0;1924;1410;1924;1410;0;0;0;65548;Italic
-
 File:texgyrecursor-bolditalic.otf
 2;1
 TeXGyreCursor
 0;TeXGyreCursor-BoldItalic;2;8;5;1;65535;1085;278;363;0;1793;1363;1793;1363;0;0;0;65548;Bold Italic
+
+File:texgyreheros-italic.otf
+2;1
+TeXGyreHeros
+0;TeXGyreHeros-Italic;2;5;5;2;65535;1126;284;410;0;1924;1410;1924;1410;0;0;0;65548;Italic
 
 EmptyFontCacheDirectory:1364337078:/root/.config/libreoffice/4/user/psprint/fontmetric

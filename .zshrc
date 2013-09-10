@@ -80,3 +80,4 @@ alias j="journalctl -r -u"
 alias f="FBReader"
 alias v="env GTK2_RC_FILES=/usr/share/themes/Cristal-Black\ 1.1/gtk-2.0/gtkrc gvim"
 os=/sources/linux_configs/
+alias i="echo -e \"`cat ~/records/info`\""
