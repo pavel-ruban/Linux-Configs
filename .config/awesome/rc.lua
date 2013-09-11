@@ -497,7 +497,7 @@ awful.rules.rules = {
 --     { rule_any = { class = "cairo-dock", class = "Cairo-dock", name = "cairo-dock" },
 --       properties = { focus = false } },
      { rule = { class = "Skype" },
-       properties = { tag = tags[1][4], x = 250, y = 250, layout = layouts[4], floating = true  } },
+       properties = { tag = tags[1][4], layout = layouts[4], floating = true  } },
      { rule = { class = "Chromium" },
        properties = { tag = tags[1][1], maximized_vertical = true, maximized_horizontal = true, floating = true  } },
      { rule = { class = "Firefox", class = "Navigator" },

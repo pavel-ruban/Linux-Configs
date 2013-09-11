@@ -106,7 +106,7 @@ let g:vdebug_options = {
 \ "marker_closed_tree" : '▸',
 \ "marker_open_tree" : '▾'
 \}
-let g:grep_path_custom="/http/culturebox/public/sites/all"
+let g:grep_path_custom="/http/skimium/sites/all"
 filetype plugin on
 set clipboard=unnamedplus,unnamed,autoselect
 au BufLeave * let b:winview = winsaveview()
@@ -121,14 +121,11 @@ au BufRead * if(exists('b:winview')) | call winrestview(b:winview) | exe "normal
 nmap <leader>a call AutoNetrwLocate()
 
 " set log
-set verbosefile=~/.vimlog
-set verbose=2000
+"set verbosefile=~/.vimlog
+"set verbose=2000
 
-autocmd FileType php setlocal makeprg=zca\ %<.php
-autocmd FileType php setlocal errorformat=%f(line\ %l):\ %m
-autocmd FileType inc setlocal makeprg=zca\ %<.php
-autocmd FileType inc setlocal makeprg=zca\ %<.php
-autocmd FileType module setlocal errorformat=%f(line\ %l):\ %m
-autocmd FileType module setlocal errorformat=%f(line\ %l):\ %m
 nmap <leader>a :call AutoNetrwLocate()<cr>
 let g:zcaprg = '/usr/bin/zca'
+let g:netrw_retmap = 0
+let g:netrw_mousemaps = 0
+
