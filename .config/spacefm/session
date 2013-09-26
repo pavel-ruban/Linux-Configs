@@ -13,8 +13,8 @@ tool_icon_size=3
 no_execute=0
 
 [Window]
-width=1920
-height=1080
+width=1116
+height=1040
 maximized=0
 
 [Desktop]
@@ -381,8 +381,8 @@ panel1_show-key=49
 panel1_show-keymod=4
 panel1_show-label=Panel _1
 panel1_show-b=2
-panel2_show-s=////root/Dropbox/Public////root////http/ofg/sites/all/themes/ofg/css////dev////run/mysqld////root/screenshots////ckeditor////root/screenshots////http/skimium////http/skimium/sites/all/modules/contrib////http/dior-ipad/sites/all/modules/custom/dior_site/include////root/.cache/winetricks/mdac27////root/.cache/winetricks/mdac27////root////sources/c++/Xlib
-panel2_show-x=14
+panel2_show-s=////root/Dropbox/Public////root////http/ofg/sites/all/themes/ofg/css////dev////run/mysqld////root/screenshots////ckeditor////root/screenshots////http/skimium////http/skimium/sites/all/modules/contrib////http/dior-ipad/sites/all/modules/custom/dior_site/include////root/.cache/winetricks/mdac27////root/.cache/winetricks/mdac27////sources/c++/Xlib////root////root
+panel2_show-x=12
 panel2_show-key=50
 panel2_show-keymod=4
 panel2_show-label=Panel _2

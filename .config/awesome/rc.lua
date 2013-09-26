@@ -633,6 +633,7 @@ client.connect_signal("manage", function (c, startup)
 end)
 
 client.connect_signal("focus", function(c)
+  --naughty.notify({naughty.config.presets.critical, title = 'Привет Артём!', text = 'Archlinux is AWESOME!!!' })
   if c.class == 'conky' or c.class == 'cube'
     then
   --naughty.notify({naughty.config.presets.critical, title = 'conky focus signal', text = c.screen })
