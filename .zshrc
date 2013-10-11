@@ -83,3 +83,5 @@ alias v="env GTK2_RC_FILES=/usr/share/themes/Cristal-Black\ 1.1/gtk-2.0/gtkrc gv
 os=/sources/linux_configs/
 alias i="echo -e \"`cat ~/records/info`\""
 alias s=geo_ssh
+alias gc="git diff --name-only --diff-filter=U"
+alias k=killall -9

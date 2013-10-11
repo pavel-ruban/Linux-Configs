@@ -293,7 +293,8 @@ awful.key({ modkey,           }, "c",     function () client.focus:lower() end),
     awful.key({  modkey, }, "z", function () awful.util.spawn("gtrs") end),
     --awful.key({ modkey,           }, "v", function () awful.util.spawn("urxvt -hold -e sh -c 'vim'") end),
     awful.key({ modkey,           }, "v", function () naughty.notify({ preset = naughty.config.presets.warning, title = "Oops", text = client.focus.class + 'fdefs' }) end),
-    awful.key({ modkey,           }, "g", function () awful.util.spawn("sudo -u noname google-chrome http://google.com") end),
+    awful.key({ modkey,           }, "g", function () awful.util.spawn("sudo -u noname google-chrome http://google.com") end), 
+    awful.key({ modkey,           }, "b", function () awful.util.spawn("sudo -u noname google-chrome https://prj.adyax.com/projects/skimium/issues?query_id=1215") end), 
     awful.key({ modkey,           }, "h", function () awful.util.spawn(" sudo -u noname google-chrome http://translate.google.ru/?hl=ru&tab=wTenve") end),
     --awful.key({ modkey,           }, "g", function () awful.util.spawn("env firefox google") end),
     --awful.key({ modkey,           }, "h", function () awful.util.spawn(" firefox http://translate.google.ru/?hl=ru&tab=wTenve") end),
@@ -496,41 +497,153 @@ awful.rules.rules = {
    -- Set Firefox to always map on tags number 2 of screen 1.
 --     { rule_any = { class = "cairo-dock", class = "Cairo-dock", name = "cairo-dock" },
 --       properties = { focus = false } },
-     { rule = { class = "Skype" },
-       properties = { tag = tags[1][4], layout = layouts[4], floating = true  } },
-     { rule = { class = "Chromium" },
-       properties = { tag = tags[1][1], maximized_vertical = true, maximized_horizontal = true, floating = true  } },
-     { rule = { class = "Firefox", class = "Navigator" },
-       properties = { tag = tags[1][1], layout = layouts[4] } },
-     { except = { class = "Firefox", name = "Downloads" } },
-     { rule = { class = "Firefox", name = "Downloads" },
---, x = 700, y = 350 , width = 450, height = 600
-       properties = { tag = tags[1][1], floating = true },
-       callback =  function(c)
+
+    {
+      rule = { class = "Geary" },
+      properties = {
+        border_width = 0,
+        border_color = 0,
+        size_hints_honor = false,
+        --floating = false,
+        --focusable = true,
+        --modal = true,
+        --below =  false,
+        --tag = tags[1][4]
+        --layout = layouts[1]
+      },
+      callback = function(c)
+
         local scr_area = screen[c.screen].workarea
         local cl_strut = c:struts()
         local geometry = nil
 
-        -- adjust scr_area for this client's struts
-       -- if cl_strut ~= nil then
-       --     if cl_strut.left ~= nil and cl_strut.left > 0 then
-       --         geometry = {x=scr_area.x-cl_strut.left, y=scr_area.y,
-       --                     width=cl_strut.left}
-       --     elseif cl_strut.right ~= nil and cl_strut.right > 0 then
-       --         geometry = {x=scr_area.x+scr_area.width, y=scr_area.y,
-       --                     width=cl_strut.right}
-       --     end
-       -- end
-       -- scr_area is unaffected, so we can use the naive coordinates
+      --  c:geometry({
+      --    x = 3,
+      --    y = 3,
+      --    width = 60,
+      --    height = 60,
+      -- --   width = (scr_area.width - 60),
+      -- --   height = (scr_area.height - 60),
+      --  })
+
+       end
+    },
+    {
+      rule = { class = "Skype" },
+      properties = {
+        border_width = 0,
+        border_color = 0,
+        size_hints_honor = false,
+        floating = true,
+        focusable = true,
+        modal = true,
+        below =  false,
+        tag = tags[1][4]
+      },
+      callback = function(c)
+
+        local scr_area = screen[c.screen].workarea
+        local cl_strut = c:struts()
+        local geometry = nil
+
         c:geometry({
-          x = (scr_area.width - scr_area.width * 0.25),
-          y = (scr_area.height - scr_area.height * 0.7),
-          width = 300
+          x = 400,
+          y = 60,
+          width = (scr_area.width - 450),
+          height = (scr_area.height - 90),
         })
 
        end
+    },
+    {
+      rule = { class = "Skype", name = "pavel--ruban - Skype™" },
+      properties = {
+        border_width = 0,
+        border_color = 0,
+        size_hints_honor = false,
+        floating = true,
+        focusable = true,
+        modal = true,
+        below =  false,
+        tag = tags[1][4]
+      },
+      callback = function(c)
 
-       }
+        local scr_area = screen[c.screen].workarea
+        local cl_strut = c:struts()
+        local geometry = nil
+
+        c:geometry({
+          x = 50,
+          y = 60,
+          width = 300,
+          height = (scr_area.height - 90),
+        })
+
+       end
+    },
+    {
+      rule = { class = "Skype", name = "Skype™ 4.2 for Linux" },
+      properties = {
+        border_width = 0,
+        border_color = 0,
+        size_hints_honor = false,
+        floating = true,
+        focusable = true,
+        modal = true,
+        --width = auto,
+        --height = 450,
+        below =  false,
+        tag = tags[1][4]
+      },
+      callback = function(c)
+
+        local scr_area = screen[c.screen].workarea
+        local cl_strut = c:struts()
+        local geometry = nil
+
+        c:geometry({
+          x = (scr_area.width / 2 - (720 / 2)),
+          y = (scr_area.height / 2 - (470 / 2)),
+          width = 720,
+          height = 470,
+        })
+
+       end
+    },
+    { rule = { class = "Chromium" },
+      properties = { tag = tags[1][1], maximized_vertical = true, maximized_horizontal = true, floating = true  } },
+    { rule = { class = "Firefox", class = "Navigator" },
+      properties = { tag = tags[1][1], layout = layouts[4] } },
+    { except = { class = "Firefox", name = "Downloads" } },
+    { rule = { class = "Firefox", name = "Downloads" },
+--,  = 700, y = 350 , width = 450, height = 600
+      properties = { tag = tags[1][1], floating = true },
+      callback =  function(c)
+       local scr_area = screen[c.screen].workarea
+       local cl_strut = c:struts()
+       local geometry = nil
+
+       -- adjust scr_area for this client's struts
+      -- if cl_strut ~= nil then
+      --     if cl_strut.left ~= nil and cl_strut.left > 0 then
+      --         geometry = {x=scr_area.x-cl_strut.left, y=scr_area.y,
+      --                     width=cl_strut.left}
+      --     elseif cl_strut.right ~= nil and cl_strut.right > 0 then
+      --         geometry = {x=scr_area.x+scr_area.width, y=scr_area.y,
+      --                     width=cl_strut.right}
+      --     end
+      -- end
+      -- scr_area is unaffected, so we can use the naive coordinates
+       c:geometry({
+         x = (scr_area.width - scr_area.width * 0.25),
+         y = (scr_area.height - scr_area.height * 0.7),
+         width = 300
+       })
+
+      end
+
+      }
 --     { rule = { id = 0xc00001  },
 ----, x = 700, y = 350 , width = 450, height = 600
 --       callback =  function(c)

@@ -7,3 +7,5 @@
 *.lock
 .config/libreoffice
 *.swo
+.config/libreoffice/*
+.config/spacefm/session*
