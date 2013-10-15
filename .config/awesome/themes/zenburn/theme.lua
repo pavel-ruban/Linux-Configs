@@ -26,14 +26,14 @@ theme.bg_systray = theme.bg_normal
 
 -- {{{ Borders
 theme.border_width  = 0
-theme.border_normal = "#3F3F3F"
-theme.border_focus  = "#6F6F6F"
-theme.border_marked = "#CC9393"
+theme.border_normal = "#000000"
+theme.border_focus  = "#000000"
+theme.border_marked = "#000000"
 -- }}}
 
 -- {{{ Titlebars
-theme.titlebar_bg_focus  = "#3F3F3F"
-theme.titlebar_bg_normal = "#3F3F3F"
+theme.titlebar_bg_focus  = "#000000"
+theme.titlebar_bg_normal = "#000000"
 -- }}}
 
 -- There are other variable sets
