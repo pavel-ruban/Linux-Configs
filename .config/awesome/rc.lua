@@ -708,7 +708,7 @@ client.connect_signal("manage", function (c, startup)
 
     local titlebars_enabled = true
     --if c and c.class ~= 'Chromium' and c.class ~= 'Cairo-dock' and c.class ~= 'URxvt' and c.class ~= 'Firefox' and titlebars_enabled   then
-    if c and c.class ~= 'Cairo-dock' and c.class ~= 'Firefox' and titlebars_enabled   then
+    if c and c.class ~= 'Google-chrome' and c.class ~= 'google-chrome' and c.class ~= 'Cairo-dock' and c.class ~= 'Cairo-dock' and c.class ~= 'URxvt' and c.class ~= 'jetbrains-phpstorm'   and c.class ~= 'Firefox' and titlebars_enabled   then
             -- Widgets that are aligned to the left
         local left_layout = wibox.layout.fixed.horizontal()
         left_layout:add(awful.titlebar.widget.iconwidget(c))

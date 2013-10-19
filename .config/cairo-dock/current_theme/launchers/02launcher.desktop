@@ -1,4 +1,4 @@
-#3.2.1
+#3.3.1
 
 #[gtk-about]
 
@@ -27,7 +27,7 @@ Exec=sudo -u noname google-chrome
 #X[Extra parameters]
 frame_extra=
 
-#b Prevent this launcher from stealing this application from taskbar?
+#b Don't link the launcher with its window
 #{If you chose to mix launcher and applications, this option will deactivate this behaviour for this launcher only. It can be useful for instance for a launcher that launches a script in a terminal, but you don't want it to steal the terminal's icon from the taskbar.} 
 prevent inhibate=false
 
