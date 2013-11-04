@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<AstroMenaceSettings>
+    <!-- AstroMenace game Settings -->
+    <GAME_BUILD value="130712" />
+    <MenuLanguage value="en" />
+    <VoiceLanguage value="en" />
+    <FontNumber value="0" />
+    <FontName value="Linux Biolinum O" />
+    <FontSize value="16" />
+    <Width value="1280" />
+    <Height value="1024" />
+    <!-- Windows (BPP = 0) or Full Screen (BPP = 16 or 32) -->
+    <BPP value="32" />
+    <!-- Aspect Ratio must be 4:3 or 16:10 -->
+    <AspectRatio value="4:3" />
+    <CameraModeWithStandardAspectRatio value="0" />
+    <!-- Don't change this setting unless you know what you are doing -->
+    <VBOCoreMode value="1" />
+    <VAOCoreMode value="0" />
+    <FBOCoreMode value="1" />
+    <!-- If your video card have 128+ MB VRAM on board - turn it on -->
+    <EqualOrMore128MBVideoRAM value="on" />
+    <!-- Don't change this setting unless you know what you are doing -->
+    <HardwareMipMapGeneration value="on" />
+    <!-- Common settings -->
+    <TextureFilteringMode value="2" />
+    <TexturesQuality value="3" />
+    <MSAA value="8" />
+    <CSAA value="16" />
+    <VisualEffectsQuality value="0" />
+    <AnisotropyLevel value="16" />
+    <TexturesCompressionType value="0" />
+    <UseGLSL value="on" />
+    <ShadowMap value="5" />
+    <MaxPointLights value="6" />
+    <MusicSw value="8" />
+    <SoundSw value="10" />
+    <VoiceSw value="10" />
+    <VSync value="1" />
+    <Brightness value="5" />
+    <ShowFPS value="off" />
+    <GameWeaponInfoType value="1" />
+    <GameSpeed value="1.500000" />
+    <LoadingHint value="4" />
+    <!-- Control settings -->
+    <KeyboardDecreaseGameSpeed value="SDLK_F5" />
+    <KeyboardResetGameSpeed value="SDLK_F6" />
+    <KeyboardIncreaseGameSpeed value="SDLK_F7" />
+    <KeyboardGameWeaponInfoType value="SDLK_F8" />
+    <KeyboardPrimaryWeaponFireMode value="SDLK_F9" />
+    <KeyboardSecondaryWeaponFireMode value="SDLK_F10" />
+    <KeyBoardLeft value="SDLK_LEFT" />
+    <KeyBoardRight value="SDLK_RIGHT" />
+    <KeyBoardUp value="SDLK_UP" />
+    <KeyBoardDown value="SDLK_DOWN" />
+    <KeyBoardPrimary value="SDLK_LCTRL" />
+    <KeyBoardSecondary value="SDLK_SPACE" />
+    <MousePrimary value="1" />
+    <MouseSecondary value="3" />
+    <JoystickPrimary value="0" />
+    <JoystickSecondary value="1" />
+    <JoystickNum value="0" />
+    <JoystickDeadZone value="2" />
+    <ControlSensivity value="5" />
+    <MouseControl value="on" />
+    <LastProfile value="0" />
+    <MenuScript value="1" />
+    <HintStatus1 value="off" />
+    <HintStatus2 value="on" />
+    <HintStatus3 value="on" />
+    <HintStatus4 value="off" />
+    <HintStatus5 value="off" />
+    <HintStatus6 value="on" />
+    <HintStatus7 value="on" />
+    <HintStatus8 value="on" />
+    <HintStatus9 value="on" />
+    <HintStatus10 value="on" />
+    <TopScores>vbsvdegkpurozxibfgqkvearojqtxldceicldrlcplpmhqlhipqmapysslyhmiksgzaxndathxuwyesswgigmgnumxibglxtgedczyfbydrnhhvbykrqunqyfuukk myuwvijoeekdcmaupuvvisqxlzdkcunlmytwoozbrqbnnnnamvoavjyfegathzuqtvflpckygwxvzbatprwyqoigcsgyyjxhkorbetvcwnoktraodkwwtldakveqc enlkeblpmoiuhlyqpdsyehhyawvzhpzjtpyinpidvrwldlwbijbibpbijlfimbrchgyvjhkglfliibkbaccfbhcjchlajacaahbddbaaabeaejehaccacidalekak fmhghjbdheadddgehgddeeidifbbgajadcicfdadaaibbxhxbyixdxjvbncohihbhpjseoiqioiphjglakajhlgkemalhljmbkblflfljkdnhyabipdpgseeghbkg jikdkimalgkdkbkajjmcmbkcjimbkaufpahfzfkfjahaihtglilhlaldmbkclhlhkhkhkjmblhljlikfifpcrgmixcjapdafchlflclhlilikflfldmakimckakhj jlhpipaoipgpdxjpgoafdzceezencoemihdejxjwgxdldjglikgmbkckbkdjhlgkemclhldsayjpcharfojniygiilgmalimcjijhlglcleljmbldlbkfkdnbpcfg pfaebgmbkekhlblejikblglijjljlalbkhlgycpekephbbxcpctfudwhdbajkfkaldjjkblakikhkbjikilckjlbkfsbbffbnjbcmhjbaghbkdkekembjhljlimck elcmckglglcmbpdkbehpddjxdnebdminfofhdwdifqhibkfjilcjikfkgkikckfkjjilejjxcfgmiji</TopScores>
+    <PilotsProfiles>etqoapyjzbwskftitsnzzggetbqxrskttrnbbsntmintuuidkdzcgijbkvwxqgmumnjgbounzxlsiijxdylposhugfpkyzbcaubvdsctnvriqbekvriektslllwye effspcoybcclehczdigfqucoshhtmslsczccseoxegvyfywikkrbzwyehuovbncbwyjmpxusvzanszirgbszwawuxfyrdtbecjfkxfqoyktorqthcmserqoqowrjr llynzcjphzycdhtnjqogdsvsxmkojfcrtbmyuzxcewxzrjcwfqsxsxeakqdurjusccvrshhvlelnnvttbxykxsmmkocsgpignwkkfkuovycbfaubokswtbgysepav qdatytgblytgyrsllhxudfplocukvvbiznxnqawhxxyqgtkmozrgdyhhhyfqecpvmjwdmdcivbxndmyxgylwtbdawxigpswxcrqkecqnedwvgjxzdomnnkdmnjaen stakfejgamvccosprkrfwdkvdzftywoflxzifpzxiaisfnzwwkwnwyyrhbbmsegowebpzgeykqnlamnzynllxggfzdzapwybuxhqspecdullhcnkjeybbvgqgnxxp hrzqnmujqfsldtebvtngqczwqlugnlrmbacauhqjtrinugefwvyfuxuvpisbnybhijiqqyjcdiqvvnrnfrtpnqnrzoqujzdjhldlblhlcmakelcyaqflcmdiehfed fbcgaecacbcbqhreqhodhgahnaobofnelelelajijilflalgkjkflalglhlhkfqejehblbeemaccpiecsclihjxjacpimffdjglakgkdjiuhwdkfgiyblbdclgkfk gmakambkilclblfkelhkdkclckhmbmcjijjjhlhjilikalfjjlglalilekfldjikbkhlilekfkbkhlglfkikikiljmbkbkbxakclflcjjlbmbjijjjjkikbkejjmc kakfkdkcldlhjjlblfkekelgkjlfkilfjjmcjjjjlfkblbmakbkdlimbkcmbljkfkhkhlejimcljmbkbkelhlblijilajjjiljmbkgkjlcmalhlflimcjhlalfmck flekdjilfmcljjhljlhmakcmblekalgjikbjjkgkckhmakcldlbmbkhlglbleldlgkejjkjlfkbleldlbldlbljlekglekikimblamcjjkglckemcmbjjkakelgla kgldlbkdkalflilfmakjkhlbkgkcjjlelgjikjmblhmcmajjkbljmamclekgjjljkcldlfmalfmakbjhkhldkalhlekglhlfjjjjlilelfkekelikikbkilalalil glgjimambkhmalfkjkjkhlbjjlfkdlckfkdlaljkhkhkckhlhlblimbjjjikcjhlhjilbkhlfljlgjikdmblfkblcjhlildkajhlgmblgkdjikimblgkdmblelfki kikemalhkakclckilbjjlhkhlilijikfmclamalaldjhljkemamambldkdlgkhkjlbmclekdkambkekekembkcldkbjjlclikjkgljkakjkajjkflijimalakakjm bmakdmbkiljlgjikajhljmakfkdlclfljmajjleldkhkbjjldlakbkaljlikdkgmamckalbkjlalakhkakjlakgjhkblalflgjhkhkckbkgkdjhkjlijjjjlblflc lekhlekcljkakhlikamckclgmbljlbkckimamckfkclcmcmakfjhkflfkclamcljljkhljlaljmbmblekejijikjlfkbkdlbljkbjilcmckdkbmbkhldlakijhkjl amcmblakikimakdkdkcmckamcjhlcljmbjilhmakeldlflckbjjkalhkikikejjlakhkgkbmbjijilikdldkdlamamalckelemcldlakjlhkgldkclfkikalgkbji lilglakdldjjmcljldkilhkdlakilekjjijhjjjhlhkeldkglglekflalhkdkbkcljlimbkclhmalhlilckflfjilambjikekfkgkfldldmbkgjjkakfldlililal elakclelglclaldlalemclbldlhkg</PilotsProfiles>
+</AstroMenaceSettings>

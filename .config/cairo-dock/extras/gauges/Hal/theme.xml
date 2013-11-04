@@ -1,0 +1,48 @@
+<gauge>
+	<name>Hal</name>
+	<author>Made by Yann Dulieu (Nochka85)</author>
+	<file key="background">background.svg</file>
+	<file key="foreground">foreground.svg</file>
+	<indicator>
+		<file key="image">0.svg</file>		
+		<file key="image">5.svg</file>		
+		<file key="image">10.svg</file>	
+		<file key="image">15.svg</file>	
+		<file key="image">20.svg</file>	
+		<file key="image">25.svg</file>	
+		<file key="image">30.svg</file>
+		<file key="image">35.svg</file>		
+		<file key="image">40.svg</file>	
+		<file key="image">45.svg</file>	
+		<file key="image">50.svg</file>		
+		<file key="image">55.svg</file>		
+		<file key="image">60.svg</file>	
+		<file key="image">65.svg</file>	
+		<file key="image">70.svg</file>	
+		<file key="image">75.svg</file>		
+		<file key="image">80.svg</file>		
+		<file key="image">85.svg</file>		
+		<file key="image">90.svg</file>	
+		<file key="image">95.svg</file>	
+		<file key="image">100.svg</file>
+		<text_zone>
+			<x_center>0.</x_center>
+			<y_center>0.15</y_center>
+			<width>0.50</width>
+			<height>0.24</height>
+			<red>1</red>
+			<green>1</green>
+			<blue>1</blue>
+		</text_zone>
+		<label_zone>
+			<x_center>0.0</x_center>
+			<y_center>-0.30</y_center>
+			<width>0.40</width>
+			<height>0.20</height>
+			<red>1</red>
+			<green>1</green>
+			<blue>1</blue>
+			<alpha>0.8</alpha>
+		</label_zone>
+	</indicator>
+</gauge>

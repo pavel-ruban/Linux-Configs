@@ -21,7 +21,7 @@ Icon=/root/.icons/2105766074541437377.png
 
 #s[Default] Command to launch on click:
 #{Example: nautilus --no-desktop, gedit, etc. You can even enter a shortkey, e.g. <Alt>F1, <Ctrl>c,  <Ctrl>v, etc}
-Exec=~/PhpStorm-6.0.1/bin/phpstorm.sh
+Exec=~/PhpStorm-7/bin/phpstorm.sh
 
 
 #X[Extra parameters]

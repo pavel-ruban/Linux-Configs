@@ -1,33 +1,37 @@
-Xcursor.theme: oxy-neon
-*.*.Xcursor.theme: oxy-neon
-Gimp*Xcursor.theme: oxy-neon
-#XTerm*termName:  xterm-256color
-#URxvt*termName:  xterm-256color
-URxvt*font: xft:ubuntu mono:size=16
+!Xcursor.theme: oxy-neon
+!*.*.Xcursor.theme: oxy-neon
+!Gimp*Xcursor.theme: oxy-neon
+!XTerm*termName:  xterm-256color
+!URxvt*termName:  xterm-256color
+URxvt*font: xft:ubuntu mono:size=13
 !URxvt*font: xft:dejavu sans mono:size=14
 Firefox*font: xft:dejavu sans mono:size=14
 Firefox.depth: 32
 URxvt.depth: 32
 !URxvt.background: rgba:1111/1111/1111/bbbb
-URxvt.background: [90]#002B36
+!URxvt.background: [30]#002B36
+gvim*background: [30]#002B36
+Gvim*background: [30]#002B36
+*background: rgba:0000/1111/1111/bbbb
+!Vim*background: [10]#000000
 
 *Xterm*background: black
 URxvt.scrollBar: false
-#URxvt*color1: RoyalBlue
-#URxvt*color2: RoyalBlue
+!URxvt*color1: RoyalBlue
+!URxvt*color2: RoyalBlue
 URxvt*foreground: #6EA0A1
 *Xterm*foreground: Black
 ! Nasty hack to act more like XTerm
 Xft*antialias: true
 Xft*hinting: full
 Xft*dpi: 99
-#Normal
-#*URxvt*keysym.Home:    \033OH
-#*URxvt*keysym.End:    \033OF
-*URxvt*keysym.F1:    \033OP
-*URxvt*keysym.F2:    \033OQ
-*URxvt*keysym.F3:    \033OR
-*URxvt*keysym.F4:    \033OS
+!Normal
+!*URxvt*keysym.Home:    \033OH
+!*URxvt*keysym.End:    \033OF
+!*URxvt*keysym.F1:    \033OP
+!*URxvt*keysym.F2:    \033OQ
+!*URxvt*keysym.F3:    \033OR
+!*URxvt*keysym.F4:    \033OS
 
 ! Shift
 ! paste conflict
@@ -58,8 +62,8 @@ Xft*dpi: 99
 *URxvt*keysym.S-Right:    \033[1;2C
 *URxvt*keysym.S-Left:    \033[1;2D
 
-#*URxvt*keysym.Home:  \033OH
-#*URxvt*keysym.End: \033[4~
+!*URxvt*keysym.Home:  \033OH
+!*URxvt*keysym.End: \033[4~
 ! Alt
 *URxvt*keysym.M-Insert:    \033[2;3~
 *URxvt*keysym.M-Delete:    \033[3;3~

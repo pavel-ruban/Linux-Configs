@@ -6,4 +6,4 @@ last year=2013
 ping server=true
 
 [Gui]
-mode=1
+mode=0

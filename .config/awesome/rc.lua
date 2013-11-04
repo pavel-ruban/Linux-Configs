@@ -10,6 +10,174 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
+local radical = require("radical")
+local blind = require("blind")
+
+-- Quake like console on top
+-- Similar to:
+--   http://git.sysphere.org/awesome-configs/tree/scratch/drop.lua
+
+-- But uses a different implementation. The main difference is that we
+-- are able to detect the Quake console from its name
+-- (QuakeConsoleNeedsUniqueName by default).
+
+-- Use:
+
+-- local quake = require("quake")
+-- local quakeconsole = {}
+-- for s = 1, screen.count() do
+--    quakeconsole[s] = quake({ terminal = config.terminal,
+-- 			        height = 0.3,
+--                              screen = s })
+-- end
+
+-- config.keys.global = awful.util.table.join(
+--    config.keys.global,
+--    awful.key({ modkey }, "`",
+-- 	     function () quakeconsole[mouse.screen]:toggle() end)
+
+-- If you have a rule like "awful.client.setslave" for your terminals,
+-- ensure you use an exception for
+-- QuakeConsoleNeedsUniqueName. Otherwise, you may run into problems
+-- with focus.
+
+local setmetatable = setmetatable
+local string = string
+local awful  = require("awful")
+local capi   = { mouse = mouse,
+		 screen = screen,
+		 client = client,
+		 timer = timer }
+
+-- I use a namespace for my modules...
+--require("quake")
+
+local QuakeConsole = {}
+
+-- Display
+function QuakeConsole:display()
+   -- First, we locate the terminal
+   local client = nil
+   local i = 0
+   for c in awful.client.cycle(function (c)
+				  -- c.name may be changed!
+				  return c.instance == self.name
+			       end,
+			       nil, self.screen) do
+      i = i + 1
+      if i == 1 then
+	 client = c
+      else
+	 -- Additional matching clients, let's remove the sticky bit
+	 -- which may persist between awesome restarts. We don't close
+	 -- them as they may be valuable. They will just turn into a
+	 -- classic terminal.
+	 c.sticky = false
+	 c.ontop = false
+	 c.above = false
+      end
+   end
+
+   if not client and not self.visible then
+      -- The terminal is not here yet but we don't want it yet. Just do nothing.
+      return
+   end
+
+   if not client then
+      -- The client does not exist, we spawn it
+      awful.util.spawn(self.terminal .. " " .. string.format(self.argname, self.name),
+		       false, self.screen)
+      return
+   end
+
+   -- Comptute size
+   local geom = capi.screen[self.screen].workarea
+   local width, height = self.width, self.height
+   if width  <= 1 then width = geom.width * width end
+   if height <= 1 then height = geom.height * height end
+   local x, y
+   if     self.horiz == "left"  then x = geom.x
+   elseif self.horiz == "right" then x = geom.width + geom.x - width
+   else   x = geom.x + (geom.width - width)/2 end
+   if     self.vert == "top"    then y = geom.y
+   elseif self.vert == "bottom" then y = geom.height + geom.y - height
+   else   y = geom.y + (geom.height - height)/2 end
+
+   -- Resize
+   awful.client.floating.set(client, true)
+   client.border_width = 0
+   client.size_hints_honor = false
+   client:geometry({ x = x, y = y, width = width, height = height })
+
+   -- Sticky and on top
+   client.ontop = true
+   client.above = true
+   client.skip_taskbar = true
+   client.sticky = true
+
+   -- This is not a normal window, don't apply any specific keyboard stuff
+   client:buttons({})
+   client:keys({})
+
+   -- Toggle display
+   if self.visible then
+      client.hidden = false
+      client:raise()
+      capi.client.focus = client
+   else
+      client.hidden = true
+   end
+end
+
+-- Create a console
+function QuakeConsole:new(config)
+   -- The "console" object is just its configuration.
+
+   -- The application to be invoked is:
+   --   config.terminal .. " " .. string.format(config.argname, config.name)
+   config.terminal = config.terminal or "xterm" -- application to spawn
+   config.name     = config.name     or "QuakeConsoleNeedsUniqueName" -- window name
+   config.argname  = config.argname  or "-name %s"     -- how to specify window name
+
+   -- If width or height <= 1 this is a proportion of the workspace
+   config.height   = config.height   or 0.25	       -- height
+   config.width    = config.width    or 1	       -- width
+   config.vert     = config.vert     or "top"	       -- top, bottom or center
+   config.horiz    = config.horiz    or "center"       -- left, right or center
+
+   config.screen   = config.screen or capi.mouse.screen
+   config.visible  = config.visible or false -- Initially, not visible
+
+   local console = setmetatable(config, { __index = QuakeConsole })
+   capi.client.add_signal("manage",
+			  function(c)
+			     if c.instance == console.name and c.screen == console.screen then
+				console:display()
+			     end
+			  end)
+   capi.client.add_signal("unmanage",
+			  function(c)
+			     if c.instance == console.name and c.screen == console.screen then
+				console.visible = false
+			     end
+			  end)
+
+   -- "Reattach" currently running QuakeConsole. This is in case awesome is restarted.
+   local reattach = capi.timer { timeout = 0 }
+   reattach:add_signal("timeout",
+		       function()
+			  reattach:stop()
+			  console:display()
+		       end)
+   reattach:start()
+   return console
+end
+
+-- Toggle the console
+function QuakeConsole:toggle()
+   self.visible = not self.visible
+   self:display()
+end
 
 
 -- {{{ Error handling
@@ -42,7 +210,8 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/root/.config/awesome/themes/zenburn/theme.lua")
+--beautiful.init("/root/.config/awesome/themes/zenburn/theme.lua")
+beautiful.init("/usr/share/awesome/lib/blind/arrow/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -78,7 +247,7 @@ end
 -- Define a tag table which hold all screen tags.
 tags = {
   names  = { "1", "2", "3", "4", "5", "6", "7" },
-  layout = { layouts[4], layouts[4], layouts[2], layouts[3], layouts[4], layouts[3], layouts[4] }
+  layout = { layouts[4], layouts[1], layouts[1], layouts[1], layouts[1], layouts[3], layouts[4] }
 }
 for s = 1, screen.count() do
   -- Each screen has its own tag table.
@@ -90,25 +259,33 @@ end
 -- Create a laucher widget and a main menu
 -- {{{ Menu
 -- Create a laucher widget and a main menu
-myawesomemenu = {
-   { "restart", awesome.restart },
-   { "quit", awesome.quit }
-}
+--myawesomemenu = {
+--   { "restart", awesome.restart },
+--   { "quit", awesome.quit }
+--}
 
-mymainmenu = awful.menu(
-  { items = {
-      { "restart", awesome.restart },
-      { "quit", awesome.quit },
-      { "open terminal", terminal }
-    }
-  }
-)
+--mymainmenu = awful.menu(
+--  { items = {
+--      { "restart", awesome.restart },
+--      { "quit", awesome.quit },
+--      { "open terminal", terminal }
+--    }
+--  }
+--)
 
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-                                     menu = mymainmenu })
+    menu = radical.context({})
+    menu:add_item({text="Screen 1",button1=function() print("Hello World! ") end})
+    menu:add_item({text="Screen 9"})
+    menu:add_item({text="Sub Menu",sub_menu = function()
+        local smenu = radical.context({})
+        smenu:add_item({text="item 1"})
+        smenu:add_item({text="item 2"})
+        return smenu
+    end})
+mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon})
 
 -- Menubar configuration
-menubar.utils.terminal = terminal -- Set the terminal for applications that require it
+--menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
 -- {{{ Wibox
@@ -220,8 +397,9 @@ end
     -- Autoload section.
     awful.util.spawn_with_shell("run_once cairo-dock")
     --awful.util.spawn_with_shell("compton -c -C   --vsync opengl --detect-rounded-corners  --refresh-rate 60 --vsync-aggressive -r 15 -l -22 -t -22 -m 1")
-    awful.util.spawn_with_shell("feh --bg-fill ~/linux.jpg")
+    --awful.util.spawn_with_shell("feh --bg-fill ~/linux.jpg")
     awful.util.spawn_with_shell("netbookInit.sh")
+    awful.util.spawn_with_shell("conky&")
     --awful.util.spawn_with_shell("compton -c -C --vsync drm --detect-rounded-corners -r 10 -l -15 -t -15 -m 1 -z")
     --awful.util.spawn_with_shell("compton -c -C --vsync opengl --detect-rounded-corners -r 10 -l -15 -t -15 -m 1 -z")
     awful.util.spawn_with_shell("compton --config ~/.compton.conf")
@@ -230,7 +408,7 @@ end
 
 -- {{{ Mouse bindings
 root.buttons(awful.util.table.join(
-    --awful.button({ }, 3, function () mymainmenu:toggle() end),
+    awful.button({ }, 3, function () if not menu.visible then  menu.visible = true else menu.visible = false end end),
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
 ))
@@ -316,7 +494,7 @@ awful.key({ modkey,           }, "c",     function () client.focus:lower() end),
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
     -- Prompt
-    awful.key({ modkey },            "]",     function () mypromptbox[mouse.screen]:run() end)
+    awful.key({ modkey },            "]",     function () mypromptbox[mouse.screen]:run() end),
 
     --awful.key({ modkey }, "x",
       --        function ()
@@ -326,7 +504,7 @@ awful.key({ modkey,           }, "c",     function () client.focus:lower() end),
               --    awful.util.getdir("cache") .. "/history_eval")
               --end),
     -- Menubar
- --   awful.key({ modkey }, "p", function() menubar.show() end)
+    awful.key({ modkey }, "p", function() menubar.show() end)
 )
 
 clientkeys = awful.util.table.join(
@@ -398,9 +576,6 @@ clientbuttons = awful.util.table.join(
     awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
     awful.button({ modkey }, 1, awful.mouse.client.move),
     awful.button({ modkey }, 3, awful.mouse.client.resize))
-
--- Set keys
-root.keys(globalkeys)
 -- }}}
 
 -- {{{ Rules
@@ -415,7 +590,19 @@ awful.rules.rules = {
         keys = clientkeys,
         size_hints_honor = false,
         buttons = clientbuttons
-      }
+      },
+      callback = function(c)
+
+        local scr_area = screen[c.screen].workarea
+        local cl_strut = c:struts()
+        local geometry = c:geometry()
+
+        c:geometry({
+          x = scr_area.width / 2 - geometry.width / 2,
+          y = scr_area.height / 2 -  geometry.height / 2
+        })
+
+       end
     },
     {
       rule = {class = "cairo-dock" },
@@ -448,10 +635,10 @@ awful.rules.rules = {
         local geometry = nil
 
         c:geometry({
-          x = 100,
-          y = 100,
-          width = 640,
-          height = 640,
+          x = 20,
+          y = 20,
+          width = 940,
+          height = 940,
         })
 
        end
@@ -477,7 +664,7 @@ awful.rules.rules = {
 
         c:geometry({
           x = (scr_area.width - 285),
-          y = 10,
+          y = 500,
           width = 305,
           height = 450,
         })
@@ -694,7 +881,7 @@ client.connect_signal("manage", function (c, startup)
  --      end
  --  end)
 
-    if not startup then
+    if not startup and false then
         -- Set the windows at the slave,
         -- i.e. put it at the end of others instead of setting it master.
         -- awful.client.setslave(c)
@@ -706,7 +893,7 @@ client.connect_signal("manage", function (c, startup)
         end
     end
 
-    local titlebars_enabled = true
+    local titlebars_enabled = false
     --if c and c.class ~= 'Chromium' and c.class ~= 'Cairo-dock' and c.class ~= 'URxvt' and c.class ~= 'Firefox' and titlebars_enabled   then
     if c and c.class ~= 'Google-chrome' and c.class ~= 'google-chrome' and c.class ~= 'Cairo-dock' and c.class ~= 'Cairo-dock' and c.class ~= 'URxvt' and c.class ~= 'jetbrains-phpstorm'   and c.class ~= 'Firefox' and titlebars_enabled   then
             -- Widgets that are aligned to the left
@@ -744,6 +931,15 @@ client.connect_signal("manage", function (c, startup)
         c.border_width = 1
         awful.titlebar(c):set_widget(layout)
     end
+
+--        local scr_area = screen[c.screen].workarea
+--        local cl_strut = c:struts()
+--        local geometry = c:geometry()
+--
+--        c:geometry({
+--          x = scr_area.width / 2 - geometry.width / 2,
+--          y = scr_area.height / 2 -  geometry.height / 2
+--        })
 end)
 
 client.connect_signal("focus", function(c)
@@ -775,3 +971,20 @@ end)
 --client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 --compton -c -C  -z --vsync opengl --detect-rounded-corners  --refresh-rate 60 --vsync-aggressive -r 15 -l -22 -t -22 -m 1
+
+local quake = require("quake")
+
+local quakeconsole = {}
+for s = 1, screen.count() do
+   quakeconsole[s] = quake({ terminal = "urxvt",
+			     height = 0.6,
+			     screen = s })
+end
+globalkeys = awful.util.table.join(
+   globalkeys,
+   awful.key({ modkey }, "`",
+	     function () quakeconsole[mouse.screen]:toggle() end)
+)
+
+-- Set keys
+root.keys(globalkeys)
