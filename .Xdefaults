@@ -3,8 +3,11 @@
 !Gimp*Xcursor.theme: oxy-neon
 !XTerm*termName:  xterm-256color
 !URxvt*termName:  xterm-256color
-URxvt*font: xft:ubuntu mono:size=13
-!URxvt*font: xft:dejavu sans mono:size=14
+URxvt*font: xft:ubuntu mono:size=14
+URxvt*boldFont: xft:ubuntu mono:size=14
+!URxvt*boldFont: xft:terminus:bold:size=12
+!URxvt*font: xft:dejavu sans mono:size=8
+!URxvt*font: xft:terminus:size=11
 Firefox*font: xft:dejavu sans mono:size=14
 Firefox.depth: 32
 URxvt.depth: 32
@@ -15,7 +18,11 @@ Gvim*background: [30]#002B36
 *background: rgba:0000/1111/1111/bbbb
 !Vim*background: [10]#000000
 
+
+urxvt.termName:rxvt-256color
+
 *Xterm*background: black
+URxvt*saveLines:  65000
 URxvt.scrollBar: false
 !URxvt*color1: RoyalBlue
 !URxvt*color2: RoyalBlue
@@ -23,8 +30,11 @@ URxvt*foreground: #6EA0A1
 *Xterm*foreground: Black
 ! Nasty hack to act more like XTerm
 Xft*antialias: true
-Xft*hinting: full
-Xft*dpi: 99
+Xft*autohint: false
+Xft*hinting: true
+Xft*rgba: rgb
+Xft*hintstyle: hintsfull
+Xft*dpi: 96
 !Normal
 !*URxvt*keysym.Home:    \033OH
 !*URxvt*keysym.End:    \033OF
@@ -32,16 +42,22 @@ Xft*dpi: 99
 !*URxvt*keysym.F2:    \033OQ
 !*URxvt*keysym.F3:    \033OR
 !*URxvt*keysym.F4:    \033OS
-
+URxvt*color253: #6EA0A1
+URxvt*color254: [20]#6EA0A1
+URxvt*color255: rgba:0000/1111/1111/bbbb
 ! Shift
 ! paste conflict
 !*URxvt*keysym.S-Insert:  \033[2;2~
-*URxvt*keysym.S-Delete:    \033[3;2~
-*URxvt*keysym.S-Home:    \033[1;2H
-*URxvt*keysym.S-End:    \033[1;2F
+!*URxvt*keysym.S-Delete:    \033[3;2~
+!*URxvt*keysym.S-Home:    \033[1;2H
+!*URxvt*keysym.S-End:    \033[1;2F
+!
+*URxvt*keysym.0xff8d: \015
 ! scrolling conflict
 !*URxvt*keysym.S-Page_Up:  \033[5;2~
 !*URxvt*keysym.S-Page_Down:  \033[6;2~
+
+URxvt.tabbed.transparent:true
 
 *URxvt*keysym.S-F1:    \033[11;2~
 *URxvt*keysym.S-F2:    \033[12;2~
@@ -57,10 +73,10 @@ Xft*dpi: 99
 *URxvt*keysym.S-F12:    \033[24;2~
 
 ! tab navigation conflict (only when using tabs)
-*URxvt*keysym.S-Up:    \033[1;2A
-*URxvt*keysym.S-Down:    \033[1;2B
-*URxvt*keysym.S-Right:    \033[1;2C
-*URxvt*keysym.S-Left:    \033[1;2D
+!*URxvt*keysym.S-Up:    \033[1;2A
+!*URxvt*keysym.S-Down:    \033[1;2B
+!*URxvt*keysym.S-Right:    \033[1;2C
+!*URxvt*keysym.S-Left:    \033[1;2D
 
 !*URxvt*keysym.Home:  \033OH
 !*URxvt*keysym.End: \033[4~
@@ -130,7 +146,7 @@ Xft*dpi: 99
 *URxvt*keysym.C-F11:    \033[23;5~
 *URxvt*keysym.C-F12:    \033[24;5~
 
-*URxvt*keysym.C-Insert:    \033[2;5~
+!*URxvt*keysym.C-Insert:    \033[2;5~
 *URxvt*keysym.C-Delete:    \033[3;5~
 *URxvt*keysym.C-Home:    \033[1;5H
 *URxvt*keysym.C-End:    \033[1;5F
