@@ -1616,11 +1616,11 @@ fi # is433
 # in prompts to get a red "foo" embedded, but it's good to keep these for
 # backwards compatibility).
 if zrcautoload colors && colors 2>/dev/null ; then
-    BLUE="%{${fg[blue]}%}"
+    BLUE="%{${fg[green]}%}"
     RED="%{${fg_bold[green]}%}"
     GREEN="%{${fg[green]}%}"
     CYAN="%{${fg[cyan]}%}"
-    MAGENTA="%{${fg[magenta]}%}"
+    MAGENTA="%{${fg[green]}%}"
     YELLOW="%{${fg[yellow]}%}"
     WHITE="%{${fg[white]}%}"
     NO_COLOR="%{${reset_color}%}"
@@ -1708,9 +1708,9 @@ if [[ "$TERM" == dumb ]] ; then
     zstyle ':vcs_info:*' formats       "(%s%)-[%b] "    "zsh: %r"
 else
     # these are the same, just with a lot of colors:
-    zstyle ':vcs_info:*' actionformats "${GREEN}(${NO_COLOR}%s${GREEN})${GREEN}-${GREEN}[${GREEN}%b${GREEN}|${GREEN}%a${GREEN}]${NO_COLOR} " \
+    zstyle ':vcs_info:*' actionformats "${NO_COLOR}${GREEN}(${NO_COLOR}%s${GREEN})${GREEN}-${GREEN}[${GREEN}%b${GREEN}|${GREEN}%a${GREEN}]${NO_COLOR} " \
                                        "zsh: %r"
-    zstyle ':vcs_info:*' formats       "${GREEN}(${NO_COLOR}%s${GREEN})${YELLOW}-${GREEN}[${GREEN}%b${GREEN}]${NO_COLOR}%} " \
+    zstyle ':vcs_info:*' formats       "${NO_COLOR}${GREEN}(${NO_COLOR}%s${GREEN})${YELLOW}-${GREEN}[${GREEN}%b${GREEN}]${NO_COLOR}%} " \
                                        "zsh: %r"
     zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat "%b${GREEN}:${GREEN}%r"
 fi
@@ -3317,3 +3317,7 @@ zrclocal
 # Local variables:
 # mode: sh
 # End:
+zstyle ':completion:*:zsh-options' \
+	list-colors '=csh*=33:=*hist*=33:=list*=33:=*glob*=33'
+
+source ~/.zsh-theme

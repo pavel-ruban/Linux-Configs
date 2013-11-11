@@ -3,15 +3,20 @@
 !Gimp*Xcursor.theme: oxy-neon
 !XTerm*termName:  xterm-256color
 !URxvt*termName:  xterm-256color
-URxvt*font: xft:ubuntu mono:size=14
-URxvt*boldFont: xft:ubuntu mono:size=14
+!URxvt*font: xft:ubuntu mono:size=14
+URxvt*font: xft:monospace:size=10
+!URxvt*boldFont: xft:ubuntu mono:size=14
 !URxvt*boldFont: xft:terminus:bold:size=12
 !URxvt*font: xft:dejavu sans mono:size=8
 !URxvt*font: xft:terminus:size=11
-Firefox*font: xft:dejavu sans mono:size=14
+Firefox*font: xft:monospace:size=14
+*font: xft:monospace:size=14
 Firefox.depth: 32
 URxvt.depth: 32
-!URxvt.background: rgba:1111/1111/1111/bbbb
+URxvt.background: rgba:0000/0000/0000/bbbb
+#URxvt*foreground: #ffffff
+
+URxvt*foreground: #6EA0A1
 !URxvt.background: [30]#002B36
 gvim*background: [30]#002B36
 Gvim*background: [30]#002B36
@@ -26,15 +31,15 @@ URxvt*saveLines:  65000
 URxvt.scrollBar: false
 !URxvt*color1: RoyalBlue
 !URxvt*color2: RoyalBlue
-URxvt*foreground: #6EA0A1
 *Xterm*foreground: Black
 ! Nasty hack to act more like XTerm
 Xft*antialias: true
-Xft*autohint: false
+Xft*autohint: true
 Xft*hinting: true
+Xft*lcdfilter: lcddefault
 Xft*rgba: rgb
-Xft*hintstyle: hintsfull
-Xft*dpi: 96
+Xft*hintstyle: hintmedium
+!Xft*dpi: 96
 !Normal
 !*URxvt*keysym.Home:    \033OH
 !*URxvt*keysym.End:    \033OF
@@ -44,7 +49,7 @@ Xft*dpi: 96
 !*URxvt*keysym.F4:    \033OS
 URxvt*color253: #6EA0A1
 URxvt*color254: [20]#6EA0A1
-URxvt*color255: rgba:0000/1111/1111/bbbb
+URxvt*color255: rgba:0000/0000/0000/bbbb
 ! Shift
 ! paste conflict
 !*URxvt*keysym.S-Insert:  \033[2;2~
@@ -153,10 +158,10 @@ URxvt.tabbed.transparent:true
 *URxvt*keysym.C-Page_Up:  \033[5;5~
 *URxvt*keysym.C-Page_Down:  \033[6;5~
 
-*URxvt*keysym.C-Up:    \033[1;5A
-*URxvt*keysym.C-Down:    \033[1;5B
-*URxvt*keysym.C-Right:    \033[1;5C
-*URxvt*keysym.C-Left:    \033[1;5D
+!*URxvt*keysym.C-Up:    \033[1;5A
+!*URxvt*keysym.C-Down:    \033[1;5B
+!*URxvt*keysym.C-Right:    \033[1;5C
+!*URxvt*keysym.C-Left:    \033[1;5D
 
 ! Shift+Control
 *URxvt*keysym.S-C-F1:    \033[1;6P
