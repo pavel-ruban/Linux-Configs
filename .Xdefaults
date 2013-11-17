@@ -10,11 +10,11 @@ URxvt*font: xft:monospace:size=10
 !URxvt*font: xft:dejavu sans mono:size=8
 !URxvt*font: xft:terminus:size=11
 Firefox*font: xft:monospace:size=14
-*font: xft:monospace:size=14
+*font: xft:monospace:size=7
 Firefox.depth: 32
 URxvt.depth: 32
 URxvt.background: rgba:0000/0000/0000/bbbb
-#URxvt*foreground: #ffffff
+!URxvt*foreground: #ffffff
 
 URxvt*foreground: #6EA0A1
 !URxvt.background: [30]#002B36
@@ -158,10 +158,10 @@ URxvt.tabbed.transparent:true
 *URxvt*keysym.C-Page_Up:  \033[5;5~
 *URxvt*keysym.C-Page_Down:  \033[6;5~
 
-!*URxvt*keysym.C-Up:    \033[1;5A
-!*URxvt*keysym.C-Down:    \033[1;5B
-!*URxvt*keysym.C-Right:    \033[1;5C
-!*URxvt*keysym.C-Left:    \033[1;5D
+*URxvt*keysym.C-Up:    \033[1;5A
+*URxvt*keysym.C-Down:    \033[1;5B
+*URxvt*keysym.C-Right:    \033[1;5C
+*URxvt*keysym.C-Left:    \033[1;5D
 
 ! Shift+Control
 *URxvt*keysym.S-C-F1:    \033[1;6P

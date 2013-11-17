@@ -169,5 +169,6 @@ ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=white,underline
 ZSH_HIGHLIGHT_STYLES[bracket-level-3]=fg=033
 ZSH_HIGHLIGHT_STYLES[bracket-level-3]=fg=033
 source ~/.zsh-theme
+alias sr="systemctl restart"
 
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=038,fg=white,bold'

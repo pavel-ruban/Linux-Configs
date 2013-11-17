@@ -141,7 +141,7 @@ function QuakeConsole:new(config)
    -- The application to be invoked is:
    --   config.terminal .. " " .. string.format(config.argname, config.name)
    config.terminal = config.terminal or "xterm" -- application to spawn
-   config.name     = config.name     or "QuakeConsoleNeedsUniqueName" -- window name
+   config.name     = config.name     or "Welcome" -- window name
    config.argname  = config.argname  or "-name %s"     -- how to specify window name
 
    -- If width or height <= 1 this is a proportion of the workspace
@@ -157,13 +157,13 @@ function QuakeConsole:new(config)
    capi.client.connect_signal("manage",
         function(c)
            if c.instance == console.name and c.screen == console.screen then
-        --console:display()
+             console:display()
            end
         end)
    capi.client.connect_signal("unmanage",
         function(c)
            if c.instance == console.name and c.screen == console.screen then
-        console.visible = false
+             console.visible = false
            end
         end)
 
