@@ -8,7 +8,7 @@
 #==============================================================================
 
 background no
-update_interval 1
+update_interval 0.04
 
 cpu_avg_samples 2
 net_avg_samples 2
@@ -19,7 +19,7 @@ no_buffers yes
 text_buffer_size 2048
 
 gap_x 0
-gap_y 0
+gap_y 50
 minimum_size 305 450
 maximum_width 303
 
