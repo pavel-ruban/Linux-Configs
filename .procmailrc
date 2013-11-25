@@ -1,0 +1,73 @@
+PATH=/bin:/usr/bin
+MAILDIR=$HOME/Mail
+DEFAULT=$HOME/Mail/inbox
+LOGFILE=$HOME/Mail/mail.log
+SHELL=/bin/sh
+DISPLAY=:0
+
+:0
+* !^From.*prj@adyax\.com
+{
+  # Put the email intact in the default folder
+  :0c:
+  ${DEFAULT}
+  # The "c" flag above tells the recipe to continue
+  # Now we prepare a different version of the message
+  :0
+  {
+    # Get the subject into a variable
+    # Expand the possible tabs into blanks
+    # Discard any leading and trailing blanks
+    # On some systems -xSubject: has to be -x"Subject: "
+    SUBJ_=`grep '^Subject:' | sed 's/^Subject:\s\+\(.*\)$/\1/'`
+    PRJ_=''
+    # Get the body of the message into a variable
+    # Accept only the first five lines
+    # Discard newlines, i.e. put everything on one line
+    #BODY_=`sed -e '1,/^$/ d' | head -5 | tr -d '\n'`
+
+# Get the sender's address, ignore Reply-To:
+    FROM_=`grep '^From:' | sed 's/^From:\s\+\(.*\)$/\1/'`
+    TO_=`grep '^Delivered-To:' | sed 's/^Delivered-To:\s\+\(.*\)$/\1/'`
+    #CC_=`grep '^Cc:'`
+  }
+  # Prepare and send a message with no body
+  # -X "" extracts just the header (discards the body)
+  # Plug in the new subject
+  # Content fields might cause problems if not discarded
+  # Change to To: address
+  :0:proc.lock
+  | echo -e "From: ${FROM_}\nTo: ${TO_}" \
+  |  /usr/bin/getmailToProcmail.sh
+}
+
+:0
+* ^From.*prj@adyax\.com
+{
+  # Put the email intact in the default folder
+  :0c:
+  ${DEFAULT}
+  # The "c" flag above tells the recipe to continue
+  # Now we prepare a different version of the message
+  :0
+  {
+    PRJ_=1
+    SUBJ_=`grep '^Subject:' | sed 's/^Subject:\s\+\(.*\)$/\1/'`
+    #BODY_=`sed -e '1,/^$/ d' | head -5 | tr -d '\n'`
+    FROM_=`grep '^From:' | sed 's/^From:\s\+\(.*\)$/\1/'`
+    TO_=`grep '^Delivered-To:' | sed 's/^Delivered-To:\s\+\(.*\)$/\1/'`
+    #CC_=`grep '^Cc:'`
+  }
+  :0:proc.lock
+  | echo -e "From: ${FROM_}\nTo: ${TO_}" \
+  |  /usr/bin/getmailToProcmail.sh
+}
+
+##* !^From.*prj@adyax\.com
+#| ;
+##env DISPLAY=':0' /usr/bin/notify-send -i /usr/share/icons/Faenza/apps/64/checkgmail.png -u critical 'You got a new mail' "$msg"
+#
+#
+#:0 f
+#* ^From.*prj@adyax\.com
+#| { read msg; } ; env DISPLAY=':0' /usr/bin/notify-send -i /usr/share/icons/Faenza/apps/64/checkgmail.png -u normal 'You got a new mail' "$msg"

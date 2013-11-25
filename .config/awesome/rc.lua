@@ -11,7 +11,7 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local radical = require("radical")
-local blind = require("blind")
+--local blind = require("blind")
 
 -- Quake like console on top
 -- Similar to:
@@ -44,10 +44,12 @@ local blind = require("blind")
 local setmetatable = setmetatable
 local string = string
 local awful  = require("awful")
-local capi   = { mouse = mouse,
-		 screen = screen,
-		 client = client,
-		 timer = timer }
+local capi = {
+  mouse = mouse,
+  screen = screen,
+  client = client,
+  timer = timer
+}
 
 -- I use a namespace for my modules...
 --require("quake")
@@ -210,8 +212,8 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
---beautiful.init("/root/.config/awesome/themes/zenburn/theme.lua")
-beautiful.init("/usr/share/awesome/lib/blind/arrow/theme.lua")
+beautiful.init("/root/.config/awesome/themes/zenburn/theme.lua")
+--beautiful.init("/usr/share/awesome/lib/blind/arrow/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -226,12 +228,11 @@ editor_cmd = terminal .. " -e " .. editor
 modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
-local layouts =
-{
-    awful.layout.suit.floating,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.top,
-    awful.layout.suit.max.fullscreen
+local layouts = {
+  awful.layout.suit.floating,
+  awful.layout.suit.tile.left,
+  awful.layout.suit.tile.top,
+  awful.layout.suit.max.fullscreen
 }
 -- }}}
 
@@ -273,15 +274,15 @@ end
 --  }
 --)
 
-    menu = radical.context({})
-    menu:add_item({text="Screen 1",button1=function() print("Hello World! ") end})
-    menu:add_item({text="Screen 9"})
-    menu:add_item({text="Sub Menu",sub_menu = function()
-        local smenu = radical.context({})
-        smenu:add_item({text="item 1"})
-        smenu:add_item({text="item 2"})
-        return smenu
-    end})
+ --   menu = radical.context({})
+ --   menu:add_item({text="Screen 1",button1=function() print("Hello World! ") end})
+ --   menu:add_item({text="Screen 9"})
+ --   menu:add_item({text="Sub Menu",sub_menu = function()
+ --       local smenu = radical.context({})
+ --       smenu:add_item({text="item 1"})
+ --       smenu:add_item({text="item 2"})
+ --       return smenu
+ --   end})
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon})
 
 -- Menubar configuration
@@ -394,30 +395,32 @@ tags[s][7]:connect_signal("property::selected", function(t)
   mywibox[s].visible = not(t.selected) end)
 end
 -- }}}
-    -- Autoload section.
-    awful.util.spawn_with_shell("run_once cairo-dock")
-    --awful.util.spawn_with_shell("compton -c -C   --vsync opengl --detect-rounded-corners  --refresh-rate 60 --vsync-aggressive -r 15 -l -22 -t -22 -m 1")
-    --awful.util.spawn_with_shell("feh --bg-fill ~/linux.jpg")
-    awful.util.spawn_with_shell("netbookInit.sh")
-    awful.util.spawn_with_shell("conky&")
-    --awful.util.spawn_with_shell("compton -c -C --vsync drm --detect-rounded-corners -r 10 -l -15 -t -15 -m 1 -z")
-    --awful.util.spawn_with_shell("compton -c -C --vsync opengl --detect-rounded-corners -r 10 -l -15 -t -15 -m 1 -z")
-    awful.util.spawn_with_shell("compton --config ~/.compton.conf")
-    awful.util.spawn_with_shell("sleep 100; chown -R noname:noname /home/noname &")
-    awful.util.spawn_with_shell("xrdb -merge ~/.Xresources")
+
+-- Autoload section.
+awful.util.spawn_with_shell("run_once cairo-dock")
+--awful.util.spawn_with_shell("compton -c -C   --vsync opengl --detect-rounded-corners  --refresh-rate 60 --vsync-aggressive -r 15 -l -22 -t -22 -m 1")
+--awful.util.spawn_with_shell("feh --bg-fill ~/linux.jpg")
+awful.util.spawn_with_shell("netbookInit.sh")
+awful.util.spawn_with_shell("conky&")
+--awful.util.spawn_with_shell("compton -c -C --vsync drm --detect-rounded-corners -r 10 -l -15 -t -15 -m 1 -z")
+--awful.util.spawn_with_shell("compton -c -C --vsync opengl --detect-rounded-corners -r 10 -l -15 -t -15 -m 1 -z")
+awful.util.spawn_with_shell("compton --config ~/.compton.conf")
+awful.util.spawn_with_shell("sleep 100; chown -R noname:noname /home/noname &")
+awful.util.spawn_with_shell("xrdb -merge ~/.Xresources")
 
 -- {{{ Mouse bindings
 root.buttons(awful.util.table.join(
-    awful.button({ }, 3, function () if not menu.visible then  menu.visible = true else menu.visible = false end end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
+  --awful.button({ }, 3, function () if not menu.visible then  menu.visible = true else menu.visible = false end end),
+  awful.button({ }, 4, awful.tag.viewnext),
+  awful.button({ }, 5, awful.tag.viewprev)
 ))
--- }}}
- function disableFocus(c)
-         client:lower()
-         awful.focus.history.previous()
-         client.focus:raise()
-       end
+    -- }}}
+function disableFocus(c)
+  client:lower()
+  awful.focus.history.previous()
+  client.focus:raise()
+end
+
 function dump(o)
   if type(o) == 'table' then
     local s = '{ '
@@ -452,59 +455,59 @@ awful.key({ modkey,           }, "c",     function () client.focus:lower() end),
         end),
  --   awful.key({ modkey,           }, "w", function () mymainmenu:show() end),
 
-    -- Layout manipulation
-    awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
-    awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
-    awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
-    awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
-    awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
-    awful.key({ modkey,           }, "Tab",
-        function ()
-            awful.client.focus.history.previous()
-            if client.focus then
-                client.focus:raise()
-            end
-        end),
+ -- Layout manipulation
+ awful.key({ modkey, "Shift" }, "j", function () awful.client.swap.byidx( 1) end),
+ awful.key({ modkey, "Shift" }, "k", function () awful.client.swap.byidx( -1) end),
+ awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
+ awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
+ awful.key({ modkey, }, "u", awful.client.urgent.jumpto),
+ awful.key({ modkey, }, "Tab",
+   function ()
+     awful.client.focus.history.previous()
+     if client.focus then
+     client.focus:raise()
+   end
+ end),
 
-    -- Custom shortcuts.
-    awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
-    awful.key({  modkey, }, "z", function () awful.util.spawn("gtrs") end),
-    --awful.key({ modkey,           }, "v", function () awful.util.spawn("urxvt -hold -e sh -c 'vim'") end),
-    awful.key({ modkey,           }, "v", function () naughty.notify({ preset = naughty.config.presets.warning, title = "Oops", text = client.focus.class + 'fdefs' }) end),
-    awful.key({ modkey,           }, "g", function () awful.util.spawn("sudo -u noname google-chrome http://google.com") end),
-    awful.key({ modkey,           }, "b", function () awful.util.spawn("sudo -u noname google-chrome https://prj.adyax.com/projects/skimium/issues?query_id=1215") end),
-    awful.key({ modkey,           }, "h", function () awful.util.spawn(" sudo -u noname google-chrome http://translate.google.ru/?hl=ru&tab=wTenve") end),
-    --awful.key({ modkey,           }, "g", function () awful.util.spawn("env firefox google") end),
-    --awful.key({ modkey,           }, "h", function () awful.util.spawn(" firefox http://translate.google.ru/?hl=ru&tab=wTenve") end),
-    awful.key({ }, "Print", function () awful.util.spawn("scrot -e 'mv $f ~/screenshots/ 2>/dev/null'") end),
+ -- Custom shortcuts.
+ awful.key({ modkey, }, "Return", function () awful.util.spawn(terminal) end),
+ awful.key({ modkey, }, "z", function () awful.util.spawn("gtrs") end),
+ --awful.key({ modkey, }, "v", function () awful.util.spawn("urxvt -hold -e sh -c 'vim'") end),
+ awful.key({ modkey, }, "v", function () naughty.notify({ preset = naughty.config.presets.warning, title = "Oops", text = client.focus.class 'fdefs' }) end),
+ awful.key({ modkey, }, "g", function () awful.util.spawn("sudo -u noname google-chrome http://google.com") end),
+ awful.key({ modkey, }, "b", function () awful.util.spawn("sudo -u noname google-chrome https://prj.adyax.com/projects/skimium/issues?query_id=1215") end),
+ awful.key({ modkey, }, "h", function () awful.util.spawn(" sudo -u noname google-chrome http://translate.google.ru/?hl=ru&tab=wTenve") end),
+ --awful.key({ modkey, }, "g", function () awful.util.spawn("env firefox google") end),
+ --awful.key({ modkey, }, "h", function () awful.util.spawn(" firefox http://translate.google.ru/?hl=ru&tab=wTenve") end),
+ awful.key({ }, "Print", function () awful.util.spawn("scrot -e 'mv $f ~/screenshots/ 2>/dev/null'") end),
 
-    -- Standard program
-    awful.key({ modkey, "Control" }, "r", awesome.restart),
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit),
+ -- Standard program
+ awful.key({ modkey, "Control" }, "r", awesome.restart),
+ awful.key({ modkey, "Shift" }, "q", awesome.quit),
 
-    awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
-    awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
-    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
-    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)      end),
-    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)         end),
-    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)         end),
-    awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
-    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
+ awful.key({ modkey, }, "l", function () awful.tag.incmwfact( 0.05) end),
+ awful.key({ modkey, }, "h", function () awful.tag.incmwfact(-0.05) end),
+ awful.key({ modkey, "Shift" }, "h", function () awful.tag.incnmaster( 1) end),
+ awful.key({ modkey, "Shift" }, "l", function () awful.tag.incnmaster(-1) end),
+ awful.key({ modkey, "Control" }, "h", function () awful.tag.incncol( 1) end),
+ awful.key({ modkey, "Control" }, "l", function () awful.tag.incncol(-1) end),
+ awful.key({ modkey, }, "space", function () awful.layout.inc(layouts, 1) end),
+ awful.key({ modkey, "Shift" }, "space", function () awful.layout.inc(layouts, -1) end),
 
-    awful.key({ modkey, "Control" }, "n", awful.client.restore),
+ awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
-    -- Prompt
-    awful.key({ modkey },            "]",     function () mypromptbox[mouse.screen]:run() end),
+ -- Prompt
+ awful.key({ modkey }, "]", function () mypromptbox[mouse.screen]:run() end),
 
-    --awful.key({ modkey }, "x",
-      --        function ()
-        --          awful.prompt.run({ prompt = "Run Lua code: " },
-          --        mypromptbox[mouse.screen].widget,
-            --      awful.util.eval, nil,
-              --    awful.util.getdir("cache") .. "/history_eval")
-              --end),
-    -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end)
+ --awful.key({ modkey }, "x",
+ -- function ()
+ -- awful.prompt.run({ prompt = "Run Lua code: " },
+ -- mypromptbox[mouse.screen].widget,
+ -- awful.util.eval, nil,
+ -- awful.util.getdir("cache") .. "/history_eval")
+ --end),
+ -- Menubar
+ awful.key({ modkey }, "p", function() menubar.show() end)
 )
 
 clientkeys = awful.util.table.join(
