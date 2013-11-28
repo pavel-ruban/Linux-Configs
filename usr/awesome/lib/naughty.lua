@@ -68,8 +68,8 @@ naughty.config.presets = {
         timeout = 5
     },
     critical = {
-        bg = "#e5ae7d",
-        fg = "#ffffff",
+        --bg = "#e5ae7d",
+        --fg = "#ffffff",
         timeout = 0,
     }
 }
