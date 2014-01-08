@@ -2,8 +2,15 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export GIT_MERGE_AUTOEDIT="no"
 export LC_ALL="en_GB.utf8"
 export BROWSER="google-chrome"
+export EGL_PLATFORM="drm"
 
 #source ~/.git-completion.bash
+
+#Start screen session
+#if [ -z $STY ]
+#  then
+#    screen -S terminal
+#fi
 
 alias log="cat /var/log/httpd/error.log"
 alias storm="~/storm/bin/phpstorm.sh"

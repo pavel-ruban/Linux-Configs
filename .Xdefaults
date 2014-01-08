@@ -4,7 +4,7 @@
 !XTerm*termName:  xterm-256color
 !URxvt*termName:  xterm-256color
 !URxvt*font: xft:ubuntu mono:size=14
-URxvt*font: xft:monospace:size=10
+URxvt*font: xft:monospace:size=12
 !URxvt*boldFont: xft:ubuntu mono:size=14
 !URxvt*boldFont: xft:terminus:bold:size=12
 !URxvt*font: xft:dejavu sans mono:size=8
