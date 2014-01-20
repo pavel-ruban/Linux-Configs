@@ -179,3 +179,4 @@ source ~/.zsh-theme
 alias sr="systemctl restart"
 
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=038,fg=white,bold'
+export TERM=rxvt-256color
