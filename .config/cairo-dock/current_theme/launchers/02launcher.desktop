@@ -21,7 +21,7 @@ Icon=/root/.icons/chrome.png
 
 #s[Default] Command to launch on click:
 #{Example: nautilus --no-desktop, gedit, etc. You can even enter a shortkey, e.g. <Alt>F1, <Ctrl>c,  <Ctrl>v, etc}
-Exec=sudo -u noname google-chrome
+Exec=sudo -u noname google-chrome-stable
 
 
 #X[Extra parameters]

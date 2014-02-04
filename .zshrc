@@ -6,11 +6,11 @@ export EGL_PLATFORM="drm"
 
 #source ~/.git-completion.bash
 
-#Start screen session
-#if [ -z $STY ]
-#  then
-#    screen -S terminal
-#fi
+#Start tmux session
+if [ -z $TMUX ]
+  then
+    tmux #tmux attach || tmux
+fi
 
 alias log="cat /var/log/httpd/error.log"
 alias storm="~/storm/bin/phpstorm.sh"
