@@ -1,2 +1,1 @@
 emulate sh -c 'source /etc/profile'
-bash_profile.sh
