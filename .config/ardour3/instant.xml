@@ -2,14 +2,18 @@
 <instant>
   <no-memory-warning/>
   <ExportRevision revision="1"/>
-  <Editor id="11" mixer-width="Wide" zoom-focus="ZoomFocusLeft" zoom="2048.000000" snap-to="SnapToBeat" snap-mode="SnapOff" internal-snap-to="SnapToBeat" internal-snap-mode="SnapOff" pre-internal-snap-to="SnapToBeat" pre-internal-snap-mode="SnapOff" edit-point="EditAtPlayhead" playhead="561152" left-frame="0" y-origin="0.000000" show-measures="yes" maximised="no" follow-playhead="yes" stationary-playhead="no" region-list-sort-type="ByEndInFile" mouse-mode="MouseObject" internal-edit="no" join-object-range="no" show-editor-mixer="no" show-editor-list="no" editor-list-page="0" show-marker-lines="no" nudge-clock-value="480000">
-    <geometry x-size="1920" y-size="1080" x-pos="0" y-pos="0" edit-horizontal-pane-pos="895" notebook-shrunk="0" edit-vertical-pane-pos="847"/>
+  <Editor id="11" mixer-width="Wide" zoom-focus="ZoomFocusLeft" zoom="2048.000000" snap-to="SnapToBeat" snap-mode="SnapOff" internal-snap-to="SnapToBeat" internal-snap-mode="SnapOff" pre-internal-snap-to="SnapToBeat" pre-internal-snap-mode="SnapOff" edit-point="EditAtPlayhead" playhead="12675310" left-frame="11419648" y-origin="0.000000" show-measures="yes" maximised="no" follow-playhead="yes" stationary-playhead="no" region-list-sort-type="ByEndInFile" mouse-mode="MouseObject" internal-edit="no" join-object-range="no" show-editor-mixer="yes" show-editor-list="yes" editor-list-page="0" show-marker-lines="yes" nudge-clock-value="480000">
+    <geometry x-size="1920" y-size="1080" x-pos="0" y-pos="0" edit-horizontal-pane-pos="1333" notebook-shrunk="0" edit-vertical-pane-pos="847"/>
     <Buttons>
       <Press/>
       <Release/>
     </Buttons>
-    <Selection/>
+    <Selection>
+      <Marker id="155" start="no"/>
+    </Selection>
     <RegionList sort-type="ByEndInFile" sort-ascending="yes" show-all="no" show-automatic-regions="yes"/>
   </Editor>
-  <Mixer narrow-strips="no" show-mixer="no"/>
+  <Mixer narrow-strips="no" show-mixer="no">
+    <geometry x-size="1149" y-size="534" x-pos="385" y-pos="273" x-off="0" y-off="0" mixer-rhs-pane1-pos="212" mixer-list-hpane-pos="1"/>
+  </Mixer>
 </instant>

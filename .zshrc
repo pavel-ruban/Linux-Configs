@@ -11,13 +11,13 @@ export CPLUS_INCLUDE_PATH=/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.2/include
 export LESS=' -R '
 export GTK_MODULES=rgba
 
-
 # Includes
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # Aliases
-alias log="cat /var/log/httpd/error.log"
+alias log="less /http/log"
+alias vhc="/usr/bin/vhcn"
 alias storm="~/storm/bin/phpstorm.sh"
 alias chrome="sudo -u noname chromium"
 alias poweroff="echo \"Good buy.\" && mysqltmpfsoff.sh && poweroff"
