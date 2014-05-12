@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------
 -- @author Julien Danjou &lt;julien@danjou.info&gt;
 -- @copyright 2008 Julien Danjou
--- @release v3.5.1
+-- @release v3.5.5
 ---------------------------------------------------------------------------
 
 -- Grab environment we need
@@ -72,22 +72,21 @@ end
 --- Spawn a program.
 -- @param cmd The command.
 -- @param sn Enable startup-notification.
--- @param screen The screen where to spawn window.
--- @return The awesome.spawn return value.
-function util.spawn(cmd, sn, screen)
+-- @return The forked PID or an error message
+-- @return The startup notification UID, if the spawn was successful
+function util.spawn(cmd, sn)
     if cmd and cmd ~= "" then
         if sn == nil then sn = true end
-        return capi.awesome.spawn(cmd, sn, screen or capi.mouse.screen)
+        return capi.awesome.spawn(cmd, sn)
     end
 end
 
 --- Spawn a program using the shell.
 -- @param cmd The command.
--- @param screen The screen where to run the command.
-function util.spawn_with_shell(cmd, screen)
+function util.spawn_with_shell(cmd)
     if cmd and cmd ~= "" then
         cmd = { util.shell, "-c", cmd }
-        return capi.awesome.spawn(cmd, false, screen or capi.mouse.screen)
+        return capi.awesome.spawn(cmd, false)
     end
 end
 
@@ -438,11 +437,13 @@ end
 
 --- Clone a table
 -- @param t the table to clone
+-- @param deep Create a deep clone? (default: true)
 -- @return a clone of t
-function util.table.clone(t)
+function util.table.clone(t, deep)
+    local deep = deep == nil and true or deep
     local c = { }
     for k, v in pairs(t) do
-        if type(v) == "table" then
+        if deep and type(v) == "table" then
             c[k] = util.table.clone(v)
         else
             c[k] = v
@@ -453,7 +454,7 @@ end
 
 ---
 -- Returns an iterator to cycle through, starting from the first element or the
--- given index, all elments of a table that match a given criteria.
+-- given index, all elements of a table that match a given criteria.
 --
 -- @param t      the table to iterate
 -- @param filter a function that returns true to indicate a positive match

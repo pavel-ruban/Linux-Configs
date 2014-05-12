@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------
 -- @author Uli Schlachter
 -- @copyright 2010 Uli Schlachter
--- @release v3.5.1
+-- @release v3.5.5
 ---------------------------------------------------------------------------
 
 local setmetatable = setmetatable

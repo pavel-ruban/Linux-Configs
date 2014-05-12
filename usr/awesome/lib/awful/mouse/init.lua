@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------
 -- @author Julien Danjou &lt;julien@danjou.info&gt;
 -- @copyright 2008 Julien Danjou
--- @release v3.5.1
+-- @release v3.5.5
 ---------------------------------------------------------------------------
 
 -- Grab environment we need
@@ -164,8 +164,6 @@ function mouse.client.move(c, snap)
         or c.type == "dock" then
         return
     end
-
-    c:raise()
 
     local orig = c:geometry()
     local m_c = capi.mouse.coords()

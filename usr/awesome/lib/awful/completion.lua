@@ -2,7 +2,7 @@
 -- @author Julien Danjou &lt;julien@danjou.info&gt;
 -- @author Sébastien Gross &lt;seb-awesome@chezwam.org&gt;
 -- @copyright 2008 Julien Danjou, Sébastien Gross
--- @release v3.5.1
+-- @release v3.5.5
 ---------------------------------------------------------------------------
 
 -- Grab environment we need

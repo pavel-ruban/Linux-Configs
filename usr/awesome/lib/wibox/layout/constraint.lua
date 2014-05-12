@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------
 -- @author Lukáš Hrázký
 -- @copyright 2012 Lukáš Hrázký
--- @release v3.5.1
+-- @release v3.5.5
 ---------------------------------------------------------------------------
 
 local pairs = pairs
@@ -30,7 +30,7 @@ function constraint:fit(width, height)
         w = self._strategy(width, self._width)
         h = self._strategy(height, self._height)
 
-        w, h = self.widget:fit(w, h)
+        w, h = base.fit_widget(self.widget, w, h)
     else
         w, h = 0, 0
     end

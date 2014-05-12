@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------
 -- @author dodo
 -- @copyright 2012 dodo
--- @release v3.5.1
+-- @release v3.5.5
 ---------------------------------------------------------------------------
 
 local type = type
@@ -49,7 +49,7 @@ function mirror:fit(...)
     if not self.widget then
         return 0, 0
     end
-    return self.widget:fit(...)
+    return base.fit_widget(self.widget, ...)
 end
 
 --- Set the widget that this layout mirrors.

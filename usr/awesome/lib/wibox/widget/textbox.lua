@@ -2,7 +2,7 @@
 -- @author Uli Schlachter
 -- @author dodo
 -- @copyright 2010, 2011 Uli Schlachter, dodo
--- @release v3.5.1
+-- @release v3.5.5
 ---------------------------------------------------------------------------
 
 local base = require("wibox.widget.base")

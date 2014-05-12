@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------
 -- @author Uli Schlachter
 -- @copyright 2010 Uli Schlachter
--- @release v3.5.1
+-- @release v3.5.5
 ---------------------------------------------------------------------------
 
 local capi = {
@@ -48,19 +48,10 @@ function wibox:set_fg(c)
     self._drawable:set_fg(c)
 end
 
---- Helper function to make wibox:buttons() work as expected
-function wibox:buttons(...)
-    return self.drawin:buttons(...)
-end
-
---- Helper function to make wibox:struts() work as expected
-function wibox:struts(...)
-    return self.drawin:struts(...)
-end
-
---- Helper function to make wibox:geometry() work as expected
-function wibox:geometry(...)
-    return self.drawin:geometry(...)
+for _, k in pairs{ "buttons", "struts", "geometry", "get_xproperty", "set_xproperty" } do
+    wibox[k] = function(self, ...)
+        return self.drawin[k](self.drawin, ...)
+    end
 end
 
 local function setup_signals(_wibox)

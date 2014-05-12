@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------
 -- @author Julien Danjou &lt;julien@danjou.info&gt;
 -- @copyright 2008 Julien Danjou
--- @release v3.5.1
+-- @release v3.5.5
 ---------------------------------------------------------------------------
 
 -- Grab environment we need
@@ -43,11 +43,20 @@ function layout.inc(layouts, i, s)
     if t then
         local curlayout = layout.get(s)
         local curindex
-        local rev_layouts = {}
         for k, v in ipairs(layouts) do
             if v == curlayout then
                 curindex = k
                 break
+            end
+        end
+        if not curindex then
+            -- Safety net: handle cases where another reference of the layout
+            -- might be given (e.g. when (accidentally) cloning it).
+            for k, v in ipairs(layouts) do
+                if v.name == curlayout.name then
+                    curindex = k
+                    break
+                end
             end
         end
         if curindex then

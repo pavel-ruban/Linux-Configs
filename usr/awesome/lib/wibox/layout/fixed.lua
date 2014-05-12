@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------
 -- @author Uli Schlachter
 -- @copyright 2010 Uli Schlachter
--- @release v3.5.1
+-- @release v3.5.5
 ---------------------------------------------------------------------------
 
 local base = require("wibox.layout.base")
@@ -27,16 +27,16 @@ function fixed:draw(wibox, cr, width, height)
         if self.dir == "y" then
             x, y = 0, pos
             w, h = width, height - pos
-            if k ~= #self.widgets or not self.fill_space then
-                _, h = v:fit(w, h);
+            if k ~= #self.widgets or not self._fill_space then
+                _, h = base.fit_widget(v, w, h);
             end
             pos = pos + h
             in_dir = h
         else
             x, y = pos, 0
             w, h = width - pos, height
-            if k ~= #self.widgets or not self.fill_space then
-                w, _ = v:fit(w, h);
+            if k ~= #self.widgets or not self._fill_space then
+                w, _ = base.fit_widget(v, w, h);
             end
             pos = pos + w
             in_dir = w
@@ -66,7 +66,7 @@ function fixed:fit(orig_width, orig_height)
     local used_in_dir, used_max = 0, 0
 
     for k, v in pairs(self.widgets) do
-        local w, h = v:fit(width, height)
+        local w, h = base.fit_widget(v, width, height)
         local in_dir, max
         if self.dir == "y" then
             max, in_dir = w, h

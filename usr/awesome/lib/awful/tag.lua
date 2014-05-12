@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------
 -- @author Julien Danjou &lt;julien@danjou.info&gt;
 -- @copyright 2008 Julien Danjou
--- @release v3.5.1
+-- @release v3.5.5
 ---------------------------------------------------------------------------
 
 -- Grab environment we need
@@ -56,8 +56,8 @@ function tag.move(new_index, target_tag)
     table.insert(tmp_tags, new_index, target_tag)
 
     for i, tmp_tag in ipairs(tmp_tags) do
-        tag.setproperty(tmp_tag, "index", i)
         tag.setscreen(tmp_tag, scr)
+        tag.setproperty(tmp_tag, "index", i)
     end
 end
 
@@ -154,10 +154,11 @@ function tag.delete(target_tag, fallback_tag)
 
     -- delete the tag
     data.tags[target_tag].screen = nil
+    target_tag.activated = false
 
     -- If no tags are visible, try and view one.
     if tag.selected(target_scr) == nil and ntags > 0 then
-        tag.history.restore()
+        tag.history.restore(nil, 1)
         if tag.selected(target_scr) == nil then
             tag.gettags(target_scr)[1].selected = true
         end
@@ -269,7 +270,22 @@ end
 -- @param t tag object
 -- @param s Screen number
 function tag.setscreen(t, s)
+    local s = s or capi.mouse.screen
+    local old_screen = tag.getproperty(t, "screen")
+    if s == old_screen then return end
+
+    -- Keeping the old index make very little sense when changing screen
+    tag.setproperty(t, "index", nil)
+
+    -- Change the screen
     tag.setproperty(t, "screen", s)
+
+    -- Make sure the client's screen matches its tags
+    for k,c in ipairs(t:clients()) do
+        c.screen = s --Move all clients
+        c:tags({t})
+    end
+    tag.history.restore(old_screen,1)
 end
 
 --- Get a tag's screen
@@ -466,7 +482,8 @@ end
 -- @param tags A table with tags to view only.
 -- @param screen Optional screen number of the tags.
 function tag.viewmore(tags, screen)
-    local screen_tags = tag.gettags(screen or capi.mouse.screen)
+    local screen = screen or capi.mouse.screen
+    local screen_tags = tag.gettags(screen)
     for _, _tag in ipairs(screen_tags) do
         if not util.table.hasitem(tags, _tag) then
             _tag.selected = false
@@ -518,18 +535,20 @@ end
 
 --- Tag a client with the set of current tags.
 -- @param c The client to tag.
--- @param startup Optional: don't do anything if true.
-function tag.withcurrent(c, startup)
-    if startup ~= true then
-        local tags = {}
-        for k, t in ipairs(c:tags()) do
-            if tag.getscreen(t) == c.screen then
-                table.insert(tags, t)
-            end
+function tag.withcurrent(c)
+    local tags = {}
+    for k, t in ipairs(c:tags()) do
+        if tag.getscreen(t) == c.screen then
+            table.insert(tags, t)
         end
-        if #tags == 0 then
-            tags = tag.selectedlist(c.screen)
-        end
+    end
+    if #tags == 0 then
+        tags = tag.selectedlist(c.screen)
+    end
+    if #tags == 0 then
+        tags = tag.gettags(c.screen)
+    end
+    if #tags ~= 0 then
         c:tags(tags)
     end
 end
@@ -572,6 +591,7 @@ capi.client.connect_signal("manage", function(c, startup)
 end)
 
 capi.client.connect_signal("manage", tag.withcurrent)
+capi.tag.connect_signal("request::select", tag.viewonly)
 
 capi.tag.add_signal("property::hide")
 capi.tag.add_signal("property::icon")

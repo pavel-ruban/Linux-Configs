@@ -1,11 +1,12 @@
 ---------------------------------------------------------------------------
 -- @author Uli Schlachter
 -- @copyright 2010 Uli Schlachter
--- @release v3.5.1
+-- @release v3.5.5
 ---------------------------------------------------------------------------
 
 local debug = require("gears.debug")
 local object = require("gears.object")
+local setmetatable = setmetatable
 local pairs = pairs
 local type = type
 local table = table
@@ -93,6 +94,12 @@ function base.make_widget(proxy)
             ret:emit_signal("widget::updated")
         end)
     end
+
+    -- Add a geometry for base.fit_widget() that is cleared when necessary
+    ret._fit_geometry_cache = setmetatable({}, { __mode = 'v' })
+    ret:connect_signal("widget::updated", function()
+        ret._fit_geometry_cache = setmetatable({}, { __mode = 'v' })
+    end)
 
     return ret
 end

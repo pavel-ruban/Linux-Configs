@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------
 -- @author Uli Schlachter
 -- @copyright 2012 Uli Schlachter
--- @release v3.5.1
+-- @release v3.5.5
 ---------------------------------------------------------------------------
 
 local error = error
@@ -35,6 +35,20 @@ local function get_color(name, c, args)
     return get(args) or get(beautiful)
 end
 
+local function get_titlebar_function(c, position)
+    if position == "left" then
+        return c.titlebar_left
+    elseif position == "right" then
+        return c.titlebar_right
+    elseif position == "top" then
+        return c.titlebar_top
+    elseif position == "bottom" then
+        return c.titlebar_bottom
+    else
+        error("Invalid titlebar position '" .. position .. "'")
+    end
+end
+
 --- Get a client's titlebar
 -- @class function
 -- @param c The client for which a titlebar is wanted.
@@ -47,19 +61,7 @@ local function new(c, args)
     local args = args or {}
     local position = args.position or "top"
     local size = args.size or beautiful.get_font_height(args.font) * 1.5
-    local d
-
-    if position == "left" then
-        d = c:titlebar_left(size)
-    elseif position == "right" then
-        d = c:titlebar_right(size)
-    elseif position == "top" then
-        d = c:titlebar_top(size)
-    elseif position == "bottom" then
-        d = c:titlebar_bottom(size)
-    else
-        error("Invalid titlebar position '" .. position .. "'")
-    end
+    local d = get_titlebar_function(c, position)(c, size)
 
     -- Make sure that there is never more than one titlebar for any given client
     local bars = all_titlebars[c]
@@ -95,6 +97,41 @@ local function new(c, args)
     bars[position].update_colors()
 
     return ret
+end
+
+--- Show a client's titlebar.
+-- @param c The client whose titlebar is modified
+-- @param position Optional position of the titlebar. Must be one of "left",
+--        "right", "top", "bottom". Default is "top".
+function titlebar.show(c, position)
+    local position = position or "top"
+    local bars = all_titlebars[c]
+    local data = bars and bars[position]
+    local args = data and data.args
+    new(c, args)
+end
+
+--- Hide a client's titlebar.
+-- @param c The client whose titlebar is modified
+-- @param position Optional position of the titlebar. Must be one of "left",
+--        "right", "top", "bottom". Default is "top".
+function titlebar.hide(c, position)
+    local position = position or "top"
+    get_titlebar_function(c, position)(c, 0)
+end
+
+--- Toggle a client's titlebar, hiding it if it is visible, otherwise showing it.
+-- @param c The client whose titlebar is modified
+-- @param position Optional position of the titlebar. Must be one of "left",
+--        "right", "top", "bottom". Default is "top".
+function titlebar.toggle(c, position)
+    local position = position or "top"
+    local drawable, size = get_titlebar_function(c, position)(c)
+    if size == 0 then
+        titlebar.show(c, position)
+    else
+        titlebar.hide(c, position)
+    end
 end
 
 --- Create a new titlewidget. A title widget displays the name of a client.
@@ -210,6 +247,14 @@ function titlebar.widget.maximizedbutton(c)
     end)
     c:connect_signal("property::maximized_vertical", widget.update)
     c:connect_signal("property::maximized_horizontal", widget.update)
+    return widget
+end
+
+--- Create a new minimize button for a client.
+-- @param c The client for which the button is wanted.
+function titlebar.widget.minimizebutton(c)
+    local widget = titlebar.widget.button(c, "minimize", function() return c.minimized end, function(c) c.minimized = not c.minimized end)
+    c:connect_signal("property::minimized", widget.update)
     return widget
 end
 

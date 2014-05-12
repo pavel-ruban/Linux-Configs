@@ -184,5 +184,28 @@ function QuakeConsole:toggle()
    self:display()
 end
 
+-- Toggle the console
+function QuakeConsole:changeSize(direction)
+  if direction == '+' then
+    self.height = self.height + 0.1
+    if self.height > 1.0 then
+      self.height = 1.0
+    end
+    self:display()
+  elseif direction == '-' then
+    self.height = self.height - 0.1
+    if self.height < 0.1 then
+      self.height = 0.1
+    end
+    self:display()
+  elseif direction == 'max' then
+    self.height = 1.0
+    self:display()
+  elseif direction == 'min' then
+    self.height = 0.1
+    self:display()
+  end
+end
+
 setmetatable(QuakeConsole, { __call = function(_, ...) return QuakeConsole:new(...) end })
 return QuakeConsole

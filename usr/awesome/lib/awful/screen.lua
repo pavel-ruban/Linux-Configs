@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------
 -- @author Julien Danjou &lt;julien@danjou.info&gt;
 -- @copyright 2008 Julien Danjou
--- @release v3.5.1
+-- @release v3.5.5
 ---------------------------------------------------------------------------
 
 -- Grab environment we need
@@ -61,7 +61,6 @@ function screen.focus(_screen)
     pos.y = capi.screen[_screen].geometry.y + rely * capi.screen[_screen].geometry.height
 
    -- move cursor without triggering signals mouse::enter and mouse::leave
-    capi.mouse.screen = _screen
     capi.mouse.coords(pos, true)
 
     local c = client.focus.history.get(_screen, 0)

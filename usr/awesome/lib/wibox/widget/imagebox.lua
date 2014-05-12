@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------
 -- @author Uli Schlachter
 -- @copyright 2010 Uli Schlachter
--- @release v3.5.1
+-- @release v3.5.5
 ---------------------------------------------------------------------------
 
 local base = require("wibox.widget.base")
@@ -18,6 +18,7 @@ local imagebox = { mt = {} }
 --- Draw an imagebox with the given cairo context in the given geometry.
 function imagebox:draw(wibox, cr, width, height)
     if not self._image then return end
+    if width == 0 or height == 0 then return end
 
     cr:save()
 
@@ -53,6 +54,10 @@ function imagebox:fit(width, height)
     if h > height then
         w = w * height / h
         h = height
+    end
+
+    if h == 0 or w == 0 then
+        return 0, 0
     end
 
     if not self.resize_forbidden then

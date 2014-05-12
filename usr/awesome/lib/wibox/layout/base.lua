@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------
 -- @author Uli Schlachter
 -- @copyright 2010 Uli Schlachter
--- @release v3.5.1
+-- @release v3.5.5
 ---------------------------------------------------------------------------
 
 local pairs = pairs
@@ -24,6 +24,33 @@ function base.rect_to_device_geometry(cr, x, y, width, height)
     local height = max(y1, y2) - y
 
     return x, y, width, height
+end
+
+--- Fit a widget for the given available width and height
+-- @param widget The widget to fit (this uses widget:fit(width, height)).
+-- @param width The available width for the widget
+-- @param height The available height for the widget
+-- @return The width and height that the widget wants to use
+function base.fit_widget(widget, width, height)
+    -- Sanitize the input. This also filters out e.g. NaN.
+    local width = math.max(0, width)
+    local height = math.max(0, height)
+
+    -- Since the geometry cache is a weak table, we have to be careful when
+    -- doing lookups. We can't do "if cache[width] ~= nil then"!
+    local cache = widget._fit_geometry_cache
+    local result = cache[width]
+    if not result then
+        result = {}
+        cache[width] = result
+    end
+    cache, result = result, result[height]
+    if not result then
+        local w, h = widget:fit(width, height)
+        result = { width = w, height = h }
+        cache[height] = result
+    end
+    return result.width, result.height
 end
 
 --- Draw a widget via a cairo context

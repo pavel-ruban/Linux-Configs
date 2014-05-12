@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------
 -- @author Julien Danjou &lt;julien@danjou.info&gt;
 -- @copyright 2008 Julien Danjou
--- @release v3.5.1
+-- @release v3.5.5
 ---------------------------------------------------------------------------
 
 -- Grab environment we need
@@ -64,7 +64,6 @@ function magnifier.arrange(p)
         height = geometry.height - focus.border_width * 2
     }
     focus:geometry(g)
-    focus:raise()
 
     if #cls > 1 then
         geometry.x = area.x
@@ -72,7 +71,7 @@ function magnifier.arrange(p)
         geometry.height = area.height / (#cls - 1)
         geometry.width = area.width
 
-        -- We don't know what the focus window index. Try to find it.
+        -- We don't know the focus window index. Try to find it.
         if not fidx then
             for k, c in ipairs(cls) do
                 if c == focus then

@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------
 -- @author Uli Schlachter
 -- @copyright 2012 Uli Schlachter
--- @release v3.5.1
+-- @release v3.5.5
 ---------------------------------------------------------------------------
 
 local drawable = {}
@@ -12,11 +12,13 @@ local capi = {
 local beautiful = require("beautiful")
 local cairo = require("lgi").cairo
 local color = require("gears.color")
+local debug = require("gears.debug")
 local object = require("gears.object")
 local sort = require("gears.sort")
 local surface = require("gears.surface")
 
 local drawables = setmetatable({}, { __mode = 'k' })
+local wallpaper = nil
 
 local function do_redraw(self)
     local surf = surface(self.drawable.surface)
@@ -28,15 +30,23 @@ local function do_redraw(self)
 
     -- Draw the background
     cr:save()
-    -- This is pseudo-transparency: We draw the wallpaper in the background
-    local wallpaper = surface(capi.root.wallpaper())
-    if wallpaper then
+
+    if not capi.awesome.composite_manager_running then
+        -- This is pseudo-transparency: We draw the wallpaper in the background
+        if not wallpaper then
+            wallpaper = surface(capi.root.wallpaper())
+        end
+        if wallpaper then
+            cr.operator = cairo.Operator.SOURCE
+            cr:set_source_surface(wallpaper, -x, -y)
+            cr:paint()
+        end
+        cr.operator = cairo.Operator.OVER
+    else
+        -- This is true transparency: We draw a translucent background
         cr.operator = cairo.Operator.SOURCE
-        cr:set_source_surface(wallpaper, -x, -y)
-        cr:paint()
     end
 
-    cr.operator = cairo.Operator.OVER
     cr:set_source(self.background_color)
     cr:paint()
     cr:restore()
@@ -50,6 +60,8 @@ local function do_redraw(self)
     end
 
     self.drawable:refresh()
+
+    debug.assert(cr.status == "SUCCESS", "Cairo context entered error state: " .. cr.status)
 end
 
 --- Register a widget's position.
@@ -120,6 +132,24 @@ function drawable:set_bg(c)
     if type(c) == "string" or type(c) == "table" then
         c = color(c)
     end
+
+    -- If the background is completely opaque, we don't need to redraw when
+    -- the drawable is moved
+    -- XXX: This isn't needed when awesome.composite_manager_running is true,
+    -- but a compositing manager could stop/start and we'd have to properly
+    -- handle this. So for now we choose the lazy approach.
+    local redraw_on_move = not color.create_opaque_pattern(c)
+    if self._redraw_on_move ~= redraw_on_move then
+        self._redraw_on_move = redraw_on_move
+        if redraw_on_move then
+            self.drawable:connect_signal("property::x", self.draw)
+            self.drawable:connect_signal("property::y", self.draw)
+        else
+            self.drawable:disconnect_signal("property::x", self.draw)
+            self.drawable:disconnect_signal("property::y", self.draw)
+        end
+    end
+
     self.background_color = c
     self.draw()
 end
@@ -226,9 +256,10 @@ function drawable.new(d, widget_arg)
     end
     drawables[ret.draw] = true
     d:connect_signal("property::surface", ret.draw)
-    -- We don't need width/height, because this case emits property::surface
-    d:connect_signal("property::x", ret.draw)
-    d:connect_signal("property::y", ret.draw)
+
+    -- Currently we aren't redrawing on move (signals not connected).
+    -- :set_bg() will later recompute this.
+    ret._redraw_on_move = false
 
     -- Set the default background
     ret:set_bg(beautiful.bg_normal)
@@ -264,6 +295,7 @@ end
 -- Redraw all drawables when the wallpaper changes
 capi.awesome.connect_signal("wallpaper_changed", function()
     local k
+    wallpaper = nil
     for k in pairs(drawables) do
         k()
     end

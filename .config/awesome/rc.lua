@@ -988,6 +988,26 @@ globalkeys = awful.util.table.join(
    awful.key({ modkey }, "`",
 	     function () quakeconsole[mouse.screen]:toggle() end)
 )
+globalkeys = awful.util.table.join(
+   globalkeys,
+   awful.key({ modkey }, "=",
+	     function () quakeconsole[mouse.screen]:changeSize("+") end)
+)
+globalkeys = awful.util.table.join(
+   globalkeys,
+   awful.key({ modkey }, "-",
+	     function () quakeconsole[mouse.screen]:changeSize("-") end)
+)
+globalkeys = awful.util.table.join(
+   globalkeys,
+   awful.key({ modkey }, "0",
+	     function () quakeconsole[mouse.screen]:changeSize("max") end)
+)
+globalkeys = awful.util.table.join(
+   globalkeys,
+   awful.key({ modkey }, "9",
+	     function () quakeconsole[mouse.screen]:changeSize("min") end)
+)
 
 -- Set keys
 root.keys(globalkeys)

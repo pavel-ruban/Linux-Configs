@@ -1,7 +1,7 @@
 ----------------------------------------------------------------------------
 -- @author koniu &lt;gkusnierz@gmail.com&gt;
 -- @copyright 2008 koniu
--- @release v3.5.1
+-- @release v3.5.5
 ----------------------------------------------------------------------------
 
 -- Package environment
@@ -61,15 +61,14 @@ naughty.config.notify_callback = nil
 -- @field low The preset for notifications with low urgency level
 -- @field normal The default preset for every notification without a preset that will also be used for normal urgency level
 -- @field critical The preset for notifications with a critical urgency level
--- @class table
 naughty.config.presets = {
     normal = {},
     low = {
         timeout = 5
     },
     critical = {
-        --bg = "#e5ae7d",
-        --fg = "#ffffff",
+        bg = "#ff0000",
+        fg = "#ffffff",
         timeout = 0,
     }
 }
@@ -410,7 +409,7 @@ function naughty.notify(args)
         end
 
         -- is the icon file readable?
-        local success, res = pcall(function() return surface.load(icon) end)
+        local success, res = pcall(function() return surface.load_uncached(icon) end)
         if success then
             icon = res
         else
@@ -555,6 +554,14 @@ if capi.dbus then
                 -- 6 -> channels
                 -- 7 -> data
                 local w, h, rowstride, _, _, channels, data = unpack(hints.icon_data)
+
+                -- Do the arguments look sane? (e.g. we have enough data)
+                local expected_length = rowstride * (h - 1) + w * channels
+                if w < 0 or h < 0 or rowstride < 0 or (channels ~= 3 and channels ~= 4) or
+                    string.len(data) < expected_length then
+                    w = 0
+                    h = 0
+                end
 
                 local format = cairo.Format[channels == 4 and 'ARGB32' or 'RGB24']
 

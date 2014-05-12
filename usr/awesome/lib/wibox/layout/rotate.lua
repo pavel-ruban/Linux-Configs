@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------
 -- @author Uli Schlachter
 -- @copyright 2010 Uli Schlachter
--- @release v3.5.1
+-- @release v3.5.5
 ---------------------------------------------------------------------------
 
 local error = error
@@ -51,7 +51,7 @@ function rotate:fit(width, height)
     if not self.widget then
         return 0, 0
     end
-    return transform(self, self.widget:fit(transform(self, width, height)))
+    return transform(self, base.fit_widget(self.widget, transform(self, width, height)))
 end
 
 --- Set the widget that this layout rotates.

@@ -3,7 +3,7 @@
 -- @author Julien Danjou &lt;julien@danjou.info&gt;
 -- @author dodo
 -- @copyright 2008, 2011 Damien Leone, Julien Danjou, dodo
--- @release v3.5.1
+-- @release v3.5.5
 --------------------------------------------------------------------------------
 
 local wibox = require("wibox")
@@ -455,15 +455,16 @@ end
 --------------------------------------------------------------------------------
 
 --- Build a popup menu with running clients and shows it.
--- @param _menu Menu table, see new() function for more informations
+-- @param args Menu table, see new() function for more informations
+-- @param item_args Table that will be merged into each item, see new() for more
+--        informations.
 -- @return The menu.
-function menu:clients(args) -- FIXME crude api
-    _menu = self or {}
+function menu.clients(args, item_args)
     local cls = capi.client.get()
     local cls_t = {}
     for k, c in pairs(cls) do
         cls_t[#cls_t + 1] = {
-            util.escape(c.name) or "",
+            c.name or "",
             function ()
                 if not c:isvisible() then
                     tags.viewmore(c:tags(), c.screen)
@@ -472,6 +473,13 @@ function menu:clients(args) -- FIXME crude api
                 c:raise()
             end,
             c.icon }
+        if item_args then
+            if type(item_args) == "function" then
+                table_merge(cls_t[#cls_t], item_args(c))
+            else
+                table_merge(cls_t[#cls_t], item_args)
+            end
+        end
     end
     args = args or {}
     args.items = args.items or {}
