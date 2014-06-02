@@ -33,6 +33,7 @@ alias sr=systemctl restart
 alias k=killall -9
 alias sr="systemctl restart"
 alias fe="feh -. -B black"
+alias la="ls -lath --color=always | less -R"
 #alias m="mplayer -shuffle -playlist /home/noname/Downloads/pl"
 #alias m2="mplayer -shuffle -playlist ~/pl2"
 #alias pyfa="python2.7 ~/pyfa/pyfa.py"
