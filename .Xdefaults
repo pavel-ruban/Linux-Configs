@@ -51,8 +51,8 @@ Xft*hintstyle: hintmedium
 !*URxvt*keysym.F4:    \033OS
 URxvt*color253: #6EA0A1
 URxvt*color254: [20]#6EA0A1
-URxvt*color255: [90]#073340
-!URxvt*color255: rgba:0000/1000/0000/bbbb
+!URxvt*color255: [90]#073340
+URxvt*color255: rgba:0000/0000/0000/bbbb
 ! Shift
 ! paste conflict
 !*URxvt*keysym.S-Insert:  \033[2;2~
