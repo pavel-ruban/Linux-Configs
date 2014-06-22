@@ -10,6 +10,8 @@ export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
 export CPLUS_INCLUDE_PATH=/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.2/include
 export LESS=' -R '
 export GTK_MODULES=rgba
+export WINEARCH='win32'
+export WINEPREFIX=/root/.wine32
 
 # Includes
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

@@ -9,7 +9,7 @@
 -- {{{ Main
 theme = {}
 --theme.wallpaper = "/root/linux.jpg"
-theme.wallpaper = "/root/.config/awesome/themes/zenburn/green.jpg"
+theme.wallpaper = "/root/.config/awesome/themes/blame.jpg"
 -- }}}
 
 -- {{{ Styles
