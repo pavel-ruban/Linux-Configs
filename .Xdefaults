@@ -9,8 +9,8 @@ URxvt*font: xft:ubuntu mono:size=14
 !URxvt*boldFont: xft:terminus:bold:size=12
 !URxvt*font: xft:dejavu sans mono:size=8
 !URxvt*font: xft:terminus:size=11
-!Firefox*font: xft:monospace:size=14
-Firefox*font: xft:ubuntu mono:size=14
+Firefox*font: xft:monospace:size=14
+#Firefox*font: xft:ubuntumono:size=14
 Chrome*font: xft:ubuntumono:size=14
 *font: xft:monospace:size=7
 Firefox.depth: 32
