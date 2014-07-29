@@ -47,6 +47,7 @@ c=/sources/c++
 books=~/books
 di=/http/dior-ipad
 sk=/http/skimium/
+s=/sources/c++/silk-cpp-engine
 skm=/http/skimium/sites/all/modules/
 skt=/http/skimium/sites/all/themes/
 os=/sources/linux_configs/
