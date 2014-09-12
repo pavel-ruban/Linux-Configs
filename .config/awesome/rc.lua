@@ -731,7 +731,6 @@ awful.rules.rules = {
         tag = tags[1][4]
       },
       callback = function(c)
-
         local scr_area = screen[c.screen].workarea
         local cl_strut = c:struts()
         local geometry = nil
@@ -741,6 +740,34 @@ awful.rules.rules = {
           y = 60,
           width = (scr_area.width - 450),
           height = (scr_area.height - 90),
+        })
+
+       end
+    },
+    {
+      rule = { class = "Skype", name = "Skype™ 4.3 for Linux" },
+      properties = {
+        border_width = 0,
+        border_color = 0,
+        size_hints_honor = false,
+        floating = true,
+        focusable = true,
+        modal = true,
+        --width = auto,
+        --height = 450,
+        below =  false,
+        tag = tags[1][4]
+      },
+      callback = function(c)
+        local scr_area = screen[c.screen].workarea
+        local cl_strut = c:struts()
+        local geometry = nil
+
+        c:geometry({
+          x = (scr_area.width / 2 - (720 / 2)),
+          y = (scr_area.height / 2 - (470 / 2)),
+          width = 720,
+          height = 470,
         })
 
        end
@@ -758,7 +785,6 @@ awful.rules.rules = {
         tag = tags[1][4]
       },
       callback = function(c)
-
         local scr_area = screen[c.screen].workarea
         local cl_strut = c:struts()
         local geometry = nil
@@ -768,35 +794,6 @@ awful.rules.rules = {
           y = 60,
           width = 300,
           height = (scr_area.height - 90),
-        })
-
-       end
-    },
-    {
-      rule = { class = "Skype", name = "Skype™ 4.2 for Linux" },
-      properties = {
-        border_width = 0,
-        border_color = 0,
-        size_hints_honor = false,
-        floating = true,
-        focusable = true,
-        modal = true,
-        --width = auto,
-        --height = 450,
-        below =  false,
-        tag = tags[1][4]
-      },
-      callback = function(c)
-
-        local scr_area = screen[c.screen].workarea
-        local cl_strut = c:struts()
-        local geometry = nil
-
-        c:geometry({
-          x = (scr_area.width / 2 - (720 / 2)),
-          y = (scr_area.height / 2 - (470 / 2)),
-          width = 720,
-          height = 470,
         })
 
        end

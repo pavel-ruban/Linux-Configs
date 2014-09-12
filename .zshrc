@@ -36,6 +36,8 @@ alias k=killall -9
 alias sr="systemctl restart"
 alias fe="feh -. -B black"
 alias la="ls -lath --color=always | less -R"
+alias grep="grep --color=always"
+alias less="less -R"
 #alias m="mplayer -shuffle -playlist /home/noname/Downloads/pl"
 #alias m2="mplayer -shuffle -playlist ~/pl2"
 #alias pyfa="python2.7 ~/pyfa/pyfa.py"
@@ -50,6 +52,7 @@ sk=/http/skimium/
 s=/sources/c++/silk-cpp-engine
 skm=/http/skimium/sites/all/modules/
 skt=/http/skimium/sites/all/themes/
+sa=/http/sas/
 os=/sources/linux_configs/
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="wedisagree"
