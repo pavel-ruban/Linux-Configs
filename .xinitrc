@@ -7,8 +7,8 @@ export BROWSER="sudo -u noname chromium"
 #exec cairo-dock&
 #exec gnome-session
 #exec /sources/c++/a.out
-#exec awesome
 exec awesome
+#exec xterm
 #[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 #if [ -f $HOME/.Xmodmap ]; then
 #    /usr/bin/xmodmap $HOME/.Xmodmap

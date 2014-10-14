@@ -391,7 +391,7 @@ tags[s][5]:connect_signal("property::selected", function(t)
   mywibox[s].visible = not(t.selected) end)
 tags[s][6]:connect_signal("property::selected", function(t)
   mywibox[s].visible = not(t.selected) end)
-tags[s][7]:connect_signal("property::selected", function(t)
+tags[s][4]:connect_signal("property::selected", function(t)
   mywibox[s].visible = not(t.selected) end)
 end
 -- }}}
@@ -473,12 +473,13 @@ awful.key({ modkey,           }, "c",     function () client.focus:lower() end),
  awful.key({ modkey, }, "Return", function () awful.util.spawn(terminal) end),
  awful.key({ modkey, }, "z", function () awful.util.spawn("gtrs") end),
  --awful.key({ modkey, }, "v", function () awful.util.spawn("urxvt -hold -e sh -c 'vim'") end),
- awful.key({ modkey, }, "v", function () naughty.notify({ preset = naughty.config.presets.warning, title = "Oops", text = client.focus.class 'fdefs' }) end),
- awful.key({ modkey, }, "g", function () awful.util.spawn("google-as-noname.sh http://google.com") end),
- awful.key({ modkey, }, "b", function () awful.util.spawn("google-as-noname.sh https://prj.adyax.com/projects/skimium/issues?query_id=1215") end),
- awful.key({ modkey, }, "h", function () awful.util.spawn("google-as-noname.sh http://translate.google.ru/?hl=ru&tab=wTenve") end),
- --awful.key({ modkey, }, "g", function () awful.util.spawn("env firefox google") end),
- --awful.key({ modkey, }, "h", function () awful.util.spawn(" firefox http://translate.google.ru/?hl=ru&tab=wTenve") end),
+ --awful.key({ modkey, }, "v", function () naughty.notify({ preset = naughty.config.presets.warning, title = "Oops", text = client.focus.class 'fdefs' }) end),
+ --awful.key({ modkey, }, "g", function () awful.util.spawn("google-as-noname.sh http://google.com") end),
+ --awful.key({ modkey, }, "b", function () awful.util.spawn("google-as-noname.sh https://prj.adyax.com/projects/skimium/issues?query_id=1215") end),
+ --awful.key({ modkey, }, "h", function () awful.util.spawn("google-as-noname.sh http://translate.google.ru/?hl=ru&tab=wTenve") end),
+ awful.key({ modkey, }, "g", function () awful.util.spawn("env firefox google") end),
+ awful.key({ modkey, }, "b", function () awful.util.spawn("env firefox https://prj.adyax.com/projects/skimium/issues?query_id=1215") end),
+ awful.key({ modkey, }, "h", function () awful.util.spawn("env firefox http://translate.google.ru/?hl=ru&tab=wTenve") end),
  awful.key({ }, "Print", function () awful.util.spawn("scrot -e 'mv $f ~/screenshots/ 2>/dev/null'") end),
 
  -- Standard program

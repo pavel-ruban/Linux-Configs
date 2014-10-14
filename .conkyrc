@@ -60,10 +60,10 @@ lua_draw_hook_pre clock_rings
 
 #${rss https://planet.archlinux.org/rss20.xml 1 item_titles 10 }
 TEXT
-${goto 95}${voffset 105}${font ubuntu mono:size=20}${time %H}:${time %M}
+${goto 95}${voffset 105}${font ubuntu mono:bold:size=20}${time %H}:${time %M}
 
-${voffset 10}${color 7ca7c6}${font ubuntu mono:size=16}${time %A}${font}
-${color FFFFFF}${voffset 10}${color FFFFFF}${font  ubuntu mono:size=18}${time %b}${font}${voffset -3} ${color FFFFFF}${font ubuntu mono:size=20}${time %Y}${font} ${time %d}/${time %m}${font}
+${voffset 40}${color 7ca7c6}${font ubuntu mono:bold:size=16}${time %A}${font}
+${color FFFFFF}${offset 10}${voffset 8}${color FFFFFF}${font}${voffset -3} ${color FFFFFF}${font ubuntu mono:bold:size=20}${time %Y}${font ubuntu mono:bold:size=8} ${time %d}/${time %m}${font}
 
 #${color FFFFFF}${goto 25}${voffset 35}${cpu cpu0}%
 #${color 7ca7c6}${goto 25}CPU
@@ -77,6 +77,6 @@ ${color FFFFFF}${voffset 10}${color FFFFFF}${font  ubuntu mono:size=18}${time %b
 
 
 
-${goto 145}${voffset 35}${color FFFFFF}${font ubuntu mono:size=10}Uptime: ${uptime_short}
-${goto 145}${voffset 2}${color FFFFFF}${font ubuntu mono:size=10}procs: ${processes}
-${goto 145}${voffset 2}${color FFFFFF}${font ubuntu mono:size=10}running: ${running_processes}
+#${goto 145}${voffset 35}${color FFFFFF}${font ubuntu mono:size=10}Uptime: ${uptime_short}
+#${goto 145}${voffset 2}${color FFFFFF}${font ubuntu mono:size=10}procs: ${processes}
+#${goto 145}${voffset 2}${color FFFFFF}${font ubuntu mono:size=10}running: ${running_processes}

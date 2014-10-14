@@ -1,3 +1,21 @@
+clear Shift
+!clear Lock
+clear Control
+clear Mod1
+clear Mod2
+!clear Mod3
+!clear Mod4
+!clear Mod5
+
+
+add shift   = Shift_L Shift_R
+!add lock    = Caps_Lock
+add control = Control_L Control_R
+add mod1    = Meta_L Meta_R
+add mod2    = Mode_switch
+!add mod3    = Num_Lock
+!add mod4    = Alt_R
+
 keycode   8 =
 keycode   9 = Escape NoSymbol Escape
 keycode  10 = 1 exclam 1 exclam

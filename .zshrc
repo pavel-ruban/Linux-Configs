@@ -12,6 +12,7 @@ export LESS=' -R '
 export GTK_MODULES=rgba
 export WINEARCH='win32'
 export WINEPREFIX=/root/.wine32
+export USE_ZEND_ALLOC=0
 
 # Includes
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -62,6 +63,9 @@ ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=white,underline
 ZSH_HIGHLIGHT_STYLES[bracket-level-3]=fg=033
 ZSH_HIGHLIGHT_STYLES[bracket-level-3]=fg=033
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=038,fg=white,bold'
+HISTFILE=~/.zsh_history
+SAVEHIST=1000000
+
 ## Override highlighter colors
 ##ZSH_HIGHLIGHT_STYLES[default]=none
 ##ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=009
@@ -84,3 +88,4 @@ if [ -z $TMUX ]
   then
     tmux
 fi
+ke=/sources/kernel/linux

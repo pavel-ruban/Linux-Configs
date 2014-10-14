@@ -1,21 +1,24 @@
-!Xcursor.theme: oxy-neon
+!*font: xft:bitstream vera sans mono:size=7
+Xcursor.theme: simpleandsoft
 !*.*.Xcursor.theme: oxy-neon
 !Gimp*Xcursor.theme: oxy-neon
 !XTerm*termName:  xterm-256color
 !URxvt*termName:  xterm-256color
-URxvt*font: xft:ubuntu mono:size=14
+URxvt*font: xft:DEJA VU SANS MONO:size=14
+!URxvt.letterSpace: -13
 !URxvt*font: xft:ubuntumono:size=13
 !URxvt*boldFont: xft:ubuntu mono:size=14
 !URxvt*boldFont: xft:terminus:bold:size=12
 !URxvt*font: xft:dejavu sans mono:size=8
 !URxvt*font: xft:terminus:size=11
-Firefox*font: xft:monospace:size=14
+!Firefox*font: xft:ubuntumono:size=14
+!Firefox*font: xft:droir sans mono:size=14
 #Firefox*font: xft:ubuntumono:size=14
-Chrome*font: xft:ubuntumono:size=14
-*font: xft:monospace:size=7
+Chrome*font: xft:bitstream vera sans mono:size=14
 Firefox.depth: 32
 URxvt.depth: 32
-URxvt.background: rgba:0000/0000/0000/bbbb
+URxvt.saveLines: 65535
+URxvt.background: rgba:0000/0000/0000/9999
 !URxvt*foreground: #ffffff
 
 URxvt*foreground: #6EA0A1
@@ -35,12 +38,23 @@ URxvt.scrollBar: false
 !URxvt*color2: RoyalBlue
 *Xterm*foreground: Black
 ! Nasty hack to act more like XTerm
+!Xft*autohint: false
+!Xft*hinting: false
+!Xft*lcdfilter: lcddefault
+!Xft*rgba: rgb
+!Xft*hintstyle: hintmedium
+
+
+Xft.dpi: 96
 Xft*antialias: true
+! hintnone, hintslight, hintmedium, hintfull
+Xft.hintstyle: hintfull
+Xft.hinting: true
 Xft*autohint: true
-Xft*hinting: true
-Xft*lcdfilter: lcddefault
-Xft*rgba: rgb
-Xft*hintstyle: hintmedium
+! lcdnone, lcddefault, lcdlight, lcdlegacy
+Xft.lcdfilter: lcdlight
+Xft.rgba: rgb
+
 !Xft*dpi: 96
 !Normal
 !*URxvt*keysym.Home:    \033OH
@@ -52,7 +66,7 @@ Xft*hintstyle: hintmedium
 URxvt*color253: #6EA0A1
 URxvt*color254: [20]#6EA0A1
 !URxvt*color255: [90]#073340
-URxvt*color255: rgba:0000/0000/0000/bbbb
+URxvt*color255: rgba:0000/0000/0000/9999
 ! Shift
 ! paste conflict
 !*URxvt*keysym.S-Insert:  \033[2;2~
@@ -67,6 +81,16 @@ URxvt*color255: rgba:0000/0000/0000/bbbb
 
 URxvt.tabbed.transparent:true
 
+*URxvt*keysym.C-Tab:   \033[25~
+*URxvt*keysym.C-S-M-N:   \033[27~
+*URxvt*keysym.C-M-n:   \033[31~
+*URxvt*keysym.C-S-N:   \033[29~
+*URxvt*keysym.Menu:   \033[32~
+*URxvt*keysym.C-S-F:   \033[30~
+*URxvt*keysym.F1:    \033[11~
+*URxvt*keysym.F2:    \033[12~
+*URxvt*keysym.F3:    \033[13~
+*URxvt*keysym.F4:    \033[14~
 *URxvt*keysym.S-F1:    \033[11;2~
 *URxvt*keysym.S-F2:    \033[12;2~
 *URxvt*keysym.S-F3:    \033[13;2~
