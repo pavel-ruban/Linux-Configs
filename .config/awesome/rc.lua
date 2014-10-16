@@ -477,10 +477,12 @@ awful.key({ modkey,           }, "c",     function () client.focus:lower() end),
  --awful.key({ modkey, }, "g", function () awful.util.spawn("google-as-noname.sh http://google.com") end),
  --awful.key({ modkey, }, "b", function () awful.util.spawn("google-as-noname.sh https://prj.adyax.com/projects/skimium/issues?query_id=1215") end),
  --awful.key({ modkey, }, "h", function () awful.util.spawn("google-as-noname.sh http://translate.google.ru/?hl=ru&tab=wTenve") end),
- awful.key({ modkey, }, "g", function () awful.util.spawn("env firefox google") end),
+ awful.key({ modkey, }, "g", function () awful.util.spawn("env firefox https://google.com") end),
  awful.key({ modkey, }, "b", function () awful.util.spawn("env firefox https://prj.adyax.com/projects/skimium/issues?query_id=1215") end),
- awful.key({ modkey, }, "h", function () awful.util.spawn("env firefox http://translate.google.ru/?hl=ru&tab=wTenve") end),
+ awful.key({ modkey, }, "h", function () awful.util.spawn("env firefox https://translate.google.ru/?hl=ru&tab=wTenve") end),
  awful.key({ }, "Print", function () awful.util.spawn("scrot -e 'mv $f ~/screenshots/ 2>/dev/null'") end),
+
+ awful.key({ modkey }, "p", function() awful.util.spawn("env /root/PhpStorm-7.1.2/bin/phpstorm.sh") end),
 
  -- Standard program
  awful.key({ modkey, "Control" }, "r", awesome.restart),
@@ -498,7 +500,7 @@ awful.key({ modkey,           }, "c",     function () client.focus:lower() end),
  awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
  -- Prompt
- awful.key({ modkey }, "]", function () mypromptbox[mouse.screen]:run() end),
+ awful.key({ modkey }, "]", function () mypromptbox[mouse.screen]:run() end)
 
  --awful.key({ modkey }, "x",
  -- function ()
@@ -508,7 +510,7 @@ awful.key({ modkey,           }, "c",     function () client.focus:lower() end),
  -- awful.util.getdir("cache") .. "/history_eval")
  --end),
  -- Menubar
- awful.key({ modkey }, "p", function() menubar.show() end)
+ --awful.key({ modkey }, "p", function() menubar.show() end)
 )
 
 clientkeys = awful.util.table.join(
@@ -772,6 +774,10 @@ awful.rules.rules = {
         })
 
        end
+    },
+    {
+	    rule = { class = "jetbrains-phpstorm"},
+	    properties = { floating = true }
     },
     {
       rule = { class = "Skype", name = "pavel--ruban - Skype™" },

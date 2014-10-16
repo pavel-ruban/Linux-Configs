@@ -82,7 +82,7 @@ naughty.config.defaults = {
     text = "",
     screen = 1,
     ontop = true,
-    margin = "5",
+    margin = "18",
     border_width = "1",
     position = "top_right"
 }

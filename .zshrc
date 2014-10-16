@@ -4,7 +4,8 @@ export TERM=rxvt-256color
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export GIT_MERGE_AUTOEDIT="no"
 export LC_ALL="en_GB.utf8"
-export BROWSER="google-chrome"
+#export BROWSER="google-chrome"
+export BROWSER="firefox"
 export EGL_PLATFORM="drm"
 export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
 export CPLUS_INCLUDE_PATH=/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.2/include
@@ -13,6 +14,7 @@ export GTK_MODULES=rgba
 export WINEARCH='win32'
 export WINEPREFIX=/root/.wine32
 export USE_ZEND_ALLOC=0
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Includes
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

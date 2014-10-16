@@ -14,7 +14,7 @@ theme.wallpaper = "/root/.config/awesome/themes/zenburn/blue.jpg"
 -- }}}
 
 -- {{{ Styles
-theme.font      = "sans 8"
+theme.font      = "deja vu sans mono 13"
 
 -- {{{ Colors
 theme.fg_normal  = "#DCDCCC"
