@@ -62,9 +62,15 @@ naughty.config.notify_callback = nil
 -- @field normal The default preset for every notification without a preset that will also be used for normal urgency level
 -- @field critical The preset for notifications with a critical urgency level
 naughty.config.presets = {
-    normal = {},
+    normal = {
+        timeout = 5,
+        opacity = 1.0,
+        hover_timeout = 0
+    },
     low = {
-        timeout = 5
+        timeout = 5,
+        opacity = 1.0,
+        hover_timeout = 0
     },
     critical = {
         bg = "#ff0000",
@@ -78,6 +84,7 @@ naughty.config.presets = {
 -- @see naughty.config.presets
 -- @see naughty.notify
 naughty.config.defaults = {
+    opacity = 1,
     timeout = 5,
     text = "",
     screen = 1,
@@ -350,11 +357,11 @@ function naughty.notify(args)
     notification.die = die
 
     local run = function ()
-        if args.run then
-            args.run(notification)
-        else
-            die()
-        end
+    --    if args.run then
+    --        args.run(notification)
+    --    else
+        die()
+        --end
     end
 
     local hover_destroy = function ()
@@ -377,7 +384,7 @@ function naughty.notify(args)
     textbox:set_font(font)
 
     local function setMarkup(pattern, replacements)
-        textbox:set_markup(string.format('<b>%s</b>%s', title, text:gsub(pattern, replacements)))
+        textbox:set_markup(string.format("<b>%s</b>%s", title, text:gsub(pattern, replacements)))
     end
     local function setText()
         textbox:set_text(string.format('%s %s', title, text))

@@ -133,15 +133,15 @@
          id="rect"
          style="fill:blue;"
          usecurrent="1"
-         width="191.92898559570312"
-         height="168.69544982910156"
-         rx="95.964492797851562"
-         ry="40.406101226806641" />
+         width="402.85711669921875"
+         height="639.99993896484375"
+         rx="161.67875671386719"
+         ry="154.69181823730469" />
       <eventcontext
          id="3dbox"
          style="stroke:none;stroke-linejoin:round;"
          usecurrent="1"
-         persp="perspective3023">
+         persp="perspective3031">
         <side
            id="XYfront"
            style="fill:#8686bf;stroke:none;stroke-linejoin:round;"
@@ -178,9 +178,10 @@
          magnitude="5"
          style="fill:yellow;"
          usecurrent="1"
-         proportion="0.5"
+         proportion="0.14205460226404318"
          rounded="0"
-         randomized="0" />
+         randomized="0"
+         isflatsided="0" />
       <eventcontext
          id="spiral"
          style="fill:none;"
@@ -350,8 +351,8 @@
        live_outline="1"
        live_objects="1"
        show_helperpath="0"
-       x="618.21335775524062"
-       y="760.64486664983042"
+       x="0"
+       y="0"
        edit_clipping_paths="0"
        edit_masks="0" />
     <eventcontext
@@ -960,12 +961,12 @@
      math.polyhedron.3d.z_sort="max" />
   <group
      id="desktop"
-     style="">
+     style="fill:#800000">
     <group
-       width="1910"
-       height="1070"
-       x="5"
-       y="5"
+       width="897"
+       height="785"
+       x="136"
+       y="141"
        fullscreen="0"
        id="geometry"
        maximized="0" />
