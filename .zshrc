@@ -56,6 +56,7 @@ sk=/http/skimium/
 s=/sources/c++/silk-cpp-engine
 skm=/http/skimium/sites/all/modules/
 skt=/http/skimium/sites/all/themes/
+ke=/sources/kernel/linux
 sa=/http/sas/
 os=/sources/linux_configs/
 ZSH=$HOME/.oh-my-zsh
@@ -89,6 +90,5 @@ typeset -A key
 # Start tmux session
 if [ -z $TMUX ]
   then
-    tmux
+    #tmux
 fi
-ke=/sources/kernel/linux

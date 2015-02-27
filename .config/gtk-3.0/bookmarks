@@ -1,5 +1,7 @@
 file:///home/unix/Apache
 file:///usr/bin bin
+file:///opt opt
+file:///opt/cmsis cmsis
 file:///sources/kernel
 file:///home/noname
 file:///root/Desktop/keys
