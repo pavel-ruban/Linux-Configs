@@ -4,9 +4,13 @@ Xcursor.theme: simpleandsoft
 !Gimp*Xcursor.theme: oxy-neon
 !XTerm*termName:  xterm-256color
 !URxvt*termName:  xterm-256color
-URxvt*font: xft:DEJA VU SANS MONO:size=14
+
+! Current font backup
+!URxvt*font: xft:DEJA VU SANS MONO:size=14
+
 !URxvt.letterSpace: -13
-!URxvt*font: xft:ubuntumono:size=13
+URxvt*font: xft:terminus:size=15
+URxvt*font: xft:droid sans mono:size=13
 !URxvt*boldFont: xft:ubuntu mono:size=14
 !URxvt*boldFont: xft:terminus:bold:size=12
 !URxvt*font: xft:dejavu sans mono:size=8
@@ -18,10 +22,15 @@ Chrome*font: xft:bitstream vera sans mono:size=14
 Firefox.depth: 32
 URxvt.depth: 32
 URxvt.saveLines: 65535
-URxvt.background: rgba:0000/0000/0000/9999
-!URxvt*foreground: #ffffff
+!URxvt.background: rgba:0000/3000/4000/9999
+!URxvt.background: rgba:3333/3333/3333/7777
+!URxvt.background: rgba:2E14/3414/3614/AAAA
+URxvt.background: rgba:0000/0000/0000/AAAA
+!URxvt*foreground: rgba:aaa/aaaa/ffff/caaa
+URxvt*foreground: #8EBACD
 
-URxvt*foreground: #6EA0A1
+
+!URxvt*foreground: #6EA0A1
 !URxvt.background: [90]#073340
 gvim*background: [30]#002B36
 Gvim*background: [30]#002B36
@@ -63,7 +72,8 @@ URxvt.scrollBar: false
 !*URxvt*keysym.F2:    \033OQ
 !*URxvt*keysym.F3:    \033OR
 !*URxvt*keysym.F4:    \033OS
-URxvt*color253: #6EA0A1
+!URxvt*color253: #6EA0A1
+URxvt*color253: #8EBACD
 URxvt*color254: [20]#6EA0A1
 !URxvt*color255: [90]#073340
 URxvt*color255: rgba:0000/0000/0000/9999

@@ -4,8 +4,8 @@ export TERM=rxvt-256color
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export GIT_MERGE_AUTOEDIT="no"
 export LC_ALL="en_GB.utf8"
-#export BROWSER="google-chrome"
-export BROWSER="firefox"
+export BROWSER="google-as-noname.sh"
+#export BROWSER="firefox"
 export EGL_PLATFORM="drm"
 export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
 export CPLUS_INCLUDE_PATH=/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.2/include
@@ -42,6 +42,7 @@ alias fe="feh -. -B black"
 alias la="ls -lath --color=always | less -R"
 alias grep="grep --color=always"
 alias less="less -R"
+alias m=make
 #alias m="mplayer -shuffle -playlist /home/noname/Downloads/pl"
 #alias m2="mplayer -shuffle -playlist ~/pl2"
 #alias pyfa="python2.7 ~/pyfa/pyfa.py"
@@ -51,6 +52,7 @@ alias less="less -R"
 #  Custom variables
 c=/sources/c++
 books=~/books
+avr=/sources/avr
 di=/http/dior-ipad
 sk=/http/skimium/
 s=/sources/c++/silk-cpp-engine
@@ -92,3 +94,4 @@ if [ -z $TMUX ]
   then
     #tmux
 fi
+alias chrome="setsid sudo -u noname google-chrome-beta  > /dev/null 2>&1 < /dev/null"
