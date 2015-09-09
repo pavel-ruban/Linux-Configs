@@ -1,10 +1,12 @@
 file:///home/unix/Apache
 file:///usr/bin bin
+file:///sources/kernel kernel
+file:///http/pruban/sites/all/themes/front/images images
+file:///home/noname noname
+file:///opt/eagle-7.2.0/prj prj
 file:///opt opt
+file:///usr/share/arduino arduino
 file:///opt/cmsis cmsis
-file:///sources/kernel
-file:///home/noname
 file:///root/Desktop/keys
 file:///home/unix/Desktop/1
 file:///http/culturebox/public/sites/all/themes/culturebox/images culturebox-images
-file:///http/pruban/sites/all/themes/front/images
