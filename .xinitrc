@@ -7,6 +7,7 @@ export BROWSER="sudo -u noname chromium"
 #exec cairo-dock&
 #exec gnome-session
 #exec /sources/c++/a.out
+echo $DBUS_SESSION_BUS_ADDRESS > /tmp/DBUS_SESSION_BUS_ADDRESS
 exec awesome
 #exec xterm
 #[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources

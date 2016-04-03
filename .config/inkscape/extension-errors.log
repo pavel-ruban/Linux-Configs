@@ -24,21 +24,10 @@ Dependency:
   location: path
   string: fig2dev
 
-Extension "LaTeX formula" failed to load because a dependency was not met.
-Dependency:
-  type: executable
-  location: path
-  string: latex
-
-Extension "LaTeX formula" failed to load because a dependency was not met.
-Dependency:
-  type: executable
-  location: path
-  string: dvips
-
-Extension "LaTeX formula" failed to load because a dependency was not met.
+Extension "LaTeX" failed to load because a dependency was not met.
 Dependency:
   type: executable
   location: path
   string: pstoedit
 
+Extension "Win32 Vector Print" failed to load because the extension is designed for Windows only.  This is caused by an improper .inx file for this extension.  An improper .inx file could have been caused by a faulty installation of Inkscape.

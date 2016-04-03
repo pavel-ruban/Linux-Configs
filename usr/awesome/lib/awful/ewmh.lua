@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------
 -- @author Julien Danjou &lt;julien@danjou.info&gt;
 -- @copyright 2009 Julien Danjou
--- @release v3.5.5
+-- @release v3.5.9
 ---------------------------------------------------------------------------
 
 local setmetatable = setmetatable
@@ -66,11 +66,11 @@ local function fullscreen(window, set)
         store_geometry(window, "fullscreen")
         data[window].fullscreen.border_width = window.border_width
         local g = screen[window.screen].geometry
-        window:geometry(screen[window.screen].geometry)
         window.border_width = 0
+        window:geometry(screen[window.screen].geometry)
     elseif data[window] and data[window].fullscreen then
-        window:geometry(data[window].fullscreen)
         window.border_width = data[window].fullscreen.border_width
+        window:geometry(data[window].fullscreen)
     end
 end
 

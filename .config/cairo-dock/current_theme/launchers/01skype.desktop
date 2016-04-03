@@ -1,4 +1,4 @@
-#3.4.1
+#3.4.99.alpha1
 
 #[gtk-about]
 
@@ -21,7 +21,7 @@ Icon=/root/.icons/1465271594951645154.png
 
 #s[Default] Command to launch on click:
 #{Example: nautilus --no-desktop, gedit, etc. You can even enter a shortkey, e.g. <Alt>F1, <Ctrl>c,  <Ctrl>v, etc}
-Exec=
+Exec=sudo -u noname pulseaudio --start; sudo -u noname skype
 
 
 #X[Extra parameters]

@@ -9,13 +9,13 @@
 -- {{{ Main
 theme = {}
 --theme.wallpaper = "/root/linux.jpg"
---theme.wallpaper = "/root/.config/awesome/themes/zenburn/blame2.jpg"
-theme.wallpaper = "/root/.config/awesome/themes/zenburn/circles.jpeg"
+theme.wallpaper = "/root/.config/awesome/themes/zenburn/blame2.jpg"
+--theme.wallpaper = "/root/.config/awesome/themes/zenburn/circles.jpeg"
 --theme.wallpaper = "/root/.config/awesome/themes/zenburn/blue.jpg"
 -- }}}
 
 -- {{{ Styles
-theme.font      = "deja vu sans mono 13"
+theme.font      = "deja vu sans mono 8" -- prev value 13
 
 -- {{{ Colors
 theme.fg_normal  = "#DCDCCC"
@@ -28,15 +28,16 @@ theme.bg_systray = theme.bg_normal
 -- }}}
 
 -- {{{ Borders
-theme.border_width  = 0
+theme.border_width  = 1
 theme.border_normal = "#000000"
 theme.border_focus  = "#000000"
 theme.border_marked = "#000000"
 -- }}}
 
 -- {{{ Titlebars
-theme.titlebar_bg_focus  = "#000000"
-theme.titlebar_bg_normal = "#000000"
+theme.titlebar_bg_focus  = "#333333"
+--theme.titlebar_bg_normal = "#000000"
+theme.titlebar_bg_normal = "#333333"
 -- }}}
 
 -- There are other variable sets

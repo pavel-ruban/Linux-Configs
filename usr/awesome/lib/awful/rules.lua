@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------
 -- @author Julien Danjou &lt;julien@danjou.info&gt;
 -- @copyright 2009 Julien Danjou
--- @release v3.5.5
+-- @release v3.5.9
 ---------------------------------------------------------------------------
 
 -- Grab environment we need
@@ -237,7 +237,7 @@ function rules.execute(c, props, callbacks)
     -- Do this at last so we do not erase things done by the focus
     -- signal.
     if props.focus and (type(props.focus) ~= "function" or props.focus(c)) then
-        c:emit_signal('request::activate')
+        c:emit_signal('request::activate',"rules")
     end
 end
 

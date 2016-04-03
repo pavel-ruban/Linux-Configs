@@ -1,9 +1,12 @@
 ----------------------------------------------------------------------------
 -- @author koniu &lt;gkusnierz@gmail.com&gt;
 -- @copyright 2008 koniu
--- @release v3.5.5
+-- @release v3.5.9
 ----------------------------------------------------------------------------
+local package = require 'package';
+package.path = package.path .. ";/usr/share/lua/5.3/debugger/?.lua;/usr/share/awesome/lib/?.lua;/usr/share/awesome/lib/?/init.lua;";
 
+--require('debugger')('localhost', 10000, 'luaidekey')
 -- Package environment
 local pairs = pairs
 local table = table
@@ -67,10 +70,16 @@ naughty.config.presets = {
         opacity = 1.0,
         hover_timeout = 0
     },
+    i20 = {
+        timeout = 0,
+        --opacity = 1.0,
+        bg = "#000000",
+        fg = "#ffffff"
+    },
     low = {
-        timeout = 5,
-        opacity = 1.0,
-        hover_timeout = 0
+        timeout = 0,
+        bg = "#000000",
+        fg = "#ffffff"
     },
     critical = {
         bg = "#ff0000",
@@ -287,6 +296,7 @@ end
 -- @usage naughty.notify({ title = "Achtung!", text = "You're idling", timeout = 0 })
 -- @return The notification object
 function naughty.notify(args)
+    --require("debugger")('localhost', 8172, 'luaidekey')
     if naughty.config.notify_callback then
         args = naughty.config.notify_callback(args)
         if not args then return end
@@ -357,11 +367,11 @@ function naughty.notify(args)
     notification.die = die
 
     local run = function ()
-    --    if args.run then
-    --        args.run(notification)
-    --    else
-        die()
-        --end
+        if args.run then
+            args.run(notification)
+        else
+            die()
+        end
     end
 
     local hover_destroy = function ()
@@ -384,7 +394,7 @@ function naughty.notify(args)
     textbox:set_font(font)
 
     local function setMarkup(pattern, replacements)
-        textbox:set_markup(string.format("<b>%s</b>%s", title, text:gsub(pattern, replacements)))
+        textbox:set_markup(string.format('<b>%s</b>%s', title, text:gsub(pattern, replacements)))
     end
     local function setText()
         textbox:set_text(string.format('%s %s', title, text))

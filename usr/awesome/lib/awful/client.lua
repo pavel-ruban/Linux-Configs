@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------
 -- @author Julien Danjou &lt;julien@danjou.info&gt;
 -- @copyright 2008 Julien Danjou
--- @release v3.5.1
+-- @release v3.5.9
 ---------------------------------------------------------------------------
 
 -- Grab environment we need
@@ -222,7 +222,10 @@ function client.tiled(screen)
     local tclients = {}
     -- Remove floating clients
     for k, c in pairs(clients) do
-        if not client.floating.get(c) then
+        if not client.floating.get(c)
+            and not c.fullscreen
+            and not c.maximized_vertical
+            and not c.maximized_horizontal then
             table.insert(tclients, c)
         end
     end
@@ -949,6 +952,8 @@ end
 capi.client.add_signal("property::floating_geometry")
 capi.client.add_signal("property::floating")
 capi.client.add_signal("property::dockable")
+capi.client.add_signal("marked")
+capi.client.add_signal("unmarked")
 
 capi.client.connect_signal("focus", client.focus.history.add)
 capi.client.connect_signal("unmanage", client.focus.history.delete)

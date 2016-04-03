@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------
 -- @author Antonio Terceiro
 -- @copyright 2009, 2011-2012 Antonio Terceiro, Alexander Yakushev
--- @release v3.5.5
+-- @release v3.5.9
 ---------------------------------------------------------------------------
 
 -- Grab environment
@@ -175,6 +175,9 @@ function utils.parse(file)
     if program.Exec then
         -- Substitute Exec special codes as specified in
         -- http://standards.freedesktop.org/desktop-entry-spec/1.1/ar01s06.html
+        if program.Name == nil then
+            program.Name = '['.. file:match("([^/]+)%.desktop$") ..']'
+        end
         local cmdline = program.Exec:gsub('%%c', program.Name)
         cmdline = cmdline:gsub('%%[fuFU]', '')
         cmdline = cmdline:gsub('%%k', program.file)

@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------
 -- @author Uli Schlachter
 -- @copyright 2010 Uli Schlachter
--- @release v3.5.5
+-- @release v3.5.9
 ---------------------------------------------------------------------------
 
 local capi = {
@@ -46,6 +46,16 @@ end
 --          nil or a string that gears.color() understands.
 function wibox:set_fg(c)
     self._drawable:set_fg(c)
+end
+
+--- Find a widget by a point.
+-- The wibox must have drawn itself at least once for this to work.
+-- @param x X coordinate of the point
+-- @param y Y coordinate of the point
+-- @return A sorted table with all widgets that contain the given point. The
+--         widgets are sorted by relevance.
+function wibox:find_widgets(x, y)
+    return self._drawable:find_widgets(x, y)
 end
 
 for _, k in pairs{ "buttons", "struts", "geometry", "get_xproperty", "set_xproperty" } do

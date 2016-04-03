@@ -133,15 +133,15 @@
          id="rect"
          style="fill:blue;"
          usecurrent="1"
-         width="402.85711669921875"
-         height="639.99993896484375"
-         rx="161.67875671386719"
-         ry="154.69181823730469" />
+         width="402.857"
+         height="640"
+         rx="161.679"
+         ry="154.692" />
       <eventcontext
          id="3dbox"
          style="stroke:none;stroke-linejoin:round;"
          usecurrent="1"
-         persp="perspective3031">
+         persp="perspective4248">
         <side
            id="XYfront"
            style="fill:#8686bf;stroke:none;stroke-linejoin:round;"
@@ -178,7 +178,7 @@
          magnitude="5"
          style="fill:yellow;"
          usecurrent="1"
-         proportion="0.14205460226404318"
+         proportion="0.142055"
          rounded="0"
          randomized="0"
          isflatsided="0" />
@@ -188,14 +188,14 @@
          usecurrent="0"
          revolution="3"
          expansion="1"
-         t0="0.29196844" />
+         t0="0.291968" />
     </group>
     <group
        id="freehand"
        style="fill:none;fill-rule:evenodd;stroke:black;stroke-opacity:1;stroke-linejoin:miter;stroke-linecap:butt;">
       <eventcontext
          id="pencil"
-         tolerance="4.0"
+         tolerance="4"
          selcue="1"
          style="stroke-width:1px;"
          usecurrent="0"
@@ -220,7 +220,9 @@
        tracebackground="0"
        usepressure="1"
        usetilt="0"
-       keep_selected="1">
+       keep_selected="1"
+       tremor="0"
+       wiggle="0">
       <group
          id="preset">
         <group
@@ -312,7 +314,7 @@
        mass="0.02"
        drag="1"
        angle="30"
-       width="0.15"
+       width="1"
        thinning="0.1"
        flatness="0.0"
        cap_rounding="1.4"
@@ -326,7 +328,8 @@
        mode="drag"
        style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;"
        unitid="3"
-       show_bbox="1" />
+       show_bbox="1"
+       unit="px" />
     <eventcontext
        id="text"
        usecurrent="0"
@@ -372,6 +375,8 @@
        doo="1" />
     <eventcontext
        id="spray"
+       selcue="1"
+       gradientdrag="0"
        usepressure="1"
        width="15"
        population="70"
@@ -385,6 +390,11 @@
        selcue="1"
        newgradient="1"
        newfillorstroke="1" />
+    <eventcontext
+       id="mesh"
+       selcue="1"
+       mesh_rows="1"
+       mesh_cols="1" />
     <eventcontext
        id="zoom"
        selcue="1"
@@ -410,7 +420,12 @@
        style="fill:#a0a0a0;stroke:none;"
        usecurrent="1"
        offset="0"
-       offsetunits="pt" />
+       offsetunits="pt"
+       threshold="5" />
+    <group
+       unit="px"
+       fontsize="10"
+       id="measure" />
   </group>
   <group
      id="palette">
@@ -537,7 +552,8 @@
        panel_mode="1"
        panel_ratio="100"
        panel_wrap="0"
-       palette="Inkscape default" />
+       palette="Inkscape default"
+       panel_border="0" />
   </group>
   <group
      id="dialogs">
@@ -555,7 +571,19 @@
     <group
        id="align" />
     <group
-       id="xml" />
+       id="xml"
+       panel_size="1"
+       panel_ratio="100"
+       panel_mode="1"
+       panel_wrap="0"
+       panel_border="0"
+       x="0"
+       y="0"
+       w="338"
+       h="266"
+       visible="1"
+       state="2"
+       placement="1" />
     <group
        id="find" />
     <group
@@ -573,7 +601,19 @@
     <group
        id="gradienteditor" />
     <group
-       id="object" />
+       id="object"
+       panel_size="1"
+       panel_ratio="100"
+       panel_mode="1"
+       panel_wrap="0"
+       panel_border="0"
+       x="0"
+       y="0"
+       w="338"
+       h="239"
+       visible="1"
+       state="2"
+       placement="2" />
     <group
        id="export"
        default=""
@@ -586,10 +626,10 @@
     </group>
     <group
        id="save_as"
-       default="org.inkscape.output.svg.inkscape"
+       default="org.ekips.output.dxf_outlines"
        append_extension="1"
        enable_preview="1"
-       path=""
+       path="/sources/geda/prjs/demo"
        use_current_dir="1" />
     <group
        id="save_copy"
@@ -600,11 +640,15 @@
     <group
        id="open"
        enable_preview="1"
-       path="" />
+       path="/home/noname/Downloads/" />
     <group
        id="import"
        enable_preview="1"
-       path="" />
+       path=""
+       ask="1"
+       link="embed"
+       scale="auto"
+       forcexdpi="0" />
     <group
        id="debug"
        redirect="0" />
@@ -659,6 +703,10 @@
        on-focus="1.0"
        on-blur="0.50"
        animate-time="100" />
+    <group
+       dpi="72"
+       asbitmap="1"
+       id="printing" />
   </group>
   <group
      id="printing">
@@ -670,6 +718,9 @@
   </group>
   <group
      id="options">
+    <group
+       id="renderingcache"
+       size="64" />
     <group
        id="useoldpdfexporter"
        value="0" />
@@ -703,6 +754,9 @@
     <group
        id="dragtolerance"
        value="4.0" />
+    <group
+       id="grabsize"
+       value="3" />
     <group
        id="displayprofile"
        enable="0"
@@ -777,9 +831,6 @@
        id="simplifythreshold"
        value="0.002" />
     <group
-       id="bitmapoversample"
-       value="1" />
-    <group
        id="bitmapeditor"
        value="0"
        choices="gimp,krita,gpaint,kolourpaint,mtpaint,cinepaint" />
@@ -797,6 +848,9 @@
     <group
        id="dialogsskiptaskbar"
        value="1" />
+    <group
+       id="defaultwindowsize"
+       value="2" />
     <group
        id="arenatilescachesize"
        value="8192" />
@@ -876,8 +930,18 @@
        minimumexponent="-8"
        inlineattrs="0"
        indent="2"
-       allowrelativecoordinates="1"
-       forcerepeatcommands="0" />
+       pathstring_format="2"
+       forcerepeatcommands="0"
+       incorrect_attributes_warn="1"
+       incorrect_attributes_remove="0"
+       incorrect_style_properties_warn="1"
+       incorrect_style_properties_remove="0"
+       style_defaults_warn="1"
+       style_defaults_remove="0"
+       check_on_reading="0"
+       check_on_editing="0"
+       check_on_writing="0"
+       allowrelativecoordinates="1" />
     <group
        id="externalresources">
       <group
@@ -925,11 +989,16 @@
     <group
        id="workarounds"
        colorsontop="0"
-       floatallowed="0"
-       partialdynamic="0" />
+       partialdynamic="0"
+       floatallowed="0" />
+    <group
+       id="bitmapoversample"
+       value="1" />
     <group
        id="threading"
        numthreads="1" />
+    <group
+       id="rendering" />
   </group>
   <group
      id="extensions"
@@ -958,18 +1027,21 @@
      math.polyhedron.3d.lv_y="1"
      math.polyhedron.3d.lv_z="-2"
      math.polyhedron.3d.show="fce"
-     math.polyhedron.3d.z_sort="max" />
+     math.polyhedron.3d.z_sort="max"
+     org.ekips.output.dxf_outlines.units="25.4/90"
+     org.ekips.output.dxf_outlines.encoding="latin_1"
+     org.ekips.output.dxf_outlines.layer_option="all" />
   <group
      id="desktop"
      style="fill:#800000">
     <group
-       width="897"
-       height="785"
-       x="136"
-       y="141"
+       width="640"
+       height="480"
+       x="516"
+       y="279"
        fullscreen="0"
        id="geometry"
-       maximized="0" />
+       maximized="1" />
     <group
        id="XYfront" />
     <group
@@ -1058,6 +1130,15 @@
     </group>
   </group>
   <group
+     id="debug">
+    <group
+       id="latency"
+       skew="1" />
+  </group>
+  <group
+     id="ui"
+     language="" />
+  <group
      id="whiteboard">
     <group
        id="server"
@@ -1070,13 +1151,4 @@
        name="inkboard"
        server="gristle.org" />
   </group>
-  <group
-     id="debug">
-    <group
-       id="latency"
-       skew="1" />
-  </group>
-  <group
-     id="ui"
-     language="" />
 </inkscape>

@@ -1,0 +1,24 @@
+# -- THEME AUTO-WRITTEN BY gtk-theme-switch2 DO NOT EDIT
+#include "/usr/share/themes/absolute/gtk-2.0/gtkrc"
+#include "/usr/share/themes/SammyDark/gtk-2.0/gtkrc"
+#include "/usr/share/themes/Radiance-Flat-AA-GnomeShell/gtk-2.0/gtkrc"
+include "/usr/share/themes/waldorf1314/gtk-2.0/gtkrc"
+# Dark theme.
+#include "/usr/share/themes/MediterraneanDarkest/gtk-2.0/gtkrc"
+
+
+style "user-font"
+{
+  font_name="BitStream Vera Sans Mono 30"
+
+  #font_name="Droid Sans Mono 12"
+}
+widget_class "*" style "user-font"
+
+gtk-icon-theme-name= "Faenza"
+gtk-fallback-icon-theme= "Faenza"
+
+gtk-font-name="BitStream Vera Sans Mono 30"
+include "/root/.gtkrc-2.0.mine"
+# -- THEME AUTO-WRITTEN BY gtk-theme-switch2 DO NOT EDIT
+# -- THEME AUTO-WRITTEN BY gtk-theme-switch2 DO NOT EDIT

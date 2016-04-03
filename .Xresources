@@ -9,6 +9,7 @@ URxvt.tabbed.transparency: true
 URxvt.tabbed.autohide: true
 URxvt.tabbed.new-button: false
 URxvt.tabbed.tabbar-timeouts: 1
+URxvt.imLocale:ru_RU.koi8r
 
 Xcursor.size:  13
 !URxvt.url-launcher:   /usr/bin/google-as-noname.sh

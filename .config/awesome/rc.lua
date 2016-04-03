@@ -107,7 +107,7 @@ function QuakeConsole:display()
 
    -- Resize
    awful.client.floating.set(client, true)
-   client.border_width = 0
+ --  client.border_width = 0
    client.size_hints_honor = false
    client:geometry({ x = x, y = y, width = width, height = height })
 
@@ -474,15 +474,17 @@ awful.key({ modkey,           }, "c",     function () client.focus:lower() end),
  awful.key({ modkey, }, "z", function () awful.util.spawn("gtrs") end),
  --awful.key({ modkey, }, "v", function () awful.util.spawn("urxvt -hold -e sh -c 'vim'") end),
  --awful.key({ modkey, }, "v", function () naughty.notify({ preset = naughty.config.presets.warning, title = "Oops", text = client.focus.class 'fdefs' }) end),
- awful.key({ modkey, }, "g", function () awful.util.spawn("google-as-noname.sh http://google.com") end),
- awful.key({ modkey, }, "b", function () awful.util.spawn("google-as-noname.sh https://prj.adyax.com/projects/skimium/issues?query_id=1215") end),
- awful.key({ modkey, }, "h", function () awful.util.spawn("google-as-noname.sh http://translate.google.ru/?hl=ru&tab=wTenve") end),
+ awful.key({ modkey, }, "g", function () awful.util.spawn("env BROWSER_BIN=chromium google-as-noname.sh http://google.com") end),
+ awful.key({ modkey, }, "b", function () awful.util.spawn("env BROWSER_BIN=chromium google-as-noname.sh https://prj.adyax.com/projects/skimium/issues?query_id=1215") end),
+ awful.key({ modkey, }, "h", function () awful.util.spawn("env BROWSER_BIN=chromium google-as-noname.sh http://translate.google.ru/?hl=ru&tab=wTenve") end),
+ awful.key({ modkey, }, "m", function () awful.util.spawn("env BROWSER_BIN=chromium google-as-noname.sh http://192.168.1.13/open-door") end),
 --awful.key({ modkey, }, "g", function () awful.util.spawn("env firefox https://google.com") end),
 --awful.key({ modkey, }, "b", function () awful.util.spawn("env firefox https://prj.adyax.com/projects/skimium/issues?query_id=1215") end),
 --awful.key({ modkey, }, "h", function () awful.util.spawn("env firefox https://translate.google.ru/?hl=ru&tab=wTenve") end),
  awful.key({ }, "Print", function () awful.util.spawn("scrot -e 'mv $f ~/screenshots/ 2>/dev/null'") end),
 
- awful.key({ modkey }, "p", function() awful.util.spawn("env /root/PhpStorm-7.1.2/bin/phpstorm.sh") end),
+ --awful.key({ modkey }, "p", function() awful.util.spawn("env /root/PhpStorm-7.1.2/bin/phpstorm.sh") end),
+ awful.key({ modkey }, "p", function() awful.util.spawn("env /root/PhpStorm-143.1770/bin/phpstorm.sh") end),
 
  -- Standard program
  awful.key({ modkey, "Control" }, "r", awesome.restart),
@@ -611,7 +613,40 @@ awful.rules.rules = {
        end
     },
     {
-      rule = {class = "cairo-dock" },
+      rule = {class = "URxvt" },
+      properties = {
+        border_width = 1,
+        border_color = 0,
+	titlebar_bg_focus = "#000000",
+        size_hints_honor = false
+      }
+    },
+    {
+      rule_any = { {class = "cairo-dock", class = "Cairo-dock", name = "cairo-dock"} },
+      properties = {
+        border_width = 0,
+        border_color = 0,
+        size_hints_honor = false,
+        floating = true,
+        focusable = false,
+        modal = true,
+        below =  true
+      }
+    },
+    {
+      rule = { class = "Cairo-dock" },
+      properties = {
+        border_width = 0,
+        border_color = 0,
+        size_hints_honor = false,
+        floating = true,
+        focusable = false,
+        modal = true,
+        below =  true
+      }
+    },
+    {
+      rule = { name = "cairo-dock" },
       properties = {
         border_width = 0,
         border_color = 0,
@@ -724,7 +759,7 @@ awful.rules.rules = {
     {
       rule = { class = "Skype" },
       properties = {
-        border_width = 0,
+        border_width = 1,
         border_color = 0,
         size_hints_honor = false,
         floating = true,
@@ -750,7 +785,7 @@ awful.rules.rules = {
     {
       rule = { class = "Skype", name = "Skype™ 4.3 for Linux" },
       properties = {
-        border_width = 0,
+        border_width = 1,
         border_color = 0,
         size_hints_honor = false,
         floating = true,
@@ -782,7 +817,7 @@ awful.rules.rules = {
     {
       rule = { class = "Skype", name = "pavel--ruban - Skype™" },
       properties = {
-        border_width = 0,
+        border_width = 1,
         border_color = 0,
         size_hints_honor = false,
         floating = true,
@@ -900,9 +935,10 @@ client.connect_signal("manage", function (c, startup)
         end
     end
 
-    local titlebars_enabled = false
+    local titlebars_enabled = true
     --if c and c.class ~= 'Chromium' and c.class ~= 'Cairo-dock' and c.class ~= 'URxvt' and c.class ~= 'Firefox' and titlebars_enabled   then
-    if c and c.class ~= 'Google-chrome' and c.class ~= 'google-chrome' and c.class ~= 'Cairo-dock' and c.class ~= 'Cairo-dock' and c.class ~= 'URxvt' and c.class ~= 'jetbrains-phpstorm'   and c.class ~= 'Firefox' and titlebars_enabled   then
+    --if c and c.class ~= 'Google-chrome' and c.class ~= 'google-chrome' and c.class ~= 'Cairo-dock' and c.class ~= 'Cairo-dock' and c.class ~= 'URxvt' and c.class ~= 'jetbrains-phpstorm'   and c.class ~= 'Firefox' and titlebars_enabled   then
+    if c and c.class ~= 'Gimp' and c.class ~= 'gimp' and c.class ~= 'Virtualbox' and c.class ~= 'Chromium' and c.class ~= 'chromium' and c.class ~= 'MPlayer' and c.class ~= 'vdpau' and c.class ~= 'Google-chrome' and c.class ~= 'Google-chrome-beta' and c.class ~= 'URxvt' and c.class ~= 'google-chrome' and c.class ~= 'Cairo-dock' and c.class ~= 'Cairo-dock' and c.class ~= 'jetbrains-phpstorm'   and c.class ~= 'Firefox' and titlebars_enabled   then
             -- Widgets that are aligned to the left
         local left_layout = wibox.layout.fixed.horizontal()
         left_layout:add(awful.titlebar.widget.iconwidget(c))
@@ -935,8 +971,8 @@ client.connect_signal("manage", function (c, startup)
         layout:set_left(left_layout)
         layout:set_right(right_layout)
         layout:set_middle(title)
-        c.border_width = 1
-        awful.titlebar(c):set_widget(layout)
+   --     c.border_width = 1
+        awful.titlebar(c, {size = "14"}):set_widget(layout)
     end
 
 --        local scr_area = screen[c.screen].workarea
@@ -950,6 +986,7 @@ client.connect_signal("manage", function (c, startup)
 end)
 
 client.connect_signal("focus", function(c)
+  c.opacity = 1
   --naughty.notify({naughty.config.presets.critical, title = 'Привет Артём!', text = 'Archlinux is AWESOME!!!' })
   if c.class == 'conky' or c.class == 'cube'
     then
@@ -975,7 +1012,12 @@ client.connect_signal("focus", function(c)
   c.border_color = beautiful.border_focus
   --naughty.notify({naughty.config.presets.critical, title = 'this is focus signal', text = c.class })
 end)
---client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+client.connect_signal("unfocus", function(c)
+	c.border_color = beautiful.border_normal
+	if c and c.class ~= 'chromium' and c.class ~= 'Chromium' and c.class ~= 'Skype' and c.class ~= 'skype' and c.class ~= 'Cairo-dock' and c.class ~= 'Gimp' and c.class ~= 'gimp' and c.class ~= 'Virtualbox' and c.class ~= 'Chromium' and c.class ~= 'MPlayer' and c.class ~= 'vdpau' and c.class ~= 'cinelerra' and c.class ~= "Cinelerra" and c.class ~= 'jetbrains-phpstorm' then
+		c.opacity = 0.4
+	end
+end)
 -- }}}
 --compton -c -C  -z --vsync opengl --detect-rounded-corners  --refresh-rate 60 --vsync-aggressive -r 15 -l -22 -t -22 -m 1
 

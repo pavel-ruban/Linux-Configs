@@ -3,7 +3,7 @@
 -- @author Julien Danjou &lt;julien@danjou.info&gt;
 -- @author dodo
 -- @copyright 2008, 2011 Damien Leone, Julien Danjou, dodo
--- @release v3.5.5
+-- @release v3.5.9
 --------------------------------------------------------------------------------
 
 local wibox = require("wibox")
@@ -56,11 +56,11 @@ end
 -- key to up action. This is common to all created menu.
 -- @class table
 -- @name menu_keys
-menu.menu_keys = { up = { "Up" },
-              down = { "Down" },
-              back = { "Left" },
+menu.menu_keys = { up = { "Up", "k" },
+              down = { "Down", "j" },
+              back = { "Left", "h" },
               exec = { "Return" },
-              enter = { "Right" },
+              enter = { "Right", "l" },
               close = { "Escape" } }
 
 
@@ -101,7 +101,7 @@ end
 
 local function item_position(_menu, child)
     local in_dir, other, a, b = 0, 0, "height", "width"
-    local dir = _menu.layout.get_dir and _menu.layout:get_dir() or "y"
+    local dir = _menu.layout.dir or "y"
     if dir == "x" then  a, b = b, a  end
 
     local in_dir, other = 0, _menu[b]
@@ -162,7 +162,7 @@ end
 
 local function set_size(_menu)
     local in_dir, other, a, b = 0, 0, "height", "width"
-    local dir = _menu.layout.get_dir and _menu.layout:get_dir() or "y"
+    local dir = _menu.layout.dir or "y"
     if dir == "x" then  a, b = b, a  end
     for _, item in ipairs(_menu.items) do
         other = math.max(other, item[b])

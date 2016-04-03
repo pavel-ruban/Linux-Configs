@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------
 -- @author Uli Schlachter
 -- @copyright 2010 Uli Schlachter
--- @release v3.5.5
+-- @release v3.5.9
 ---------------------------------------------------------------------------
 
 --- Collection of layouts that can be used in widget boxes

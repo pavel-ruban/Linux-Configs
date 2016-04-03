@@ -5,8 +5,13 @@ file:///http/pruban/sites/all/themes/front/images images
 file:///home/noname noname
 file:///opt/eagle-7.2.0/prj prj
 file:///opt opt
+file:///sources/analysis
+file:///sources/kicad kicad
+file:///sources/geda/prjs
+file:///sources/geda
 file:///usr/share/arduino arduino
 file:///opt/cmsis cmsis
 file:///root/Desktop/keys
+file:///usr/share/icons/hicolor
 file:///home/unix/Desktop/1
 file:///http/culturebox/public/sites/all/themes/culturebox/images culturebox-images

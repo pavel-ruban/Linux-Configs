@@ -1,4 +1,5 @@
 *.swn
+.config/menus
 *.swp
 *.odt
 *.rdb

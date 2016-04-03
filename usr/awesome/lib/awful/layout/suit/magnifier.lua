@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------
 -- @author Julien Danjou &lt;julien@danjou.info&gt;
 -- @copyright 2008 Julien Danjou
--- @release v3.5.5
+-- @release v3.5.9
 ---------------------------------------------------------------------------
 
 -- Grab environment we need
@@ -23,8 +23,9 @@ function magnifier.arrange(p)
     -- Fullscreen?
     local area = p.workarea
     local cls = p.clients
-    local focus = capi.client.focus
-    local mwfact = tag.getmwfact(tag.selected(p.screen))
+    local focus = p.focus or capi.client.focus
+    local t = p.tag or tag.selected(p.screen)
+    local mwfact = tag.getmwfact(t)
     local fidx
 
     -- Check that the focused window is on the right screen

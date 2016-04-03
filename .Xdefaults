@@ -19,6 +19,7 @@ URxvt*font: xft:droid sans mono:size=13
 !Firefox*font: xft:droir sans mono:size=14
 #Firefox*font: xft:ubuntumono:size=14
 Chrome*font: xft:bitstream vera sans mono:size=14
+chrom*font: xft:bitstream vera sans mono:size=14
 Firefox.depth: 32
 URxvt.depth: 32
 URxvt.saveLines: 65535
@@ -54,7 +55,7 @@ URxvt.scrollBar: false
 !Xft*hintstyle: hintmedium
 
 
-!Xft.dpi: 96
+Xft.dpi: 96
 !Xft*antialias: true
 !! hintnone, hintslight, hintmedium, hintfull
 !Xft.hintstyle: hintfull

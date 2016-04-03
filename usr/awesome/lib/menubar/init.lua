@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------
 -- @author Alexander Yakushev &lt;yakushev.alex@gmail.com&gt;
 -- @copyright 2011-2012 Alexander Yakushev
--- @release v3.5.5
+-- @release v3.5.9
 ---------------------------------------------------------------------------
 
 -- Grab environment we need

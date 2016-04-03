@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------
 -- @author Sébastien Gross &lt;seb•ɱɩɲʋʃ•awesome•ɑƬ•chezwam•ɖɵʈ•org&gt
 -- @copyright 2009 Sébastien Gross
--- @release v3.5.5
+-- @release v3.5.9
 -------------------------------------------------------------------------
 
 local mouse = mouse
@@ -67,7 +67,8 @@ local function animate(self)
     data[self].wibox:geometry({width = r + data[self].factor,
         height = r + data[self].factor })
     -- need -1 to the radius to draw a full circle
-    a_wibox.rounded_corners(data[self].wibox, (r + data[self].factor)/2 -1)
+    -- FIXME: The rounded_corners() API was removed
+    -- a_wibox.rounded_corners(data[self].wibox, (r + data[self].factor)/2 -1)
     -- make sure the mouse finder follows the pointer. Uh!
     place(self)
 end
@@ -80,7 +81,8 @@ local function show(self)
     if data[self].wibox.visible then return end
     if not data[self].timer.started then
         data[self].wibox:geometry({width = data[self].radius, height = data[self].radius })
-        a_wibox.rounded_corners(data[self].wibox, data[self].radius/2 -1)
+        -- FIXME: The rounded_corners() API was removed
+        -- a_wibox.rounded_corners(data[self].wibox, data[self].radius/2 -1)
         data[self].timer:start()
         data[self].animate_timer:start()
     end

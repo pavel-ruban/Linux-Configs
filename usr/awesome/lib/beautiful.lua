@@ -2,7 +2,7 @@
 -- @author Damien Leone &lt;damien.leone@gmail.com&gt;
 -- @author Julien Danjou &lt;julien@danjou.info&gt;
 -- @copyright 2008-2009 Damien Leone, Julien Danjou
--- @release v3.5.5
+-- @release v3.5.9
 ----------------------------------------------------------------------------
 
 -- Grab environment
