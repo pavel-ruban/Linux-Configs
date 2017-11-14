@@ -1,65 +1,68 @@
-#==============================================================================
-#                                 conkyrc_car
-#
-#  author  : SLK
-#  version : v2011011001
-#  license : Distributed under the terms of GNU GPL version 2 or later
-#
-#==============================================================================
+conky.config = {
+--==============================================================================
+--                                 conkyrc_car
 
-background no
-update_interval 1.0
+--  author  : SLK
+--  version : v2011011001
+--  license : Distributed under the terms of GNU GPL version 2 or later
 
-cpu_avg_samples 2
-net_avg_samples 2
-temperature_unit celsius
+--==============================================================================
 
-double_buffer yes
-no_buffers yes
-text_buffer_size 2048
+	background = false,
+	update_interval = 1.0,
 
-gap_x 0
-gap_y 50
-minimum_size 305 450
-maximum_width 303
+	cpu_avg_samples = 2,
+	net_avg_samples = 2,
+	temperature_unit = 'celsius',
 
-own_window yes
-own_window_type normal
-own_window_title conky
-own_window_class conky
-own_window_transparent yes
-own_window_argb_visual yes
-own_window_hints undecorate,sticky,skip_taskbar,skip_pager,below
-border_inner_margin 0
-border_outer_margin 0
-alignment tr
+	double_buffer = true,
+	no_buffers = true,
+	text_buffer_size = 2048,
 
-draw_shades yes
-draw_outline no
-draw_borders no
-draw_graph_borders no
-#default_shade_color #292721
+	gap_x = 0,
+	gap_y = 50,
+	minimum_width = 305, minimum_height = 450,
+	maximum_width = 303,
 
-override_utf8_locale yes
-use_xft yes
-xftfont ubuntu mono:size=8
-xftalpha 0.5
-uppercase no
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_title = 'conky',
+	own_window_class = 'conky',
+	own_window_transparent = true,
+	own_window_argb_visual = true,
+	own_window_hints = 'undecorated,sticky,skip_taskbar,skip_pager,below',
+	border_inner_margin = 0,
+	border_outer_margin = 0,
+	alignment = 'top_right',
 
-default_color FFFFFF
-color1 DDDDDD
-color2 AAAAAA
-color3 888888
+	draw_shades = true,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = false,
+--default_shade_color #292721
 
-lua_load ~/conky/conky.lua
-lua_load ~/conky/clock_rings.lua
-lua_draw_hook_post main
-#lua_load ~/conky/equalizer.lua
-#lua_draw_hook_pre widgets
-lua_draw_hook_pre clock_rings
+	override_utf8_locale = true,
+	use_xft = true,
+	font = 'ubuntu mono:size=8',
+	xftalpha = 0.5,
+	uppercase = false,
 
-#${rss https://planet.archlinux.org/rss20.xml 1 item_titles 10 }
-TEXT
+	default_color = '#FFFFFF',
+	color1 = '#DDDDDD',
+	color2 = '#AAAAAA',
+	color3 = '#888888',
+
+	lua_load = '~/conky/clock_rings.lua, ~/conky/conky.lua',
+	lua_draw_hook_pre = 'clock_rings',
+	--lua_load = '~/conky/conky.lua',
+	lua_draw_hook_post = 'main'
+--lua_load ~/conky/equalizer.lua
+--lua_draw_hook_pre widgets
+
+--${rss https://planet.archlinux.org/rss20.xml 1 item_titles 10 }
+};
+
+conky.text = [[
 ${goto 95}${voffset 105}${font ubuntu mono:bold:size=20}${time %H}:${time %M}
 
 ${voffset 40}${color 7ca7c6}${font ubuntu mono:bold:size=16}${time %A}${font}
@@ -80,3 +83,4 @@ ${color FFFFFF}${offset 10}${voffset 8}${color FFFFFF}${font}${voffset -3} ${col
 #${goto 145}${voffset 35}${color FFFFFF}${font ubuntu mono:size=10}Uptime: ${uptime_short}
 #${goto 145}${voffset 2}${color FFFFFF}${font ubuntu mono:size=10}procs: ${processes}
 #${goto 145}${voffset 2}${color FFFFFF}${font ubuntu mono:size=10}running: ${running_processes}
+]];

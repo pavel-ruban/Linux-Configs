@@ -1,4 +1,4 @@
-*font: xft:bitstream vera sans mono:size=13
+*font: xft:bitstream vera sans mono:size=9
 Xcursor.theme: simpleandsoft
 !*.*.Xcursor.theme: oxy-neon
 !Gimp*Xcursor.theme: oxy-neon
@@ -9,17 +9,19 @@ Xcursor.theme: simpleandsoft
 !URxvt*font: xft:DEJA VU SANS MONO:size=14
 
 !URxvt.letterSpace: -13
-URxvt*font: xft:terminus:size=15
-URxvt*font: xft:droid sans mono:size=13
+!URxvt*font: xft:terminus:size=15
+!URxvt*font: xft:droid sans mono:size=13
 !URxvt*boldFont: xft:ubuntu mono:size=14
 !URxvt*boldFont: xft:terminus:bold:size=12
-!URxvt*font: xft:dejavu sans mono:size=8
+!URxvt*font: xft:dejavu sans mono:size=12
 !URxvt*font: xft:terminus:size=11
 !Firefox*font: xft:ubuntumono:size=14
 !Firefox*font: xft:droir sans mono:size=14
-#Firefox*font: xft:ubuntumono:size=14
-Chrome*font: xft:bitstream vera sans mono:size=14
-chrom*font: xft:bitstream vera sans mono:size=14
+!Firefox*font: xft:ubuntumono:size=14
+!Chrome*font: xft:bitstream vera sans mono:size=14
+!chrom*font: xft:bitstream vera sans mono:size=14
+Chrome*font: xft:bitstream vera sans mono:size=9
+chrom*font: xft:bitstream vera sans mono:size=9
 Firefox.depth: 32
 URxvt.depth: 32
 URxvt.saveLines: 65535
@@ -30,6 +32,9 @@ URxvt.background: rgba:0000/0000/0000/AAAA
 !URxvt*foreground: rgba:aaa/aaaa/ffff/caaa
 URxvt*foreground: #8EBACD
 
+URxvt*scrollTtyOutput:      false
+URxvt*scrollWithBuffer:     true
+URxvt*scrollTtyKeypress:    true
 
 !URxvt*foreground: #6EA0A1
 !URxvt.background: [90]#073340
@@ -55,15 +60,17 @@ URxvt.scrollBar: false
 !Xft*hintstyle: hintmedium
 
 
+URxvt*font: xft:ubuntumono:size=14
+!URxvt*font: xft:bitstream vera sans mono:size=12
 Xft.dpi: 96
-!Xft*antialias: true
+Xft*antialias: true
 !! hintnone, hintslight, hintmedium, hintfull
-!Xft.hintstyle: hintfull
+Xft.hintstyle: hintslight
 !Xft.hinting: true
-!Xft*autohint: true
+Xft*autohint: true
 !! lcdnone, lcddefault, lcdlight, lcdlegacy
-!Xft.lcdfilter: lcdlight
-!Xft.rgba: rgb
+Xft.lcdfilter: lcddefault
+Xft.rgba: rgba
 
 !Xft*dpi: 96
 !Normal
@@ -77,7 +84,7 @@ Xft.dpi: 96
 URxvt*color253: #8EBACD
 URxvt*color254: [20]#6EA0A1
 !URxvt*color255: [90]#073340
-URxvt*color255: rgba:0000/0000/0000/9999
+URxvt*color255: rgba:0000/0000/0000/AAAA
 ! Shift
 ! paste conflict
 !*URxvt*keysym.S-Insert:  \033[2;2~
@@ -200,6 +207,11 @@ URxvt.tabbed.transparent:true
 *URxvt*keysym.C-Down:    \033[1;5B
 *URxvt*keysym.C-Right:    \033[1;5C
 *URxvt*keysym.C-Left:    \033[1;5D
+
+!*URxvt*keysym.C-Up:    \033[1;7A
+!*URxvt*keysym.C-Down:    \033[1;7B
+!*URxvt*keysym.C-Right:    \033[1;7C
+!*URxvt*keysym.C-Left:    \033[1;7D
 
 ! Shift+Control
 *URxvt*keysym.S-C-F1:    \033[1;6P

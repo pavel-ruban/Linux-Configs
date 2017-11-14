@@ -26,7 +26,8 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # Aliases
-alias log="less /http/log"
+alias n="sudo -u noname"
+alias log="less /hosts/log"
 alias vhc="/usr/bin/vhcn"
 alias storm="~/storm/bin/phpstorm.sh"
 alias chrome="sudo -u noname chromium"
@@ -48,6 +49,7 @@ alias la="ls -lath --color=always | less -R"
 alias grep="grep --color=always"
 alias less="less -R"
 alias m=make
+alias git="TZ=UTC git"
 
 #alias m="mplayer -shuffle -playlist /home/noname/Downloads/pl"
 #alias m2="mplayer -shuffle -playlist ~/pl2"
@@ -78,8 +80,22 @@ ZSH_HIGHLIGHT_STYLES[bracket-level-3]=fg=033
 ZSH_HIGHLIGHT_STYLES[bracket-level-3]=fg=033
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=038,fg=white,bold'
 HISTFILE=~/.zsh_history
-SAVEHIST=1000000
+SAVEHIST=10000000
+HISTSIZE=10000000
 
+setopt BANG_HIST                 # Treat the '!' character specially during expansion.
+setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
+setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY             # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
+setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
+setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
+setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
+setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
+setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 ## Override highlighter colors
 ##ZSH_HIGHLIGHT_STYLES[default]=none
 ##ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=009
@@ -111,3 +127,18 @@ si=/http/siis/
 sim=/http/siis/sites/all/modules/
 sit=/http/siis/sites/all/themes/
 #export LUA_PATH="/usr/share/lua/5.3/debugger/?.lua;/usr/share/lua/5.3/?.lua;/usr/share/awesome/lib/?.lua;/usr/lib/lua/5.3/?.so;/usr/lib/lua/5.3/?.lua"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/noname/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/home/noname/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/noname/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/noname/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+ma=/projects/Matchtech/webapp/public/
+mam=/projects/Matchtech/webapp/public/sites/all/modules/
+mat=/projects/Matchtech/webapp/public/sites/all/themes/
+oe=/projects/oebv/_www/
+oem=/projects/oebv/_www/sites/all/modules/
+oet=/projects/oebv/_www/sites/all/themes/
+ip=/projects/odp/web/
+ipm=/projects/odp/web/sites/all/modules/
+ipt=/projects/odp/web/sites/all/themes/

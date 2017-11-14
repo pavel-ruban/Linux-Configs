@@ -19,7 +19,7 @@ widget_class "*" style "user-font"
 gtk-icon-theme-name= "Faenza"
 gtk-fallback-icon-theme= "Faenza"
 
-#gtk-font-name="BitStream Vera Sans Mono 30"
+gtk-font-name="BitStream Vera Sans Mono 10"
 include "/root/.gtkrc-2.0.mine"
 # -- THEME AUTO-WRITTEN BY gtk-theme-switch2 DO NOT EDIT
 # -- THEME AUTO-WRITTEN BY gtk-theme-switch2 DO NOT EDIT

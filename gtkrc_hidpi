@@ -9,7 +9,7 @@ include "/usr/share/themes/waldorf1314/gtk-2.0/gtkrc"
 
 style "user-font"
 {
-  font_name="BitStream Vera Sans Mono 30"
+  font_name="BitStream Vera Sans Mono 12"
 
   #font_name="Droid Sans Mono 12"
 }
@@ -18,7 +18,7 @@ widget_class "*" style "user-font"
 gtk-icon-theme-name= "Faenza"
 gtk-fallback-icon-theme= "Faenza"
 
-gtk-font-name="BitStream Vera Sans Mono 30"
+gtk-font-name="BitStream Vera Sans Mono 12"
 include "/root/.gtkrc-2.0.mine"
 # -- THEME AUTO-WRITTEN BY gtk-theme-switch2 DO NOT EDIT
 # -- THEME AUTO-WRITTEN BY gtk-theme-switch2 DO NOT EDIT

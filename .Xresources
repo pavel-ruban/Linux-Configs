@@ -12,8 +12,9 @@ URxvt.tabbed.tabbar-timeouts: 1
 URxvt.imLocale:ru_RU.koi8r
 
 Xcursor.size:  13
-!URxvt.url-launcher:   /usr/bin/google-as-noname.sh
-URxvt.url-launcher:   /usr/bin/firefox
+URxvt.urlLauncher:   /usr/bin/google-as-noname.sh
+URxvt.url-launcher:   /usr/bin/google-as-noname.sh
+!URxvt.url-launcher:   /usr/bin/firefox
 URxvt.matcher.button: 3
 URxvt.colorUL: #3ACDFF
 URxvt.iso14755: false

@@ -9,7 +9,11 @@
 -- {{{ Main
 theme = {}
 --theme.wallpaper = "/root/linux.jpg"
-theme.wallpaper = "/root/.config/awesome/themes/zenburn/blame2.jpg"
+theme.wallpaper = "/root/.config/awesome/themes/zenburn/circuit-tracks.jpg"
+--theme.wallpaper = "/root/.config/awesome/themes/zenburn/curcuits.jpg"
+--theme.wallpaper = "/root/.config/awesome/themes/zenburn/blue.jpg"
+--theme.wallpaper = 0
+--theme.wallpaper_cmd = { "hsetroot -solid '#000000'" }
 --theme.wallpaper = "/root/.config/awesome/themes/zenburn/circles.jpeg"
 --theme.wallpaper = "/root/.config/awesome/themes/zenburn/blue.jpg"
 -- }}}

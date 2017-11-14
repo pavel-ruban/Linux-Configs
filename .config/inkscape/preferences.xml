@@ -133,8 +133,8 @@
          id="rect"
          style="fill:blue;"
          usecurrent="1"
-         width="402.857"
-         height="640"
+         width="50"
+         height="50"
          rx="161.679"
          ry="154.692" />
       <eventcontext
@@ -185,9 +185,9 @@
       <eventcontext
          id="spiral"
          style="fill:none;"
+         expansion="1"
          usecurrent="0"
          revolution="3"
-         expansion="1"
          t0="0.291968" />
     </group>
     <group
@@ -329,7 +329,7 @@
        style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;"
        unitid="3"
        show_bbox="1"
-       unit="px" />
+       unit="mm" />
     <eventcontext
        id="text"
        usecurrent="0"
@@ -337,7 +337,11 @@
        font_sample="AaBbCcIiPpQq12369$€¢?.;/()"
        show_sample_in_list="1"
        style="fill:black;fill-opacity:1;stroke:none;font-family:Sans;font-style:normal;font-weight:normal;font-size:40px;line-height:125%;letter-spacing:0px;word-spacing:0px"
-       selcue="1" />
+       selcue="1">
+      <group
+         id="lineheight"
+         display_unit="9" />
+    </eventcontext>
     <eventcontext
        id="nodes"
        selcue="1"
@@ -384,7 +388,8 @@
        rotation_variation="0"
        scale_variation="0"
        standard_deviation="70"
-       mean="0" />
+       mean="0"
+       offset="100" />
     <eventcontext
        id="gradient"
        selcue="1"
@@ -423,9 +428,12 @@
        offsetunits="pt"
        threshold="5" />
     <group
-       unit="px"
+       id="measure"
        fontsize="10"
-       id="measure" />
+       unit="mm"
+       precision="2"
+       scale="100"
+       offset="5" />
   </group>
   <group
      id="palette">
@@ -461,6 +469,9 @@
       <dash
          id="dash-1-48"
          style="stroke-dasharray:1,48" />
+      <dash
+         id="dash-empty"
+         style="stroke-dasharray:0 11" />
       <dash
          id="dash-2-1"
          style="stroke-dasharray:2,1" />
@@ -560,7 +571,20 @@
     <group
        id="toolbox" />
     <group
-       id="fillstroke" />
+       id="fillstroke"
+       panel_size="1"
+       panel_ratio="100"
+       panel_mode="1"
+       panel_wrap="0"
+       panel_border="0"
+       page="0"
+       x="0"
+       y="0"
+       w="448"
+       h="469"
+       visible="1"
+       state="2"
+       placement="5" />
     <group
        id="filtereffects" />
     <group
@@ -579,11 +603,11 @@
        panel_border="0"
        x="0"
        y="0"
-       w="338"
+       w="450"
        h="266"
        visible="1"
        state="2"
-       placement="1" />
+       placement="2" />
     <group
        id="find" />
     <group
@@ -597,7 +621,17 @@
        state="1" />
     <group
        id="preferences"
-       state="1" />
+       state="1"
+       page="43"
+       panel_size="1"
+       panel_ratio="100"
+       panel_mode="1"
+       panel_wrap="0"
+       panel_border="0"
+       x="554"
+       y="361"
+       w="811"
+       h="357" />
     <group
        id="gradienteditor" />
     <group
@@ -609,46 +643,62 @@
        panel_border="0"
        x="0"
        y="0"
-       w="338"
-       h="239"
+       w="448"
+       h="469"
        visible="1"
        state="2"
-       placement="2" />
+       placement="5" />
     <group
        id="export"
        default=""
        append_extension="1"
-       path="">
+       path=""
+       panel_size="1"
+       panel_ratio="100"
+       panel_mode="1"
+       panel_wrap="0"
+       panel_border="0"
+       x="0"
+       y="0"
+       w="448"
+       h="469"
+       visible="1"
+       state="2"
+       placement="5">
       <group
-         id="exportarea" />
+         id="exportarea"
+         value="page" />
       <group
          id="defaultxdpi" />
+      <group
+         value="1"
+         id="hideexceptselected" />
     </group>
     <group
        id="save_as"
        default="org.ekips.output.dxf_outlines"
        append_extension="1"
        enable_preview="1"
-       path="/sources/geda/prjs/demo"
+       path="/projects/openbuilds/parts/extrusions"
        use_current_dir="1" />
     <group
        id="save_copy"
-       default=""
+       default="org.inkscape.output.svg.inkscape"
        append_extension="1"
        enable_preview="1"
-       path="" />
+       path="/sources/cnc" />
     <group
        id="open"
        enable_preview="1"
-       path="/home/noname/Downloads/" />
+       path="/projects/openbuilds/parts/extrusions/" />
     <group
        id="import"
        enable_preview="1"
-       path=""
+       path="/projects/openbuilds_machinery/parts/rails/"
        ask="1"
        link="embed"
        scale="auto"
-       forcexdpi="0" />
+       forcexdpi="1" />
     <group
        id="debug"
        redirect="0" />
@@ -687,7 +737,18 @@
        id="extensioneditor" />
     <group
        id="trace"
-       state="1" />
+       state="1"
+       panel_size="1"
+       panel_ratio="100"
+       panel_mode="1"
+       panel_wrap="0"
+       panel_border="0"
+       x="708"
+       y="78"
+       w="1189"
+       h="623"
+       visible="0"
+       placement="1" />
     <group
        id="script" />
     <group
@@ -697,16 +758,14 @@
     <group
        id="undo-history" />
     <group
-       id="filtereffects" />
-    <group
        id="transparency"
        on-focus="1.0"
        on-blur="0.50"
        animate-time="100" />
     <group
-       dpi="72"
+       id="printing"
        asbitmap="1"
-       id="printing" />
+       dpi="72" />
   </group>
   <group
      id="printing">
@@ -744,7 +803,7 @@
        value="1" />
     <group
        id="nudgedistance"
-       value="2" />
+       value="2px" />
     <group
        id="rotationsnapsperpi"
        value="12" />
@@ -777,10 +836,10 @@
        value="1" />
     <group
        id="defaultoffsetwidth"
-       value="2" />
+       value="2px" />
     <group
        id="defaultscale"
-       value="2" />
+       value="2px" />
     <group
        id="maxrecentdocuments"
        value="36" />
@@ -798,8 +857,8 @@
        id="wheelscroll"
        value="40" />
     <group
-       id="spacepans"
-       value="0" />
+       id="spacebarpans"
+       value="1" />
     <group
        id="wheelzooms"
        value="0" />
@@ -941,6 +1000,7 @@
        check_on_reading="0"
        check_on_editing="0"
        check_on_writing="0"
+       sort_attributes="0"
        allowrelativecoordinates="1" />
     <group
        id="externalresources">
@@ -992,11 +1052,14 @@
        partialdynamic="0"
        floatallowed="0" />
     <group
-       id="bitmapoversample"
-       value="1" />
+       value="0"
+       id="spacepans" />
     <group
-       id="threading"
-       numthreads="1" />
+       value="1"
+       id="bitmapoversample" />
+    <group
+       numthreads="1"
+       id="threading" />
     <group
        id="rendering" />
   </group>
@@ -1030,15 +1093,23 @@
      math.polyhedron.3d.z_sort="max"
      org.ekips.output.dxf_outlines.units="25.4/90"
      org.ekips.output.dxf_outlines.encoding="latin_1"
-     org.ekips.output.dxf_outlines.layer_option="all" />
+     org.ekips.output.dxf_outlines.layer_option="all"
+     org.ekips.filter.flatten.flatness="1"
+     org.ekips.filter.flatten.__live_effect__="0"
+     command.extrude.openscad.height="5"
+     command.extrude.openscad.smoothness="0.2"
+     org.inkscape.input.dxf.encoding="latin_1"
+     org.greygreen.inkscape.effects.extrude.mode="Polygons"
+     org.greygreen.inkscape.effects.extrude.__live_effect__="0"
+     org.inkscape.input.gdkpixbuf.png.dpi="from_default" />
   <group
      id="desktop"
-     style="fill:#800000">
+     style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1;line-height:125%">
     <group
        width="640"
        height="480"
-       x="516"
-       y="279"
+       x="0"
+       y="0"
        fullscreen="0"
        id="geometry"
        maximized="1" />
@@ -1141,14 +1212,14 @@
   <group
      id="whiteboard">
     <group
-       id="server"
-       name="jabber.org"
-       port="5222"
+       ssl="0"
        username=""
-       ssl="0" />
+       port="5222"
+       name="jabber.org"
+       id="server" />
     <group
-       id="room"
+       server="gristle.org"
        name="inkboard"
-       server="gristle.org" />
+       id="room" />
   </group>
 </inkscape>
