@@ -88,11 +88,6 @@ then
 EOF
 fi
 
-#if ! grep 'zsh' ~/.bashrc > /dev/null
-#then
-#  echo 'zsh' >> ~/.bashrc
-#fi
-
 cd ~ || exit
 wget -O ~/update_sh.sh ~/https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/shared/Ubuntu/update_sh.sh
 chmod +x update_sh.sh
