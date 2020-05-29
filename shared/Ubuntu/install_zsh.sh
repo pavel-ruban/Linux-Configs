@@ -90,8 +90,17 @@ fi
 
 if ! grep 'zsh' ~/.bashrc > /dev/null
 then
-  echo 'zsh' >> ~/.bashrc
+  #echo 'zsh' >> ~/.bashrc
 EOF
 fi
+
+spawn chsh
+expect "Password: "
+send "vagrant\n";
+expect "Changing the login shell for vagrant
+Enter the new value, or press ENTER for the default
+	Login Shell [/bin/bash]: "
+send "/bin/zsh\n";
+interact
 
 zsh
