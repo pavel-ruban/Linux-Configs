@@ -80,15 +80,6 @@ alias gc="git diff --name-only --diff-filter=U"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git history-substring-search syntax-highlighting)
-
-source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -156,6 +147,15 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 #ZSH_HIGHLIGHT_STYLES[path]=fg=214,underline
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=green,fg=white,bold"
 
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git history-substring-search syntax-highlighting)
+
+source $ZSH/oh-my-zsh.sh
+
 bindkey OB history-substring-search-down
 bindkey OA history-substring-search-up
 #bindkey [1;5D .backward-word
@@ -166,7 +166,7 @@ bindkey OA history-substring-search-up
 typeset -A key
 
 # Start tmux session
-if [ -z $TMUX ]
+if [ -z $TMUX ] && [ -x "$(command -v tmux)" ]
   then
     tmux
 fi
