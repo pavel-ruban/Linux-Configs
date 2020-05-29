@@ -22,6 +22,9 @@ alias m=make
 alias git="TZ=UTC git"
 alias gc="git diff --name-only --diff-filter=U"
 
+ZSH=$HOME/.oh-my-zsh
+ZSH_THEME="af-magic"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -105,8 +108,6 @@ alias gc="git diff --name-only --diff-filter=U"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="af-magic"
 #ZSH_HIGHLIGHT_STYLES[globbing]=fg=253
 #ZSH_HIGHLIGHT_STYLES[pattern]=fg=253
 #ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=white,underline
@@ -152,7 +153,7 @@ HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=green,fg=white,bold"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git syntax-highlighting history-substring-search)
+plugins=(git history-substring-search zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
