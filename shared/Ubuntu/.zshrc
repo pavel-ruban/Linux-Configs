@@ -108,13 +108,6 @@ ZSH_THEME="af-magic"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#ZSH_HIGHLIGHT_STYLES[globbing]=fg=253
-#ZSH_HIGHLIGHT_STYLES[pattern]=fg=253
-#ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=white,underline
-#ZSH_HIGHLIGHT_STYLES[bracket-level-3]=fg=033
-#ZSH_HIGHLIGHT_STYLES[bracket-level-3]=fg=033
-HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=038,fg=white,bold'
-#HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=bg=red,fg=magenta
 HISTFILE=~/.zsh_history
 SAVEHIST=10000000
 HISTSIZE=10000000
@@ -134,30 +127,38 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
-## Override highlighter colors
-#ZSH_HIGHLIGHT_STYLES[default]=none
-#ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=009
-#ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=009,standout
-#ZSH_HIGHLIGHT_STYLES[alias]=fg=white,bold
-#ZSH_HIGHLIGHT_STYLES[builtin]=fg=white,bold
-#ZSH_HIGHLIGHT_STYLES[function]=fg=white,bold
-#ZSH_HIGHLIGHT_STYLES[command]=fg=green,bold
-#ZSH_HIGHLIGHT_STYLES[precommand]=fg=white,underline
-#ZSH_HIGHLIGHT_STYLES[commandseparator]=none
-#ZSH_HIGHLIGHT_STYLES[hashed-command]=fg=009
-#ZSH_HIGHLIGHT_STYLES[path]=fg=214,underline
-HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=green,fg=white,bold"
-
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-history-substring-search zsh-completions zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git zsh-completions zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
 autoload -U compinit && compinit
+
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="fg=white,bold,bg=038"
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND="fg=black,bold,bg=011"
+
+## Override highlighter colors
+ZSH_HIGHLIGHT_STYLES[default]=none
+ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=009
+ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=white,bold
+ZSH_HIGHLIGHT_STYLES[alias]=fg=green,bold
+ZSH_HIGHLIGHT_STYLES[builtin]=fg=green,bold
+ZSH_HIGHLIGHT_STYLES[function]=fg=green,bold
+ZSH_HIGHLIGHT_STYLES[command]=fg=green,bold
+ZSH_HIGHLIGHT_STYLES[precommand]=fg=white,underline
+ZSH_HIGHLIGHT_STYLES[commandseparator]=none
+ZSH_HIGHLIGHT_STYLES[hashed-command]=fg=green
+ZSH_HIGHLIGHT_STYLES[path]=fg=214,underline
+
+ZSH_HIGHLIGHT_STYLES[globbing]=fg=253
+ZSH_HIGHLIGHT_STYLES[pattern]=fg=253
+ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=white,underline
+ZSH_HIGHLIGHT_STYLES[bracket-level-3]=fg=033
+ZSH_HIGHLIGHT_STYLES[bracket-level-3]=fg=033
 
 bindkey OB history-substring-search-down
 bindkey OA history-substring-search-up

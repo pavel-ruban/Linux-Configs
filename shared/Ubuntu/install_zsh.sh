@@ -50,7 +50,9 @@ then
   touch ~/.gitconfig
 fi
 
-cat <<EOF >> ~/.gitconfig
+if ! grep 'co = checkout' ~/.gitconfig > /dev/null
+then
+  cat <<EOF >> ~/.gitconfig
 [alias]
 	nmerge = merge --no-ff
 	co = checkout
@@ -84,5 +86,6 @@ cat <<EOF >> ~/.gitconfig
 	autocrlf = false
 	eol = lf
 EOF
+fi
 
 zsh
