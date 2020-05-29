@@ -88,4 +88,10 @@ then
 EOF
 fi
 
+if ! grep 'zsh' ~/.bashrc > /dev/null
+then
+  echo 'zsh' >> ~/.bashrc
+EOF
+fi
+
 zsh
