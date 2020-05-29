@@ -36,8 +36,14 @@ else
   wget https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/shared/Ubuntu/.dir_colors
 fi
 
-sudo wget -O /etc/zsh/keephack https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/shared/Ubuntu/etc/zsh/keephack
-sudo wget -O /etc/zsh/zprofile https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/shared/Ubuntu/etc/zsh/zprofile
-sudo wget -O /etc/zsh/zshrc https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/shared/Ubuntu/etc/zsh/zshrc
+# Replace contrib files, if needed they can be reinstalled.
+cd /etc/zsh || exit
+rm keephack
+rm zprofile
+rm zshrc
+
+sudo wget https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/shared/Ubuntu/etc/zsh/keephack
+sudo wget https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/shared/Ubuntu/etc/zsh/zprofile
+sudo wget https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/shared/Ubuntu/etc/zsh/zshrc
 
 zsh
