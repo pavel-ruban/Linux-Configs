@@ -45,4 +45,39 @@ sudo wget https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/sha
 sudo wget https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/shared/Ubuntu/etc/zsh/zprofile
 sudo wget https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/shared/Ubuntu/etc/zsh/zshrc
 
+echo <<<EOF >> ~/.gitconfig
+[alias]
+	nmerge = merge --no-ff
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+	ui = true
+[color "status"]
+  added = green
+  changed = yellow
+  untracked = cyan
+[color "diff"]
+  meta = cyan
+  old = yellow
+  new = green
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[push]
+	default = simple
+[core]
+	autocrlf = false
+	eol = lf
+EOF;
+
 zsh
