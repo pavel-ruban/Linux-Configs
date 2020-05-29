@@ -45,7 +45,7 @@ sudo wget https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/sha
 sudo wget https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/shared/Ubuntu/etc/zsh/zprofile
 sudo wget https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/shared/Ubuntu/etc/zsh/zshrc
 
-echo <<<EOF >> ~/.gitconfig
+cat <<EOF >> ~/.gitconfig
 [alias]
 	nmerge = merge --no-ff
 	co = checkout
@@ -78,6 +78,6 @@ echo <<<EOF >> ~/.gitconfig
 [core]
 	autocrlf = false
 	eol = lf
-EOF;
+EOF
 
 zsh
