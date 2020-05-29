@@ -38,7 +38,7 @@ fi
 
 # Replace contrib files, if needed they can be reinstalled.
 
-rm -rf /etc/zsh/*
+sudo rm -rf /etc/zsh/*
 cd /etc/zsh/ || exit
 
 sudo wget https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/shared/Ubuntu/etc/zsh/keephack
