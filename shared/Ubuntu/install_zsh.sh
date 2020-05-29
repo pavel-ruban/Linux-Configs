@@ -37,10 +37,9 @@ else
 fi
 
 # Replace contrib files, if needed they can be reinstalled.
-cd /etc/zsh || exit
-rm keephack
-rm zprofile
-rm zshrc
+
+rm -rf /etc/zsh/*
+cd /etc/zsh/ || exit
 
 sudo wget https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/shared/Ubuntu/etc/zsh/keephack
 sudo wget https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/shared/Ubuntu/etc/zsh/zprofile
