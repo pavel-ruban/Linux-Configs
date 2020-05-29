@@ -45,6 +45,11 @@ sudo wget https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/sha
 sudo wget https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/shared/Ubuntu/etc/zsh/zprofile
 sudo wget https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/shared/Ubuntu/etc/zsh/zshrc
 
+if [ ! -r ~/.gitconfig ]
+then
+  touch ~/.gitconfig
+fi
+
 cat <<EOF >> ~/.gitconfig
 [alias]
 	nmerge = merge --no-ff
