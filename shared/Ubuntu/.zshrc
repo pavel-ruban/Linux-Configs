@@ -153,9 +153,11 @@ HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=green,fg=white,bold"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git history-substring-search zsh-syntax-highlighting)
+plugins=(git zsh-history-substring-search zsh-completion zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
+
+autoload -U compinit && compinit
 
 bindkey OB history-substring-search-down
 bindkey OA history-substring-search-up
