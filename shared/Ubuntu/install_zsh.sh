@@ -88,19 +88,15 @@ then
 EOF
 fi
 
-if ! grep 'zsh' ~/.bashrc > /dev/null
-then
-  #echo 'zsh' >> ~/.bashrc
-EOF
-fi
+#if ! grep 'zsh' ~/.bashrc > /dev/null
+#then
+#  echo 'zsh' >> ~/.bashrc
+#fi
 
-spawn chsh
-expect "Password: "
-send "vagrant\n";
-expect "Changing the login shell for vagrant
-Enter the new value, or press ENTER for the default
-	Login Shell [/bin/bash]: "
-send "/bin/zsh\n";
-interact
+cd ~ || exit
+wget https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/shared/Ubuntu/update_sh.sh
+chmod +x update_sh.sh
+./update_sh.sh
+rm ./update_sh.sh
 
 zsh
