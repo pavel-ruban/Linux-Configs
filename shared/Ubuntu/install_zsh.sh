@@ -94,9 +94,9 @@ fi
 #fi
 
 cd ~ || exit
-wget https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/shared/Ubuntu/update_sh.sh
+wget -O ~/update_sh.sh ~/https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/shared/Ubuntu/update_sh.sh
 chmod +x update_sh.sh
-./update_sh.sh
-rm ./update_sh.sh
+expect ~/update_sh.sh
+rm ~/update_sh.sh
 
 zsh
