@@ -189,3 +189,8 @@ function blt() {
     return 1
   fi
 }
+
+if [ -d /var/www/mac3 ]
+then
+ cd /var/www/mac3
+fi
