@@ -27,4 +27,18 @@ else
   wget https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/shared/Ubuntu/.zsh-theme
 fi
 
+if [ ! -r ~/.dir_colors ]
+then
+  wget https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/shared/Ubuntu/.dir_colors
+else
+  echo '!warning: you already have ~/.dir_colors file, moved it to ~/.dir_colors.old'
+  mv ~/.dir_colors ~/.dir_colors.old
+  wget https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/shared/Ubuntu/.dir_colors
+fi
+
+cd /etc/zsh || exit
+sudo wget https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/shared/Ubuntu/etc/zsh/keephack
+sudo wget https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/shared/Ubuntu/etc/zsh/zprofile
+sudo wget https://raw.githubusercontent.com/pavel-ruban/Linux-Configs/master/shared/Ubuntu/etc/zsh/zshrc
+
 zsh
