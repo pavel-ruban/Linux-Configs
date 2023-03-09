@@ -41,6 +41,7 @@ alias grep="grep --color=always"
 alias less="less -R"
 alias m=make
 alias git="TZ=UTC git"
+alias gc="git diff --name-only --diff-filter=U"
 
 #  Custom variables
 ZSH=$HOME/.oh-my-zsh

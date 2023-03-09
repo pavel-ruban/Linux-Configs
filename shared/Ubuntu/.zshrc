@@ -6,14 +6,17 @@ export USE_ZEND_ALLOC=0
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Aliases
-alias poweroff="echo \"Good bye.\" && mysqltmpfsoff.sh && poweroff"
-alias reboot="echo \"Good bye.\" && mysqltmpfsoff.sh && reboot"
-alias mp6="mplayer -ao alsa:device=dmixed -channels 6"
+alias n="sudo -u noname"
+alias ny="sudo -u noname yay"
+alias log="less /hosts/log"
 alias o="xdg-open"
 alias j="journalctl -r -u"
-alias f="FBReader"
+alias i="echo -e \"`cat ~/records/info`\""
 alias k=killall -9
 alias sr="systemctl restart"
+alias se="systemctl enable"
+alias sd="systemctl disable"
+alias ss="systemctl status"
 alias fe="feh -. -B black"
 alias la="ls -lath --color=always | less -R"
 alias grep="grep --color=always"
@@ -160,10 +163,9 @@ ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=white,underline
 ZSH_HIGHLIGHT_STYLES[bracket-level-3]=fg=033
 ZSH_HIGHLIGHT_STYLES[bracket-level-3]=fg=033
 
-bindkey OB history-substring-search-down
-bindkey OA history-substring-search-up
-#bindkey [1;5D .backward-word
-#bindkey [1;5C .forward-word
+
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
 
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
@@ -189,8 +191,3 @@ function blt() {
     return 1
   fi
 }
-
-if [ -d /var/www/mac3 ]
-then
- cd /var/www/mac3
-fi
