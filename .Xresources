@@ -11,10 +11,40 @@ URxvt.tabbed.new-button: false
 URxvt.tabbed.tabbar-timeouts: 1
 URxvt.imLocale:ru_RU.koi8r
 
-Xcursor.size:  13
 URxvt.urlLauncher:   /usr/bin/google-as-noname.sh
 URxvt.url-launcher:   /usr/bin/google-as-noname.sh
 !URxvt.url-launcher:   /usr/bin/firefox
 URxvt.matcher.button: 3
 URxvt.colorUL: #3ACDFF
 URxvt.iso14755: false
+
+#if SCREEN_NUM == 0
+Xcursor.size: 48
+Xcursor.theme:pCircle-32
+!Xcursor.theme:ComixCursors-White
+!Xcursor.theme:Whiteglass
+Xft.dpi: 192
+*.dpi: 192
+Xft.autohint: 1
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
+Xft.hinting: 1
+Xft.antialias: 0
+Xft.rgba: rgba
+#endif
+
+#if SCREEN_NUM == 1
+!Xcursor.theme:ComixCursors-White
+Xcursor.theme:Whiteglass
+Xcursor.size: 64
+!Xft.dpi:  96
+!*.dpi: 96
+!Xft.dpi:  192
+!*.dpi: 192
+Xft.autohint: 0
+Xft.lcdfilter: lcdnone
+Xft.hintstyle: hintnone
+Xft.hinting: 0
+Xft.antialias: 0
+Xft.rgba: rgba
+#endif

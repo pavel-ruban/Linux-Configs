@@ -1,3 +1,4 @@
+#!/usr/bin/lua5.3
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -37,6 +38,7 @@ local capi = {
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
+
 if awesome.startup_errors
   then
     naughty.notify({
@@ -452,18 +454,27 @@ root.buttons(awful.util.table.join(
     awful.button({ }, 5, awful.tag.viewprev)
 ))
 -- Autoload section.
-awful.util.spawn_with_shell("run_once cairo-dock")
+--awful.util.spawn_with_shell("run_once cairo-dock")
+awful.util.spawn_with_shell("sudo -u noname cairo-dock")
 --awful.util.spawn_with_shell("compton -c -C   --vsync opengl --detect-rounded-corners  --refresh-rate 60 --vsync-aggressive -r 15 -l -22 -t -22 -m 1")
 --awful.util.spawn_with_shell("feh --bg-fill ~/linux.jpg")
-awful.util.spawn_with_shell("netbookInit.sh")
+--awful.util.spawn_with_shell("netbookInit.sh")
 awful.util.spawn_with_shell("conky&")
 --awful.util.spawn_with_shell("compton -c -C --vsync drm --detect-rounded-corners -r 10 -l -15 -t -15 -m 1 -z")
 --awful.util.spawn_with_shell("compton -c -C --vsync opengl --detect-rounded-corners -r 10 -l -15 -t -15 -m 1 -z")
-awful.util.spawn_with_shell("compton --config ~/.compton.conf")
+--awful.util.spawn_with_shell("compton --config ~/.compton.conf")
+awful.util.spawn_with_shell("xcompmgr -n &")
 awful.util.spawn_with_shell("sleep 100; chown -R noname:noname /home/noname &")
 awful.util.spawn_with_shell("xrdb -merge ~/.Xresources")
 awful.util.spawn_with_shell("xbindkeys -p")
 awful.util.spawn_with_shell("kbd-layout-set.set")
+--awful.util.spawn_with_shell("bluetooth_apple.sh")
+awful.util.spawn_with_shell("setxkbmap -model pc104 -layout us,ru -option grp:alt_shift_toggle")
+awful.util.spawn_with_shell("bluetooth_apple_settings.sh")
+awful.util.spawn_with_shell("xmodmap ~/.Xmodmap")
+awful.util.spawn_with_shell("onboard -x 2510 -y 1569")
+awful.util.spawn_with_shell("imwheel -b 45")
+--awful.util.spawn_with_shell('nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceCompositionPipeline = On }"')
 
 -- {{{ Mouse bindings
 root.buttons(awful.util.table.join(
@@ -490,6 +501,44 @@ function dump(o)
       return tostring(o)
   end
 end
+
+screenshot = '/tmp/screenshot.png'
+
+function scrot_full()
+    scrot("scrot " .. screenshot .. " -e 'xclip -selection c -t image/png < $f', scrot_callback", scrot_callback, "Take a screenshot of entire screen")
+end
+
+function scrot_selection()
+    scrot("scrot -s " .. screenshot .. " -e 'xclip -selection c -t image/png < $f'", scrot_callback, "Take a screenshot of selection")
+end
+
+function scrot_window()
+    scrot("scrot -u " .. screenshot .. " -e 'xclip -selection c -t image/png < $f'", scrot_callback, "Take a screenshot of focused window")    
+end
+
+function scrot(cmd , callback, args)
+    awful.util.spawn_with_shell(cmd)
+    callback(args)
+end
+
+function scrot_callback(text)
+    naughty.notify({
+        text = text,
+        timeout = 0.5
+    })
+end
+
+ -- Variable to track the toggle state
+
+local dictation = {
+    off = -1,
+    suspended = 0,
+    on = 1
+}
+
+local dictation_cmd = "sudo -u noname nerd-dictation "
+local dictation_state = dictation.off
+
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
 --awful.key({ modkey,           }, "a",     function (c) naughty.notify({naughty.config.presets.critical, title = 'debug', text = dump(c.focus)}) end),
@@ -529,23 +578,58 @@ awful.key({ modkey,           }, "c",     function () client.focus:lower() end),
  -- Custom shortcuts.
  awful.key({ modkey, }, "Return", function () awful.spawn(terminal) end),
  awful.key({ modkey, }, "z", function () awful.spawn("gtrs") end),
+ --awful.key({ modkey, }, "v", function () awful.spawn("sudo -u noname nerd-dictation begin") end),
+ awful.key({ modkey, }, "v",
+ 	function ()
+ 		awful.spawn("sudo -u noname nerd-dictation end")
+		dictation_state = dictation.off
+        	naughty.notify({ text = "Dictation off" })
+	end
+),
+
+-- Define the shortcut with toggle behavior
+awful.key({ modkey }, "e",  
+    function()
+        -- Toggle toggle_state
+        if dictation_state == dictation.off then
+		awful.spawn(dictation_cmd .. " begin")
+		dictation_state = dictation.on
+        	naughty.notify({ text = "Dictation on" })
+        elseif dictation_state == dictation.suspended then
+		awful.spawn(dictation_cmd .. " resume")
+		dictation_state = dictation.on
+        	naughty.notify({ text = "Dictation resume" })
+        elseif dictation_state == dictation.on then
+		awful.spawn(dictation_cmd .. " suspend")
+		dictation_state = dictation.suspended
+        	naughty.notify({ text = "Dictation suspend" })
+        end
+    end,
+    {description = "Toggle something", group = "custom"}
+),
+
  --awful.key({ modkey, }, "v", function () awful.spawn("urxvt -hold -e sh -c 'vim'") end),
  --awful.key({ modkey, }, "v", function () naughty.notify({ preset = naughty.config.presets.warning, title = "Oops", text = client.focus.class 'fdefs' }) end),
  awful.key({ modkey, }, "g", function () awful.spawn("env BROWSER_BIN=chromium google-as-noname.sh http://google.com") end),
- awful.key({ modkey, }, "b", function () awful.spawn("env BROWSER_BIN=chromium google-as-noname.sh https://prj.adyax.com/projects/skimium/issues?query_id=1215") end),
  awful.key({ modkey, }, "h", function () awful.spawn("env BROWSER_BIN=chromium google-as-noname.sh http://translate.google.ru/?hl=ru&tab=wTenve") end),
 --awful.key({ modkey, }, "m", function () awful.spawn("env BROWSER_BIN=chromium google-as-noname.sh http://somi.qajedi.ru/open-door") end),
- awful.key({ modkey, }, "d", function () awful.spawn("shutter -f") end),
- --awful.key({ modkey, }, "d", function () awful.spawn("shutter -t") end),
+ --awful.key({ modkey, }, "d", function () awful.spawn("shutter -f") end),
+ --awful.key({ modkey, }, "s", function () awful.spawn("maim -sl | xclip -selection clipboard -t image/png") end),
+--awful.key({ modkey, }, "s", function () awful.spawn("maim -s x") end),
+--awful.key({ modkey, }, "s", scrot_selection, {description = "Take a screenshot of selection", group = "screenshot"}),
+--awful.key({ modkey, }, "d", function () awful.spawn("whoami > /root/x; env >> /root/x") end),
+ awful.key({ modkey, }, "d", function () awful.spawn("shutter -t") end),
  awful.key({ modkey, }, "s", function () awful.spawn("shutter -s") end),
- awful.key({ modkey, }, "v", function () awful.spawn("shutter -w") end),
+ --awful.key({ modkey, }, "v", function () awful.spawn("shutter -w") end),
 --awful.key({ modkey, }, "g", function () awful.spawn("env firefox https://google.com") end),
 --awful.key({ modkey, }, "b", function () awful.spawn("env firefox https://prj.adyax.com/projects/skimium/issues?query_id=1215") end),
 --awful.key({ modkey, }, "h", function () awful.spawn("env firefox https://translate.google.ru/?hl=ru&tab=wTenve") end),
  awful.key({ }, "Print", function () awful.spawn("scrot -e 'mv $f ~/screenshots/ 2>/dev/null'") end),
 
  --awful.key({ modkey }, "p", function() awful.spawn("env /root/PhpStorm-7.1.2/bin/phpstorm.sh") end),
- awful.key({ modkey }, "p", function() awful.spawn("env /root/PhpStorm-172.4155.41/bin/phpstorm.sh") end),
+ --awful.key({ modkey }, "p", function() awful.spawn("env /root/PhpStorm-172.4155.41/bin/phpstorm.sh") end),
+ --awful.key({ modkey }, "p", function() awful.spawn("env /root/PhpStorm/bin/phpstorm.sh") end),
+ awful.key({ modkey }, "p", function() awful.spawn("env /root/PhpStorm-243.23654.168/bin/phpstorm -Dide.browser.jcef.sandbox.enable=false") end),
  awful.key({ modkey }, "r", function() awful.spawn("env /usr/bin/toggle-brush.sh") end),
 
  -- Standard program
@@ -735,6 +819,17 @@ awful.rules.rules = {
         border_width = 1,
         border_color = 0,
 	titlebar_bg_focus = "#000000",
+        size_hints_honor = false
+      }
+    },
+    {
+      rule_any = { {class = "Steam", class = "steam", class = "vrmonitor"} },
+      properties = {
+        border_width = 0,
+        border_color = 0,
+	floating = true,
+	modal = true,
+	sticky = false,
         size_hints_honor = false
       }
     },
@@ -952,6 +1047,36 @@ awful.rules.rules = {
       --  })
 
        end
+    },
+    {
+      rule = { class = "onboard" },
+      properties = {
+        border_width = 0,
+        border_color = 0,
+        size_hints_honor = false,
+        floating = true,
+        focusable = false,
+        --modal = true,
+        --below =  false,
+        --tag = tags[1][4]
+        --layout = layouts[1]
+      },
+      callback = function(c)
+
+        local scr_area = screen[c.screen].workarea
+        local cl_strut = c:struts()
+        local geometry = nil
+
+      --  c:geometry({
+      --    x = 3,
+      --    y = 3,
+      --    width = 60,
+      --    height = 60,
+      -- --   width = (scr_area.width - 60),
+      -- --   height = (scr_area.height - 60),
+      --  })
+
+       end
     }
 --    {
 --      rule = { class = "Skype" },
@@ -1085,7 +1210,7 @@ awful.rules.rules = {
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c, startup)
   awful.client.movetoscreen(c, awful.screen.focused())
-  if c.class == 'cairo-dock' or c.class == 'cube' then
+  if c.class == 'cairo-dock' or c.class == 'cube' or c.class == 'onboard' or c.class == 'Onboard' or c.id == 'Onboard' then
     return
   elseif c.class == 'conky' then
     return
@@ -1135,7 +1260,7 @@ client.connect_signal("manage", function (c, startup)
     local titlebars_enabled = true
     --if c and c.class ~= 'Chromium' and c.class ~= 'Cairo-dock' and c.class ~= 'URxvt' and c.class ~= 'Firefox' and titlebars_enabled   then
     --if c and c.class ~= 'Google-chrome' and c.class ~= 'google-chrome' and c.class ~= 'Cairo-dock' and c.class ~= 'Cairo-dock' and c.class ~= 'URxvt' and c.class ~= 'jetbrains-phpstorm'   and c.class ~= 'Firefox' and titlebars_enabled   then
-    if c and c.class ~= 'Gimp' and c.class ~= 'gimp' and c.class ~= 'Virtualbox' and c.class ~= 'Chromium' and c.class ~= 'chromium' and c.class ~= 'MPlayer' and c.class ~= 'vdpau' and c.class ~= 'Google-chrome' and c.class ~= 'Google-chrome-beta' and c.class ~= 'URxvt' and c.class ~= 'google-chrome' and c.class ~= 'Cairo-dock' and c.class ~= 'Cairo-dock' and c.class ~= 'jetbrains-phpstorm'   and c.class ~= 'Firefox' and titlebars_enabled   then
+    if c and c.class ~= 'Steam' and c.class ~= 'vrmonitor' and c.class ~= 'Gimp' and c.class ~= 'gimp' and c.class ~= 'Virtualbox' and c.class ~= 'Chromium' and c.class ~= 'chromium' and c.class ~= 'MPlayer' and c.class ~= 'vdpau' and c.class ~= 'Google-chrome' and c.class ~= 'Google-chrome-beta' and c.class ~= 'URxvt' and c.class ~= 'google-chrome' and c.class ~= 'Cairo-dock' and c.class ~= 'Cairo-dock' and c.class ~= 'jetbrains-phpstorm'   and c.class ~= 'Firefox' and c.class ~= 'jetbrains-idea' and titlebars_enabled   then
             -- Widgets that are aligned to the left
         local left_layout = wibox.layout.fixed.horizontal()
         left_layout:add(awful.titlebar.widget.iconwidget(c))
@@ -1169,7 +1294,7 @@ client.connect_signal("manage", function (c, startup)
         layout:set_right(right_layout)
         layout:set_middle(title)
    --     c.border_width = 1
-        awful.titlebar(c, {size = "14"}):set_widget(layout)
+        awful.titlebar(c, {size = "17"}):set_widget(layout)
     end
 
 --        local scr_area = screen[c.screen].workarea
@@ -1180,6 +1305,47 @@ client.connect_signal("manage", function (c, startup)
 --          x = scr_area.width / 2 - geometry.width / 2,
 --          y = scr_area.height / 2 -  geometry.height / 2
 --        })
+
+
+    function printObj(obj, hierarchyLevel)
+        if (hierarchyLevel == nil) then
+            hierarchyLevel = 0
+        elseif (hierarchyLevel == 4) then
+            return 0
+        end
+
+        local whitespace = ""
+        for i=0,hierarchyLevel,1 do
+            whitespace = whitespace .. "-"
+        end
+        io.write(whitespace)
+
+        print(obj)
+        if (type(obj) == "table") then
+            for k,v in pairs(obj) do
+                io.write(whitespace .. "-")
+                if (type(v) == "table") then
+                    printObj(v, hierarchyLevel+1)
+                else
+                    print(v)
+                end
+            end
+        else
+            print(obj)
+        end
+    end
+
+    --require('mobdebug').start()
+    if c and (c.class == 'Chromium' or c.class == 'chromium' or c.class == 'Google-chrome' or c.class == 'Google-chrome-beta' or c.class == 'google-chrome' or c.class == 'Firefox'
+            or (c.class == 'jetbrains-idea' and c.width > 1800)or (c.class == 'jetbrains-phpstorm' and c.width > 1800)) then
+            c.maximized = not c.maximized
+            c.maximized_horizontal = not c.maximized_horizontal
+            c.maximized_vertical   = not c.maximized_vertical
+    else
+    --	    c.maximized = true
+    --        c.maximized_horizontal = true
+    --        c.maximized_vertical   = true
+    end
 end)
 
 client.connect_signal("focus", function(c)
@@ -1228,7 +1394,7 @@ local quakeconsole = {}
 --end
 quakeconsole[awful.screen.focused()] = quake({
 	terminal = "urxvt",
-	height = 0.6,
+	height = 1,
 	screen = s
 })
 

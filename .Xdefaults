@@ -1,6 +1,12 @@
-*font: xft:bitstream vera sans mono:size=9
-Xcursor.theme: simpleandsoft
-!*.*.Xcursor.theme: oxy-neon
+!*font: xft:bitstream vera sans mono:size=12
+!*font: xft:bitstream vera sans mono:size=32
+!Xcursor.theme: simpleandsoft
+Xcursor.theme: arch-icons
+Xcursor.size: 48
+!Xcursor.size: 32
+!*.*.Xcursor.theme: simpleandsoft
+!*.*.Xcursor.size: 32
+*.*.Xcursor.size: 128
 !Gimp*Xcursor.theme: oxy-neon
 !XTerm*termName:  xterm-256color
 !URxvt*termName:  xterm-256color
@@ -9,9 +15,9 @@ Xcursor.theme: simpleandsoft
 !URxvt*font: xft:DEJA VU SANS MONO:size=14
 
 !URxvt.letterSpace: -13
-!URxvt*font: xft:terminus:size=15
-!URxvt*font: xft:droid sans mono:size=13
-!URxvt*boldFont: xft:ubuntu mono:size=14
+!URxvt*font:-*-terminus-medium-r-*-*-12-*-*-*-*-*-*-*
+!URxvt*font: xft:droid sans mono:size=5
+!URxvt*boldFont: xft:ubuntu mon o:size=14
 !URxvt*boldFont: xft:terminus:bold:size=12
 !URxvt*font: xft:dejavu sans mono:size=12
 !URxvt*font: xft:terminus:size=11
@@ -43,15 +49,18 @@ Gvim*background: [30]#002B36
 *background: rgba:0000/1111/1111/bbbb
 !Vim*background: [10]#000000
 
-
 urxvt.termName:rxvt-256color
+!URxvt*font:-*-terminus-*-*-*--32-*-*-*-*-*-*-*
+!URxvt*font: xft:TerminessNerdFontMono:size:64
+!URxvt*font: xft:terminus:size:48
+!URxvt*font: xft:inconsolata:size:32
 
-*Xterm*background: black
+*Xterm*background: Red
 URxvt*saveLines:  65000
 URxvt.scrollBar: false
 !URxvt*color1: RoyalBlue
 !URxvt*color2: RoyalBlue
-*Xterm*foreground: Black
+#*Xterm*foreground: Black
 ! Nasty hack to act more like XTerm
 !Xft*autohint: false
 !Xft*hinting: false
@@ -60,18 +69,22 @@ URxvt.scrollBar: false
 !Xft*hintstyle: hintmedium
 
 
-URxvt*font: xft:ubuntumono:size=14
-!URxvt*font: xft:bitstream vera sans mono:size=12
-Xft.dpi: 96
-Xft*antialias: true
-!! hintnone, hintslight, hintmedium, hintfull
-Xft.hintstyle: hintslight
-!Xft.hinting: true
-Xft*autohint: true
-!! lcdnone, lcddefault, lcdlight, lcdlegacy
-Xft.lcdfilter: lcddefault
-Xft.rgba: rgba
+!URxvt*font: xft:ubuntumono:size=14
+!URxvt*font: xft:bitstream vera sans mono:size=22
+URxvt*font: xft:TerminessNerdFontMono:size=16
 
+!Xft.dpi: 96
+!Xft*antialias: false
+!! hintnone, hintslight, hintmedium, hintfull
+!Xft.hintstyle: hintnone
+!Xft.hinting: true
+!Xft*autohint: false
+!! lcdnone, lcddefault, lcdlight, lcdlegacy
+!Xft.lcdfilter: lcdnone
+Xft.rgba: rgba
+URxvt*dpi*: 192
+!URxvt*dpi*: 96
+Xft*dpi: 192
 !Xft*dpi: 96
 !Normal
 !*URxvt*keysym.Home:    \033OH
@@ -85,6 +98,8 @@ URxvt*color253: #8EBACD
 URxvt*color254: [20]#6EA0A1
 !URxvt*color255: [90]#073340
 URxvt*color255: rgba:0000/0000/0000/AAAA
+!URxvt*color240: rgba:22/22A0/22A1/AAAA
+URxvt*color240: [90]#073340
 ! Shift
 ! paste conflict
 !*URxvt*keysym.S-Insert:  \033[2;2~
@@ -128,8 +143,8 @@ URxvt.tabbed.transparent:true
 !*URxvt*keysym.S-Right:    \033[1;2C
 !*URxvt*keysym.S-Left:    \033[1;2D
 
-!*URxvt*keysym.Home:  \033OH
-!*URxvt*keysym.End: \033[4~
+*URxvt*keysym.Home:  \033OH
+*URxvt*keysym.End: \033[4~
 ! Alt
 *URxvt*keysym.M-Insert:    \033[2;3~
 *URxvt*keysym.M-Delete:    \033[3;3~

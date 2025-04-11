@@ -19,7 +19,12 @@ export USE_ZEND_ALLOC=0
 export _JAVA_AWT_WM_NONREPARENTING=1
 export OPENSCADPATH=/sources/geda
 export BROWSER_BIN=chromium
-export KISYSMOD=/usr/share/kicad/modules 
+export KISYSMOD=/usr/share/kicad/modules
+export ZPLUG_HOME=/usr/share/zsh/scripts/zplug
+export ALSOFT_LOGLEVEL=0
+export ALSOFT_LOGFILE=/dev/null
+#export VRCOMPOSITOR_LD_LIBRARY_PATH=/home/noname/.local/share/Steam/steamapps/common/SteamVR:/home/noname/.local/share/Steam/steamapps/common/SteamVR/bin/linux64:/home/noname/.local/share/Steam/steamapps/common/SteamVR/bin/linux64:/home/noname/.local/share/Steam/steamapps/common/SteamVR/bin/linux64/qt/lib:/home/noname/.local/share/Steam/steamapps/common/SteamVR/bin/linux64:/home/noname/.local/share/Steam/ubuntu12_32/steam-runtime/pinned_libs_32:/home/noname/.local/share/Steam/ubuntu12_32/steam-runtime/pinned_libs_64:/usr/lib/libfakeroot:/usr/lib32:/usr/lib:/home/noname/.local/share/Steam/ubuntu12_32/steam-runtime/lib/i386-linux-gnu:/home/noname/.local/share/Steam/ubuntu12_32/steam-runtime/usr/lib/i386-linux-gnu:/home/noname/.local/share/Steam/ubuntu12_32/steam-runtime/lib/x86_64-linux-gnu:/home/noname/.local/share/Steam/ubuntu12_32/steam-runtime/usr/lib/x86_64-linux-gnu:/home/noname/.local/share/Steam/ubuntu12_32/steam-runtime/lib:/home/noname/.local/share/Steam/ubuntu12_32/steam-runtime/usr/lib
+source /usr/share/zsh/scripts/zplug/init.zsh
 
 # Includes
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -27,6 +32,7 @@ source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring
 
 # Aliases
 alias n="sudo -u noname"
+alias ny="sudo -u noname yay"
 alias log="less /hosts/log"
 alias vhc="/usr/bin/vhcn"
 alias storm="~/storm/bin/phpstorm.sh"
@@ -40,7 +46,8 @@ alias weechat="env TERM=screen-256color weechat"
 alias vpn="/opt/cisco/anyconnect/bin/vpn"
 alias f="FBReader"
 alias i="echo -e \"`cat ~/records/info`\""
-alias s=geo_ssh
+#alias s=geo_ssh
+alias s=systemctl
 alias sr=systemctl restart
 alias k=killall -9
 alias sr="systemctl restart"
@@ -50,6 +57,7 @@ alias grep="grep --color=always"
 alias less="less -R"
 alias m=make
 alias git="TZ=UTC git"
+alias eve="mount /dev/sda2 /mnt/data; n WINEARCH=win32 WINEPREFIX=/home/noname/.wine32 wine /mnt/data/Games/Eve\ online/eve.exe"
 
 #alias m="mplayer -shuffle -playlist /home/noname/Downloads/pl"
 #alias m2="mplayer -shuffle -playlist ~/pl2"
@@ -82,6 +90,10 @@ HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=038,fg=white,bold'
 HISTFILE=~/.zsh_history
 SAVEHIST=10000000
 HISTSIZE=10000000
+PATH=$PATH:/vendor/bin/
+ALSOFT_LOGLEVEL=0
+ALSOFT_LOGFILE=/dev/null
+ALSOFT_LOGPATH=/dev/null
 
 setopt BANG_HIST                 # Treat the '!' character specially during expansion.
 setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
@@ -113,11 +125,7 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 # to add other keys to this hash, see: man 5 terminfo
 typeset -A key
 
-# Start tmux session
-if [ -z $TMUX ]
-  then
-    #tmux
-fi
+
 alias chrome="setsid sudo -u noname google-chrome-beta  > /dev/null 2>&1 < /dev/null"
 export ERL_LIBS=/root/Erlang
 ad=/http/adememot/
@@ -142,3 +150,78 @@ oet=/projects/oebv/_www/sites/all/themes/
 ip=/projects/odp/web/
 ipm=/projects/odp/web/sites/all/modules/
 ipt=/projects/odp/web/sites/all/themes/
+function blt() {
+  if [[ ! -z ${AH_SITE_ENVIRONMENT} ]]; then
+    PROJECT_ROOT="/var/www/html/${AH_SITE_GROUP}.${AH_SITE_ENVIRONMENT}"
+  elif [ "`git rev-parse --show-cdup 2> /dev/null`" != "" ]; then
+    PROJECT_ROOT=$(git rev-parse --show-cdup)
+  else
+    PROJECT_ROOT="."
+  fi
+
+  if [ -f "$PROJECT_ROOT/vendor/bin/blt" ]; then
+    $PROJECT_ROOT/vendor/bin/blt "$@"
+
+  # Check for local BLT.
+  elif [ -f "./vendor/bin/blt" ]; then
+    ./vendor/bin/blt "$@"
+
+  else
+    echo "You must run this command from within a BLT-generated project."
+    return 1
+  fi
+}
+
+export LIBVA_DRIVER_NAME=vdpau
+
+# Plugins
+plugins=(... osx zsh-history-substring-search)
+
+source ~/.oh-my-zsh/plugins/osx/osx.plugin.zsh
+[[ -n $DISPLAY ]] && xmodmap ~/.Xmodmap > /dev/null 2>&1
+[[ -n $DISPLAY ]] && sudo -u noname xmodmap ~/.Xmodmap > /dev/null 2>&1
+
+
+# ----------- hack to fix the broken history-substring-search plugin --------- #
+bindkey "^[[A" history-substring-search-up
+bindkey "^[[B" history-substring-search-down
+
+# Start tmux session
+if [ -n $DISPLAY ] && [ -z $TMUX ]
+  then
+#    tmux
+fi
+
+# ----------- hack to fix the broken history-substring-search plugin --------- #
+bindkey "^[[A" history-substring-search-up
+bindkey "^[[B" history-substring-search-down
+export EDITOR=vim
+#xhost si:localuser:root
+#xhost si:localuser:noname
+
+NONAME_UID=`id -u noname`
+
+if [ ! -d "/var/run/dbus" ]; then
+	mkdir /var/run/dbus
+	chown noname:noname /var/run/dbus
+
+fi
+
+if [ -e "/var/run/dbus/$UID-sessionbus.pid" ]; then
+	DBUS_SESSION_BUS_PID=`cat /var/run/dbus/${UID}-sessionbus.pid`
+fi
+
+if [ -e "/var/run/dbus/$UID-sessionbus.address" ]; then
+	DBUS_SESSION_BUS_ADDRESS=`cat /var/run/dbus/${UID}-sessionbus.address`
+fi
+# start the dbus as session bus and save the enviroment vars
+if [ -z ${DBUS_SESSION_BUS_PID+x} ]; then
+        echo start session dbus ...
+        eval "export $(/usr/bin/dbus-launch)"
+        echo "${DBUS_SESSION_BUS_PID}" > /var/run/dbus/${UID}-sessionbus.pid
+        echo "${DBUS_SESSION_BUS_ADDRESS}" > /var/run/dbus/${UID}-sessionbus.address
+        echo session dbus runs now at pid="${DBUS_SESSION_BUS_PID}"
+else
+        echo session dbus runs at pid="${DBUS_SESSION_BUS_PID}"
+        export DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS DBUS_SESSION_BUS_PID=$DBUS_SESSION_BUS_PID
+fi

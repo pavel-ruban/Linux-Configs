@@ -1,7 +1,6 @@
-#1.3.5
+#1.3.6
 
-#[gtk-about]
-
+#[/usr/share/cairo-dock/icons/icon-icons.svg]
 [Icon]
 
 #F[Icon]
@@ -26,10 +25,10 @@ order=17.75
 
 #A
 handbook=shortcuts
+always_visi=0
 
 
-#[gtk-convert]
-
+#[/usr/share/cairo-dock/icons/icon-desklets.svg]
 [Desklet]
 
 #X[Position]
@@ -63,7 +62,7 @@ accessibility=0
 #b Should be visible on all desktops?
 sticky=true
 
-#F[Decorations;gtk-orientation-portrait]
+#F[Decorations;preferences-desktop-theme]
 frame_deco=
 
 #o+ Choose a decoration theme for this desklet:
@@ -95,13 +94,13 @@ bottom offset=0
 fg desklet=
 #e+[0;1] Foreground tansparency:
 fg alpha=1
-
-
-#[gtk-preferences]
+num desktop=-1
 no input=false
 depth rotation y=0
 depth rotation x=0
 
+
+#[preferences-system]
 [Configuration]
 
 #F[Items]

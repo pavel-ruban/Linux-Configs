@@ -19,6 +19,11 @@ echo $DBUS_SESSION_BUS_ADDRESS > /tmp/DBUS_SESSION_BUS_ADDRESS
 #if tail -n 40 /proc/cpuinfo  | grep "^model name" | grep "AMD Phenom(tm) II X4 945 Processor"
 	#then xrandr --dpi 130
 #fi
-
+killall -9 dhcpcd; dhcpcd > /dev/null 2>&1 &
 [ -f ~/.xprofile ] && . ~/.xprofile
-exec awesome
+#[ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
+sudo -u noname xmodmap ~/.Xmodmap
+
+xhost si:localuser:noname
+#DISPLAY=:0.1 awesome --config ~/.config/awesome/rc_screen1.lua &
+awesome

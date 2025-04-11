@@ -9,8 +9,13 @@
 -- {{{ Main
 theme = {}
 --theme.wallpaper = "/root/linux.jpg"
+theme.wallpapers = {
+	"/root/.config/awesome/themes/zenburn/circuit-tracks.jpg",
+	"/root/.config/awesome/themes/zenburn/blue.jpg"
+}
+
+--theme.wallpaper = function( s ) return theme.wallpapers[s.index] end
 theme.wallpaper = "/root/.config/awesome/themes/zenburn/circuit-tracks.jpg"
---theme.wallpaper = "/root/.config/awesome/themes/zenburn/curcuits.jpg"
 --theme.wallpaper = "/root/.config/awesome/themes/zenburn/blue.jpg"
 --theme.wallpaper = 0
 --theme.wallpaper_cmd = { "hsetroot -solid '#000000'" }
@@ -19,7 +24,14 @@ theme.wallpaper = "/root/.config/awesome/themes/zenburn/circuit-tracks.jpg"
 -- }}}
 
 -- {{{ Styles
-theme.font      = "deja vu sans mono 8" -- prev value 13
+fonts = {
+	"deja vu sans mono 10",
+	"deja vu sans mono 10"
+}
+
+--theme.font      = function (s) return fonts[s.index] end
+--theme.font      = 	"deja vu sans mono 10"
+theme.font      = 	"Terminus 12"
 
 -- {{{ Colors
 theme.fg_normal  = "#DCDCCC"
@@ -42,6 +54,15 @@ theme.border_marked = "#000000"
 theme.titlebar_bg_focus  = "#333333"
 --theme.titlebar_bg_normal = "#000000"
 theme.titlebar_bg_normal = "#333333"
+
+heights = {
+	60,
+	159
+}
+
+--theme.titlebar_height = 59
+theme.titlebar_height = 159
+
 -- }}}
 
 -- There are other variable sets
@@ -74,7 +95,7 @@ theme.mouse_finder_color = "#CC9393"
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
-theme.menu_height = 15
+theme.menu_height = 45
 theme.menu_width  = 100
 -- }}}
 
